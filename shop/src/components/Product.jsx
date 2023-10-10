@@ -1,9 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
+import { addToCart } from '../features/slices/basketSlice';
+import { useDispatch } from "react-redux";
+
 
 const Product = ({ product }) => {
   const { id, title, category, price, image } = product;
+  const dispatch = useDispatch();
+
+  const addToCartHandler = () => {
+    dispatch(
+      addToCart({
+        id: product.id,
+        price: product.price,
+        amount: 1,
+        image: product.image,
+        totalPrice: product.price,
+        title: product.title,
+        description: product.description,
+        rating: product.rating,
+        brand: product.brand,
+        category: product.category,
+        discountPercentage: product.discountPercentage,
+      })
+    );
+  };
+
   return (
     <>
       <div
@@ -19,16 +42,16 @@ const Product = ({ product }) => {
               className="max-h-[125px] max-w-[125px] group-hover:scale-110 rounded-lg transition duration-500"
             />
 
-            <div className="absolute top-2 -right-4 group-hover:right-2 bg-indigo-300 p-2 rounded-sm opacity-0 group-hover:opacity-100 transition duration-300">
-              <button>
-                <div className="flex justify-center items-center text-red-50 w-8 h-8 bg-red-500 rounded-sm">
+            <div className="absolute top-2 -right-4 group-hover:right-2  p-2 rounded-sm opacity-0 group-hover:opacity-100 transition duration-300">
+              <button onClick={addToCartHandler}>
+                <div className="flex justify-center items-center text-red-50 w-8 h-8 bg-blue-500 rounded-sm">
                   <BsPlus className="text-3xl" />
                 </div>
               </button>
 
               <Link
                 to={`/product/${id}`}
-                className="flex justify-center items-center text-primary w-8 h-8 bg-indigo-100 drop-shadow-xl rounded-sm"
+                className="flex justify-center items-center text-primary w-8 h-8 bg-white drop-shadow-xl rounded-sm"
               >
                 <BsEyeFill />
               </Link>
@@ -40,7 +63,7 @@ const Product = ({ product }) => {
             <Link to={`/product/${id}`}>
               <h3 className="font-semibold my-1">{title.slice(0,20)}</h3>
             </Link>
-            <div className="font-semibold  text-green-600">${price}</div>
+            <div className="font-semibold text-green-600">${price}</div>
           </div>
 
         </div>

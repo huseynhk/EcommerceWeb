@@ -1,17 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "../../contexts/SidebarContext";
 import { BsBag } from "react-icons/bs";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { Link } from "react-router-dom";
+import Logo from "../../img/eco.webp";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
+  const totalAmount = useSelector(
+    (state) => state.persistedReducer.basket.totalAmount
+  );
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.scrollY > 100 ? setIsActive(true) : setIsActive(false);
+    });
+  }, []);
 
   return (
     <>
-      <header className="bg-indigo-200 py-4">
-        <div>header</div>
-        <button className="flex relative" onClick={() => setIsOpen(!isOpen)}>
-          <BsBag className="text-2xl text-red-500 cursor-pointer" />
-        </button>
+      <header
+        className={`${
+          isActive ? "bg-indigo-100 " : "bg-white shadow-lg"
+        } sticky top-0 w-full z-10 transition-all `}
+      >
+        <div className="container mx-auto flex items-center justify-between h-full p-2 ">
+          <Link to={"/"}>
+            <img src={Logo} alt="logo" className="h-14 w-14 rounded-full" />
+          </Link>
+
+          <button className="flex relative" onClick={() => setIsOpen(!isOpen)}>
+            <BsBag className="text-4xl text-indigo-700 cursor-pointer" />
+            <div className="bg-red-500 absolute -right-5 bottom-5 text-[12px] w-5 h-5 text-white rounded-full flex justify-center items-center">
+              {totalAmount}
+            </div>
+          </button>
+        </div>
       </header>
     </>
   );
