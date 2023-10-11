@@ -47,7 +47,7 @@ const CartItem = ({ product }) => {
               <IoMdAdd />
             </div>
           </div>
-
+         
           <div className="flex-1 flex item-center justify-around text-gray-700 dark:text-gray-100">
             ${price}
           </div>

@@ -22,7 +22,7 @@ const ProductDetails = () => {
     );
   }
 
-  const { title, price, description, image, category } = product;
+  const { title, price, description, image, category, rating } = product;
   const addToCartHandler = () => {
     dispatch(
       addToCart({
@@ -59,10 +59,12 @@ const ProductDetails = () => {
                 <h1 className="text-[27px] font-medium mb-2 max-w-[450px] mx-auto text-gega-melon">
                   {title}
                 </h1>
-                <h1 className=" text-cyan-700 uppercase font-semibold text-2xl">{category}</h1>
+                <h1 className=" text-cyan-700 uppercase font-semibold text-2xl">Category:{category}</h1>
                 <h1 className="text-gega-red font-medium mb-6 text-3xl">
                   $ {price}
                 </h1>
+                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">Rating:{rating}</h1>
+                
                 <p className="mb-8 text-cyan-500">{description}</p>
 
                 <button

@@ -23,7 +23,7 @@ const ThemeContextProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ handleThemeSwitch }}>
+    <ThemeContext.Provider value={{ handleThemeSwitch,theme }}>
       {children}
     </ThemeContext.Provider>
   );
