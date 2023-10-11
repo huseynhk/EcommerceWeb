@@ -20,7 +20,7 @@ const CartItem = ({ product }) => {
         <div className="flex justify-center mb-2 ">
           <div
             className="text-sm uppercase font-medium
-           text-primary max-w-[700px] md:max-w-[500px] mt-12 hover:underline "
+           text-primary max-w-[700px] md:max-w-[500px] mt-12 hover:underline dark:text-white"
           >
             <Link to={`/product/${id}`}>{title}</Link>
           </div>
@@ -30,10 +30,10 @@ const CartItem = ({ product }) => {
           </div>
         </div>
 
-        <div className="flex gap-x-2 h-[36px] p-2 text-sm rounded-sm">
+        <div className="flex gap-x-2 h-[36px] p-2 text-sm rounded-sm ">
           <div className="flex flex-1 max-w-[100px] items-center h-full border px-4 py-2 rounded-sm mr-2 text3xl cursor-pointer">
             <div
-              className="flex-1 flex justify-center items-center text-red-700"
+              className="flex-1 flex justify-center items-center text-red-700 "
               onClick={() => dispatch(decrement(product))}
             >
               <IoMdRemove />
@@ -48,10 +48,10 @@ const CartItem = ({ product }) => {
             </div>
           </div>
 
-          <div className="flex-1 flex item-center justify-around text-gray-700">
+          <div className="flex-1 flex item-center justify-around text-gray-700 dark:text-gray-100">
             ${price}
           </div>
-          <div className="flex-1 flex item-center justify-end font-medium text-primary ml-1">
+          <div className="flex-1 flex item-center justify-end font-medium text-primary ml-1 dark:text-gray-100">
             ${`${parseFloat(price * amount).toFixed(2)}`}
           </div>
         </div>

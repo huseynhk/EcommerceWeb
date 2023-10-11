@@ -18,13 +18,16 @@ const Home = () => {
     <Layout>
       <>
         <Hero/>
-        <section className="py-4">
+        <section className="py-4 dark:bg-black dark:text-gray-100">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] 
               mx-w-sm mx-auto md:max-w-none md:mx-w-0">
-              {products.map((product) => (
-                <Product product={product} key={product.id}/>
-              ))}
+              {products.map((product) => {
+            
+                return (
+                  <Product product={product} key={product.id}/>
+                )
+              })}
             </div>
           </div>
         </section>

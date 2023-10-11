@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 const Product = ({ product }) => {
   const { id, title, category, price, image } = product;
   const dispatch = useDispatch();
+  console.log(image);
 
   const addToCartHandler = () => {
     dispatch(
@@ -34,7 +35,7 @@ const Product = ({ product }) => {
         className="w-full h-[320px] mb-4 bg-indigo-50 rounded-md border border-indigo-600 
         relative overflow-hidden group transition"
       >
-        <div className="w-full h-full flex justify-center items-center md:flex-col">
+        <div className="w-full h-full flex justify-center items-center md:flex-col dark:bg-gray-500/75 dark:text-gray-200">
           <div className="w-[200px] mx-auto flex justify-center items-center mt-3">
             <img
               src={image}
@@ -59,11 +60,11 @@ const Product = ({ product }) => {
           </div>
 
           <div className="mt-6 me-1">
-            <div className="text-sm capitalize text-gray-600">{category}</div>
+            <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">{category}</div>
             <Link to={`/product/${id}`}>
               <h3 className="font-semibold my-1">{title.slice(0,20)}</h3>
             </Link>
-            <div className="font-semibold text-green-600">${price}</div>
+            <div className="font-semibold text-green-600 dark:text-cyan-200">${price}</div>
           </div>
 
         </div>

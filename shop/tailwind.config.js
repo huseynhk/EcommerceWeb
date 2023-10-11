@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode:"class",
   theme: {
     fontFamily: {
       primary: "Poppins",
@@ -23,13 +24,8 @@ export default {
         secondary: "#F5E6E0",
         "gega-red": "#BC1A45",
         "gega-melon": "#FFD369",
-        "gega-grey": "#DDDDDD",
-        "gega-white": "#F7F7F7",
       },
-      fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-        gemunu: ["Gemunu Libre", "sans-serif"],
-      },
+   
     },
   },
   plugins: [],

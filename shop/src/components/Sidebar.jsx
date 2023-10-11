@@ -23,7 +23,7 @@ const Sidebar = () => {
       <div
         className={`${
           isOpen ? "right-0" : "-right-full"
-        } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[30vw] 
+        } w-full bg-white dark:bg-black dark:text-white fixed top-0 h-full shadow-2xl md:w-[30vw] 
          xl:max-w-[30vw] mt-14 transition-all duration-500 px-4 lg:px-[35px] `}
       >
         <div
@@ -46,7 +46,7 @@ const Sidebar = () => {
           <div className="w-full flex justify-between items-center mt-10 uppercase font-semibold">
             <h2 className="my-2 text-red-800 ">
               <span className="ml-1 text-indigo-800 ">TotalPrice:</span> ${" "}
-              {totalPrice.toFixed(2)}
+              {Number(totalPrice).toFixed(2)}
             </h2>
 
             <div

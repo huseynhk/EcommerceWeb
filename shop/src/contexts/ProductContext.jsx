@@ -8,7 +8,7 @@ const ProductContextProvider = ({ children }) => {
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get("https://fakestoreapi.com/products");
+      const response = await axios.get("http://localhost:3000/products");
       if (response.status !== 200) {
         console.log(error);
       } else {

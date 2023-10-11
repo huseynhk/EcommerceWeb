@@ -23,7 +23,6 @@ const ProductDetails = () => {
   }
 
   const { title, price, description, image, category } = product;
-
   const addToCartHandler = () => {
     dispatch(
       addToCart({
@@ -45,7 +44,7 @@ const ProductDetails = () => {
   return (
     <>
       <Layout>
-        <section className="pt-32 pb-12 lg:py-32 h-screen">
+        <section className="pt-32 pb-12 lg:py-32 h-screen dark:bg-black">
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row">
               <div className="flex flex-1 justify-center items-center mb-8 lg:mb-0">
@@ -60,7 +59,7 @@ const ProductDetails = () => {
                 <h1 className="text-[27px] font-medium mb-2 max-w-[450px] mx-auto text-gega-melon">
                   {title}
                 </h1>
-                <h1 className=" text-cyan-700 uppercase">{category}</h1>
+                <h1 className=" text-cyan-700 uppercase font-semibold text-2xl">{category}</h1>
                 <h1 className="text-gega-red font-medium mb-6 text-3xl">
                   $ {price}
                 </h1>
