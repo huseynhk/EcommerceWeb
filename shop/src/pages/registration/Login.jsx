@@ -8,6 +8,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebaseConfig";
 //Google
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+//Icons
+import { AiOutlineMail } from 'react-icons/ai';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
   const { loading, setLoading } = useContext(ProductContext);
@@ -73,9 +76,9 @@ const Login = () => {
     <>
       <div className=" flex justify-center items-center h-screen">
         {loading && <Loader />}
-        <div className=" bg-gray-900 px-16 py-10 rounded-lg">
-          <div className="">
-            <h1 className="text-center text-blue-200 text-2xl mb-6 font-bold">
+        <div className=" bg-gray-900 px-10 py-10 rounded-md">
+          <div>
+            <h1 className="text-center text-blue-200 text-3xl mb-6 font-bold">
               Login
             </h1>
           </div>
@@ -85,7 +88,7 @@ const Login = () => {
               name="email"
               value={newUser.email}
               onChange={handleInputChange}
-              className=" bg-gray-700 mb-4 px-4 py-4 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none"
+              className=" bg-gray-700 mb-4 px-4 py-4 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
               placeholder="Email"
             />
           </div>
@@ -95,29 +98,31 @@ const Login = () => {
               name="password"
               value={newUser.password}
               onChange={handleInputChange}
-              className=" bg-gray-700 mb-4 px-4 py-4 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none"
+              className=" bg-gray-700 mb-4 px-4 py-4 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
               placeholder="Password"
             />
           </div>
-          <div className=" flex justify-center mb-3">
+          <div className=" flex justify-center items-center flex-col mb-3">
             <button
-              className=" bg-orange-400 w-full text-black font-bold  px-4 py-4 rounded-lg"
+              className=" bg-gega-red w-full text-blue-200 font-bold  px-4 py-2 rounded-sm text-xl 
+              flex justify-center hover:opacity-90 transition duration-300"
               onClick={LoginUser}
             >
-              <span className="text-blue-200 text-lg">Login</span>
+              <AiOutlineMail size={35} />
+            </button>
+            <button
+              className="bg-blue-300 w-full text-white font-bold px-4 py-2 rounded-sm text-xl mt-4 flex justify-center hover:opacity-90 transition duration-300"
+              onClick={handleGoogleSignIn}
+            >
+              <FcGoogle size={35}/>
             </button>
           </div>
           <div>
             <h2 className="text-white">
-              <button
-                className="bg-blue-500 w-full text-white font-bold px-4 py-4 rounded-lg text-xl mb-4"
-                onClick={handleGoogleSignIn}
-              >
-                Google
-              </button>
+        
 
               <Link
-                className=" text-orange-600 font-bold mt-3 text-xl bg-red-200 py-1 px-4 rounded-lg"
+                className=" text-gega-melon font-bold mt-3 text-xl py-1 hover:opacity-90 transition duration-300 "
                 to={"/signup"}
               >
                 Signup

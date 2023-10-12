@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import Product from "./components/Product";
@@ -8,7 +8,7 @@ import CartItem from "./components/CartItem";
 import AddProduct from "./admin/page/AddProduct";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
-
+import NoPage from "./pages/NoPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,11 +20,18 @@ function App() {
         <Route path="product" element={<Product />} />
         <Route path="product/:id" element={<ProductDetails />} />
         <Route path="cart" element={<CartItem />} />
-        <Route path="add" element={<AddProduct />} />
+        <Route path="*" element={<NoPage />} />
+
+        <Route
+          path="addproduct"
+          element={
+            <RouteForAdmin>
+              <AddProduct />
+            </RouteForAdmin>
+          }
+        />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-
-
       </Routes>
       <Sidebar />
       <ToastContainer />
@@ -33,3 +40,21 @@ function App() {
 }
 
 export default App;
+
+export const RouteForUser = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+    return children;
+  } else {
+    return <Navigate to={"/login"} />;
+  }
+};
+
+export const RouteForAdmin = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user && user.email === "khuseyn693@gmail.com") {
+    return children;
+  } else {
+    return <Navigate to={"/login"} />;
+  }
+};
