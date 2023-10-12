@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { storage } from "../../firebaseConfig";
+import { storage } from "../../firebase/firebaseConfig";
 import {ref, uploadBytesResumable,getDownloadURL} from "firebase/storage";
 
 const AddProduct = () => {

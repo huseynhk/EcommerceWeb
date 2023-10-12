@@ -14,6 +14,7 @@ const ProductContextProvider = ({ children }) => {
     rating: "",
     search: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const filterProductsByCategory = () => {
     if (selectedCategory === "all") {
@@ -84,6 +85,7 @@ const ProductContextProvider = ({ children }) => {
   };
 
   const getAllProducts = async () => {
+    setLoading(true);
     try {
       const response = await axios.get("http://localhost:3000/products");
       if (response.status !== 200) {
@@ -91,9 +93,11 @@ const ProductContextProvider = ({ children }) => {
       } else {
         setProducts(response.data);
         setFilteredProducts(response.data);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -133,6 +137,8 @@ const ProductContextProvider = ({ children }) => {
     selectedCategory,
     setSelectedCategory,
     resetFilters,
+    loading,
+    setLoading,
   };
 
   return (
