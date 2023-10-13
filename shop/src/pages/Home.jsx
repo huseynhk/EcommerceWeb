@@ -3,6 +3,7 @@ import Layout from "../components/layout/Layout";
 import { ProductContext } from "../contexts/ProductContext";
 import Product from "../components/Product";
 import Hero from "../components/Hero";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const {
@@ -19,6 +20,9 @@ const Home = () => {
   return (
     <Layout>
       <>
+        <Helmet>
+          <title>Home Page</title>
+        </Helmet>
         <Hero />
         <section className="py-4 dark:bg-black dark:text-gray-100">
           <div className="container flex flex-col md:flex-row items-center justify-around">

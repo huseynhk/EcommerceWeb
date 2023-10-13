@@ -3,12 +3,11 @@
     {
       "id": 58,
       "title": "Alaba",
-      "price": 240,
+      "price": "3333",
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "creationAt": "2023-10-11T03:24:10.000Z",
-      "updatedAt": "2023-10-11T11:42:22.000Z",
+      "image": null,
       "category": "car",
+      "stock": 3,
       "rating": 3.2
     },
     {
@@ -16,10 +15,8 @@
       "title": "Balaba",
       "price": 140,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "creationAt": "2023-10-11T03:24:10.000Z",
-      "updatedAt": "2023-10-11T11:42:22.000Z",
-      "category": "ucar",
+      "image": null,
+      "category": "men",
       "rating": 2.2
     },
     {
@@ -28,9 +25,8 @@
       "price": 40,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "creationAt": "2023-10-11T03:24:10.000Z",
-      "updatedAt": "2023-10-11T11:42:22.000Z",
-      "category": "ccar",
+      "category": "women",
+      "stock": 3,
       "rating": 7.2
     },
     {
@@ -39,9 +35,8 @@
       "price": 2400,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "creationAt": "2023-10-11T03:24:10.000Z",
-      "updatedAt": "2023-10-11T11:42:22.000Z",
-      "category": "ccar",
+      "category": "toys",
+      "stock": 3,
       "rating": 9.2
     },
     {
@@ -50,9 +45,8 @@
       "price": 2140,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "creationAt": "2023-10-11T03:24:10.000Z",
-      "updatedAt": "2023-10-11T11:42:22.000Z",
-      "category": "acar",
+      "category": "Men",
+      "stock": 3,
       "rating": 1.1
     },
     {
@@ -61,9 +55,9 @@
       "price": 24,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "creationAt": "2023-10-11T03:24:10.000Z",
-      "updatedAt": "2023-10-11T11:42:22.000Z",
-      "category": "car"
+      "category": "kids",
+      "stock": 3,
+      "rating": 3
     },
     {
       "id": 23,
@@ -71,9 +65,8 @@
       "price": 20,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "creationAt": "2023-10-11T03:24:10.000Z",
-      "updatedAt": "2023-10-11T11:42:22.000Z",
-      "category": "jar",
+      "category": "phone",
+      "stock": 3,
       "rating": 7.4
     },
     {
@@ -82,10 +75,39 @@
       "price": 33,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "creationAt": "2023-10-11T03:24:10.000Z",
-      "updatedAt": "2023-10-11T11:42:22.000Z",
-      "category": "zar",
+      "category": "mouse",
+      "stock": 3,
       "rating": 5.5
+    },
+    {
+      "title": "dede",
+      "description": "gooood",
+      "price": "43",
+      "category": "dortmind",
+      "stock": "23",
+      "rating": "3.6",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdd.png?alt=media&token=bbb217bc-492a-4624-bced-5146daa02038",
+      "id": 514
+    },
+    {
+      "title": "Baton",
+      "description": "liked",
+      "price": "33",
+      "category": "konfet",
+      "stock": "343",
+      "rating": "7",
+      "image": null,
+      "id": 515
+    },
+    {
+      "title": "ghbgf",
+      "description": "rfew",
+      "price": "44",
+      "category": "ghgfhgfh",
+      "stock": "44",
+      "rating": "4",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2FGS.jpg?alt=media&token=c4d4cb10-aeea-433f-9f53-fb15e6ed523c",
+      "id": 516
     }
   ]
 }

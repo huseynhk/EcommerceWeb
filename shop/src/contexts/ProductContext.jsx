@@ -1,5 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+//Get FireBase User
+import { collection, getDocs } from "firebase/firestore";
+import { fireDB } from "../firebase/firebaseConfig";
 
 const ProductContext = createContext();
 
@@ -112,8 +115,30 @@ const ProductContextProvider = ({ children }) => {
     setFilteredProducts(products);
   };
 
+
+  //USER
+  const [user, setUser] = useState([]);
+  const getUserData = async () => {
+    setLoading(true);
+    try {
+      const result = await getDocs(collection(fireDB, "users"));
+      const userArray = [];
+      result.forEach((user) => {
+        userArray.push(user.data());
+        setLoading(false);
+      });
+      setUser(userArray);
+      console.log(userArray);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     getAllProducts();
+    getUserData();
   }, []);
 
   useEffect(() => {
@@ -139,6 +164,7 @@ const ProductContextProvider = ({ children }) => {
     resetFilters,
     loading,
     setLoading,
+    user,
   };
 
   return (

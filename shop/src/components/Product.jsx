@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
-import { addToCart } from '../features/slices/basketSlice';
+import { addToCart } from "../features/slices/basketSlice";
 import { useDispatch } from "react-redux";
 
-
 const Product = ({ product }) => {
-  const { id, title, category, price, image , rating } = product;
+  const { id, title, category, price, image, rating } = product;
   const dispatch = useDispatch();
   console.log(image);
 
@@ -32,15 +31,15 @@ const Product = ({ product }) => {
     <>
       <div
         key={id}
-        className="w-full h-[320px] mb-4 bg-indigo-50 rounded-md border border-indigo-600 dark:border-gega-melon
+        className="w-full h-[340px] mb-4 bg-indigo-50 rounded-sm border border-indigo-600 dark:border-gega-melon
         relative overflow-hidden group transition"
       >
-        <div className="w-full h-full flex justify-center items-center md:flex-col dark:bg-gray-500/75 dark:text-gray-200">
-          <div className="w-[230px] mx-auto flex justify-center items-center mt-2">
+        <div className="w-full h-full flex justify-center items-center flex-col  dark:bg-gray-500/75 dark:text-gray-200">
+          <div className="w-[405px] md:w-[230px] mx-auto flex justify-center items-center mt-2">
             <img
               src={image}
               alt={title}
-              className="max-h-[130px] w-[130px] object-cover group-hover:scale-110 rounded-lg transition duration-500"
+              className=" -mt-8 max-h-[120px] w-[270px] md:w-[150px] object-cover group-hover:scale-110 rounded-md transition duration-500"
             />
 
             <div className="absolute top-2 -right-4 group-hover:right-1 opacity-0 group-hover:opacity-100 transition duration-500">
@@ -59,16 +58,23 @@ const Product = ({ product }) => {
             </div>
           </div>
 
-          <div className="mt-6 me-1">
-            <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">Category:{category}</div>
-            <Link to={`/product/${id}`}>
-              <h3 className="font-semibold my-1">{title.slice(0,20)}</h3>
-            </Link>
-            
-            <div className="font-semibold text-violet-600 dark:text-cyan-200">Rating:{rating}</div>
-            <div className="font-semibold text-green-600 dark:text-cyan-200">${price}</div>
-          </div>
+          <div className="mt-5 me-1 ">
+            <div className="ml-0 md:ml-4 text-2xl md:text-lg">
+              <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">
+                Category:{category}
+              </div>
+              <Link to={`/product/${id}`}>
+                <h3 className="font-semibold my-1">{title.slice(0, 20)}</h3>
+              </Link>
 
+              <div className="font-semibold text-violet-600 dark:text-cyan-200">
+                Rating:{rating}
+              </div>
+              <div className="font-semibold text-green-600 dark:text-cyan-200">
+                ${price}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

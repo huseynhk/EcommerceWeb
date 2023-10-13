@@ -6,6 +6,8 @@ import Product from "./components/Product";
 import Sidebar from "./components/Sidebar";
 import CartItem from "./components/CartItem";
 import AddProduct from "./admin/page/AddProduct";
+import UpdateProduct from "./admin/page/UpdateProduct";
+import Dashboard from "./admin/Dashboard/Dashboard";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
 import NoPage from "./pages/NoPage";
@@ -23,13 +25,31 @@ function App() {
         <Route path="*" element={<NoPage />} />
 
         <Route
-          path="addproduct"
+          path="/addproduct"
           element={
             <RouteForAdmin>
               <AddProduct />
             </RouteForAdmin>
           }
         />
+        <Route
+          path="/dashboard"
+          element={
+            <RouteForAdmin>
+              <Dashboard />
+            </RouteForAdmin>
+          }
+        />
+
+        <Route
+          path="/updateproduct/:productId"
+          element={
+            <RouteForAdmin>
+              <UpdateProduct />
+            </RouteForAdmin>
+          }
+        />
+
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
       </Routes>

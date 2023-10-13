@@ -9,6 +9,7 @@ import { ThemeContextProvider } from "./contexts/ThemeContext.jsx";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
+import { HelmetProvider } from 'react-helmet-async';
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 import rootReducer from "./features/app/rootReducer.jsx";
@@ -18,6 +19,7 @@ const persistConfig = {
   storage,
 };
 
+const helmetContext = {};
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: {
@@ -35,7 +37,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <SidebarContextProvider>
           <ProductContextProvider>
             <BrowserRouter>
-              <App />
+            <HelmetProvider context={helmetContext}>
+            <App />
+            </HelmetProvider>
             </BrowserRouter>
           </ProductContextProvider>
         </SidebarContextProvider>
