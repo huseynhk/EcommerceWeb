@@ -21,8 +21,12 @@ const Home = () => {
       <>
         <Hero />
         <section className="py-4 dark:bg-black dark:text-gray-100">
-          <div className="container flex items-center justify-around">
-            <div className="w-[225px] h-[500px] rounded-sm bg-slate-200 dark:bg-slate-800 ">
+          <div className="container flex flex-col md:flex-row items-center justify-around">
+            <div
+              className="rounded-sm bg-slate-200 dark:bg-slate-800
+              flex-row  w-[400px] h-[200px]  
+              md-flex-col  md:w-[250px] md:h-[500px] "
+            >
               <div className="my-2">
                 <input
                   type="text"
@@ -79,7 +83,10 @@ const Home = () => {
                 </select>
 
                 <select
-                  className="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+                    dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
@@ -100,7 +107,7 @@ const Home = () => {
             </div>
 
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[25px] 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[25px] mt-[160px] md:mt-[60px] 
               mx-w-sm  md:max-w-none md:mx-w-0"
             >
               {filteredProducts.map((product) => {
