@@ -39,7 +39,7 @@ const Product = ({ product }) => {
             <img
               src={image}
               alt={title}
-              className=" -mt-8 max-h-[120px] w-[270px] md:w-[150px] object-cover group-hover:scale-110 rounded-md transition duration-500"
+              className=" -mt-8 h-[120px] w-[270px] md:w-[150px] object-cover group-hover:scale-110 rounded-md transition duration-500"
             />
 
             <div className="absolute top-2 -right-4 group-hover:right-1 opacity-0 group-hover:opacity-100 transition duration-500">

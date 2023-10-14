@@ -5,7 +5,7 @@
       "title": "Alaba",
       "price": "3333",
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": null,
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2FGS.jpg?alt=media&token=c4d4cb10-aeea-433f-9f53-fb15e6ed523c",
       "category": "car",
       "stock": 3,
       "rating": 3.2
@@ -15,7 +15,7 @@
       "title": "Balaba",
       "price": 140,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": null,
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2FGS.jpg?alt=media&token=c4d4cb10-aeea-433f-9f53-fb15e6ed523c",
       "category": "men",
       "rating": 2.2
     },

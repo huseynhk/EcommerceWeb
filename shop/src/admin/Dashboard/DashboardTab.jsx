@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
@@ -6,12 +6,40 @@ import { FaUser } from "react-icons/fa";
 import { BiSolidCartAdd } from "react-icons/bi";
 import { AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 const DashboardTab = () => {
   const { filteredProducts, user } = useContext(ProductContext);
   const navigate = useNavigate();
   const addProductPage = () => {
     navigate("/addproduct");
+  };
+
+
+  //Pagination
+  const [pageNumber, setPageNumber] = useState(0);
+  //Product Pagination
+  const productsPerPage = 5;
+  const pagesVisited = pageNumber * productsPerPage;
+  const displayProducts = filteredProducts.slice(
+    pagesVisited,
+    pagesVisited + productsPerPage
+  );
+  const pageCount = Math.ceil(filteredProducts.length / productsPerPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
+  //User Pagination
+  const usersPerPage = 3;
+  const pagesVisitedUsers = pageNumber * usersPerPage;
+  const displayUsers = user.slice(
+    pagesVisitedUsers,
+    pagesVisitedUsers + usersPerPage
+  );
+  const userPageCount = Math.ceil(user.length / usersPerPage);
+  const changeUserPage = ({ selected }) => {
+    setPageNumber(selected);
   };
 
   return (
@@ -93,7 +121,7 @@ const DashboardTab = () => {
                       </tr>
                     </thead>
 
-                    {filteredProducts.map((item, index) => {
+                    {displayProducts.map((item, index) => {
                       return (
                         <tbody className="" key={index}>
                           <tr className="bg-gray-50 border-b  dark:border-gray-700">
@@ -105,7 +133,7 @@ const DashboardTab = () => {
                               className="px-6 py-4 font-medium text-black whitespace-nowrap"
                             >
                               <img
-                                className="w-16"
+                                className=" w-[100px]  h-[100px] object-cover rounded-lg"
                                 src={item.image}
                                 alt="img"
                               />
@@ -150,6 +178,26 @@ const DashboardTab = () => {
                   </table>
                 </div>
               </div>
+              {/* pagination */}
+              <div className="pagination flex items-center justify-center my-4">
+                <ReactPaginate
+                  previousLabel={"Previous"}
+                  nextLabel={"Next"}
+                  pageCount={pageCount}
+                  onPageChange={changePage}
+                  containerClassName={
+                    "flex py-2 px-4 border border-gray-300 rounded-lg"
+                  }
+                  previousLinkClassName={
+                    "mr-2 p-2 border border-gray-300 rounded"
+                  }
+                  nextLinkClassName={"ml-2 p-2 border border-gray-300 rounded"}
+                  disabledClassName={"text-gray-400 cursor-not-allowed"}
+                  activeClassName={
+                    "bg-blue-500 text-white border border-blue-500"
+                  }
+                />
+              </div>
             </TabPanel>
 
             <TabPanel>
@@ -177,7 +225,7 @@ const DashboardTab = () => {
                   </thead>
 
                   <tbody>
-                    {user.map((item, index) => (
+                    {displayUsers.map((item, index) => (
                       <tr
                         className="bg-gray-50 border-b  dark:border-gray-700"
                         key={index}
@@ -190,6 +238,26 @@ const DashboardTab = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+              {/* pagination */}
+              <div className="pagination flex items-center justify-center my-4">
+                <ReactPaginate
+                  previousLabel={"Previous"}
+                  nextLabel={"Next"}
+                  pageCount={userPageCount}
+                  onPageChange={changeUserPage}
+                  containerClassName={
+                    "flex py-2 px-4 border border-gray-300 rounded-lg"
+                  }
+                  previousLinkClassName={
+                    "mr-2 p-2 border border-gray-300 rounded"
+                  }
+                  nextLinkClassName={"ml-2 p-2 border border-gray-300 rounded"}
+                  disabledClassName={"text-gray-400 cursor-not-allowed"}
+                  activeClassName={
+                    "bg-blue-500 text-white border border-blue-500"
+                  }
+                />
               </div>
             </TabPanel>
           </Tabs>
