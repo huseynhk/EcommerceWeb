@@ -7,6 +7,7 @@ import { BiSolidCartAdd } from "react-icons/bi";
 import { AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import moment from "moment";
 
 const DashboardTab = () => {
   const { filteredProducts, user, deleteProduct } = useContext(ProductContext);
@@ -76,13 +77,13 @@ const DashboardTab = () => {
                 <h1 className=" text-center mb-5 text-3xl font-semibold underline text-primary dark:text-cyan-400">
                   Product Details
                 </h1>
-                <div className=" flex justify-end">
+                <div className="flex justify-center">
                   <button
                     type="button"
-                    className="focus:outline-none text-white bg-blue-600  border hover:bg-blue-700 outline-0 font-medium rounded-lg text-sm py-2 px-4 m-6 transition duration-300 ease-in-out"
+                    className="focus:outline-none text-white bg-blue-600 dark:bg-cyan-600  border hover:opacity-90 outline-0 font-semibold rounded-md text-md py-2 px-5 mb-5 transition duration-500 ease-in-out"
                   >
                     <div
-                      className="flex gap-2 items-center"
+                      className="flex gap-2 items-center "
                       onClick={addProductPage}
                     >
                       Add Product <BiSolidCartAdd size={30} />
@@ -112,6 +113,9 @@ const DashboardTab = () => {
                           Stock
                         </th>
                         <th scope="col" className="px-6 py-3">
+                          Rating
+                        </th>
+                        <th scope="col" className="px-6 py-3">
                           Date
                         </th>
                         <th scope="col" className="px-6 py-3">
@@ -121,36 +125,30 @@ const DashboardTab = () => {
                     </thead>
 
                     {displayProducts.map((item, index) => {
+                      const actualIndex = pagesVisited + index + 1;
                       return (
-                        <tbody  key={index}>
+                        <tbody key={index}>
                           <tr className="bg-gray-100 dark:bg-primary dark:text-white  border-b  dark:border-cyan-300">
                             <td className="px-6 py-4 text-black dark:text-white">
-                              {index + 1}.
+                              {actualIndex}.
                             </td>
                             <th
                               scope="row"
                               className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-white"
                             >
                               <img
-                                className=" w-[100px]  h-[100px] object-cover rounded-lg"
+                                className=" w-[75px]  h-[75px] object-cover rounded-md"
                                 src={item.image}
                                 alt="img"
                               />
                             </th>
+                            <td className="px-6 py-3">{item.title}</td>
+                            <td className="px-6 py-3">${item.price}</td>
+                            <td className="px-6 py-3">{item.category}</td>
+                            <td className="px-6 py-3">{item.stock}</td>
+                            <td className="px-6 py-3">{item.rating}</td>
                             <td className="px-6 py-3">
-                              {item.title}
-                            </td>
-                            <td className="px-6 py-3">
-                              ${item.price}
-                            </td>
-                            <td className="px-6 py-3">
-                              {item.category}
-                            </td>
-                            <td className="px-6 py-3">
-                              {item.stock}
-                            </td>
-                            <td className="px-6 py-3">
-                              {item.date}
+                              {moment(item.date).format("MM.DD.YYYY")}
                             </td>
                             <td className="px-6 py-4">
                               <div className=" flex gap-2">
@@ -178,22 +176,18 @@ const DashboardTab = () => {
                 </div>
               </div>
               {/* pagination */}
-              <div className="pagination flex items-center justify-center my-4">
+              <div className="flex items-center justify-center ">
                 <ReactPaginate
                   previousLabel={"Previous"}
                   nextLabel={"Next"}
                   pageCount={pageCount}
                   onPageChange={changePage}
-                  containerClassName={
-                    "flex py-2 px-4 border border-gray-300 rounded-lg"
-                  }
-                  previousLinkClassName={
-                    "mr-2 p-2 border border-gray-300 rounded"
-                  }
-                  nextLinkClassName={"ml-2 p-2 border border-gray-300 rounded"}
-                  disabledClassName={"text-gray-400 cursor-not-allowed"}
+                  containerClassName={"flex py-1 px-4 space-x-2"}
+                  previousLinkClassName={"mr-2 p-2 "}
+                  nextLinkClassName={"ml-2 p-2"}
+                  disabledClassName={"text-gray-500 cursor-not-allowed"}
                   activeClassName={
-                    "bg-blue-500 text-white border border-blue-500"
+                    "bg-cyan-500 text-white border border-cyan-500 rounded-sm px-2"
                   }
                 />
               </div>
@@ -224,38 +218,37 @@ const DashboardTab = () => {
                   </thead>
 
                   <tbody>
-                    {displayUsers.map((item, index) => (
-                      <tr
-                        className="bg-gray-100 dark:bg-primary dark:text-white border-b 
+                    {displayUsers.map((item, index) => {
+                      const actualIndex = pagesVisitedUsers + index + 1;
+                      return (
+                        <tr
+                          className="bg-gray-100 dark:bg-primary dark:text-white border-b 
                          dark:border-cyan-300"
-                        key={index}
-                      >
-                        <td className="px-6 py-5">{index + 1}</td>
-                        <td className="px-6 py-5">{item.name}</td>
-                        <td className="px-6 py-5">{item.email}</td>
-                        <td className="px-6 py-5">{item.uid}</td>
-                      </tr>
-                    ))}
+                          key={index}
+                        >
+                          <td className="px-6 py-5">{actualIndex}</td>
+                          <td className="px-6 py-5">{item.name}</td>
+                          <td className="px-6 py-5">{item.email}</td>
+                          <td className="px-6 py-5">{item.uid}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
               {/* pagination */}
-              <div className="pagination flex items-center justify-center my-4">
+              <div className=" flex items-center justify-center ">
                 <ReactPaginate
                   previousLabel={"Previous"}
                   nextLabel={"Next"}
                   pageCount={userPageCount}
                   onPageChange={changeUserPage}
-                  containerClassName={
-                    "flex py-2 px-4 border border-gray-300 rounded-lg"
-                  }
-                  previousLinkClassName={
-                    "mr-2 p-2 border border-gray-300 rounded"
-                  }
-                  nextLinkClassName={"ml-2 p-2 border border-gray-300 rounded"}
-                  disabledClassName={"text-gray-400 cursor-not-allowed"}
+                  containerClassName={"flex py-1 px-4 space-x-2"}
+                  previousLinkClassName={"mr-2 p-2 "}
+                  nextLinkClassName={"ml-2 p-2"}
+                  disabledClassName={"text-gray-500 cursor-not-allowed"}
                   activeClassName={
-                    "bg-blue-500 text-white border border-blue-500"
+                    "bg-cyan-500 text-white border border-cyan-500 rounded-sm px-2"
                   }
                 />
               </div>

@@ -15,9 +15,11 @@
       "title": "Balaba",
       "price": 140,
       "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2FGS.jpg?alt=media&token=c4d4cb10-aeea-433f-9f53-fb15e6ed523c",
+      "image": null,
       "category": "men",
-      "rating": 2.2
+      "rating": "9.9",
+      "stock": "22",
+      "date": "2024-04-25T22:01:06.000Z"
     },
     {
       "id": 53,
@@ -100,14 +102,36 @@
       "id": 515
     },
     {
-      "title": "ghbgf",
-      "description": "rfew",
-      "price": "44",
-      "category": "ghgfhgfh",
-      "stock": "44",
-      "rating": "4",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2FGS.jpg?alt=media&token=c4d4cb10-aeea-433f-9f53-fb15e6ed523c",
-      "id": 516
+      "title": "Light",
+      "description": "Good Baby",
+      "price": "34",
+      "category": "Bag",
+      "stock": "21",
+      "rating": "7.1",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fbag3.jpg?alt=media&token=5264dc84-4f32-447e-9fad-b2405e2a2719",
+      "id": 517
+    },
+    {
+      "title": "Blue",
+      "description": "liked",
+      "price": "99",
+      "category": "jeans",
+      "stock": "33",
+      "rating": "7",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fjeans8.jpg?alt=media&token=dea2fe1f-0492-4772-aa8f-14594dc52e23",
+      "date": "2023-10-15T21:43:29.754Z",
+      "id": 518
+    },
+    {
+      "title": "Kostyum",
+      "description": "beylik",
+      "price": "555",
+      "category": "Suit",
+      "stock": "41",
+      "rating": "7.8",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit7.jpg?alt=media&token=83d69407-4811-4154-ae83-6901a9d06d00",
+      "date": "2023-11-23T21:53:13.000Z",
+      "id": 519
     }
   ],
   "data": [
@@ -118,43 +142,43 @@
     },
     {
       "name": "Feb",
-      "Expense": 600,
-      "Income": 1100
+      "Expense": 1600,
+      "Income": 5109
     },
     {
       "name": "March",
-      "Expense": 1900,
-      "Income": 1400
+      "Expense": 6900,
+      "Income": 9400
     },
     {
       "name": "Apr",
-      "Expense": 1436,
-      "Income": 5565
+      "Expense": 3436,
+      "Income": 8565
     },
     {
       "name": "May",
-      "Expense": 500,
-      "Income": 831
+      "Expense": 5500,
+      "Income": 3831
     },
     {
       "name": "June",
-      "Expense": 4204,
-      "Income": 500
+      "Expense": 5204,
+      "Income": 700
     },
     {
       "name": "July",
-      "Expense": 1100,
-      "Income": 2400
+      "Expense": 4100,
+      "Income": 9403
     },
     {
       "name": "Aug",
-      "Expense": 3527,
-      "Income": 1211
+      "Expense": 7527,
+      "Income": 3241
     },
     {
       "name": "Sep",
-      "Expense": 7658,
-      "Income": 453
+      "Expense": 9658,
+      "Income": 7453
     },
     {
       "name": "Oct",

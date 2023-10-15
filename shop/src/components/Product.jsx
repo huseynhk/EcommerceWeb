@@ -12,10 +12,10 @@ const Product = ({ product }) => {
     dispatch(
       addToCart({
         id: product.id,
-        price: product.price,
+        price: Number(product.price),
         amount: 1,
         image: product.image,
-        totalPrice: product.price,
+        totalPrice: Number(product.price),
         title: product.title,
         description: product.description,
         rating: product.rating,

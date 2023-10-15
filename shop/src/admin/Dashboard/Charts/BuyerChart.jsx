@@ -26,7 +26,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 const BuyerChart = () => {
   return (
     <>
-      <div className="bg-white w-[28rem] md:w-[50rem] lg:w-[13rem] h-[20rem] mb-6 border border-gray-300 dark:border-cyan-300  flex dark:bg-black rounded-sm">
+      <div className=" w-[23rem] md:w-[50rem] lg:w-[13rem] h-[20rem] mb-6 border border-gray-300 dark:border-cyan-300  flex dark:bg-black rounded-sm">
         <div className="w-full mt-3 flex-1 text-xs">
         <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>

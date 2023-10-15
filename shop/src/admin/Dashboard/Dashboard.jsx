@@ -12,7 +12,7 @@ const Dashboard = () => {
     <Layout>
       <section className="text-blue-200  dark:bg-black">
         <div className="container px-5 mx-auto  mb-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
             <div className="bg-white dark:bg-gray-600 dark:text-white rounded-md p-4 border mt-4 border-gray-300 dark:border-cyan-300 flex items-center">
               <div className="h-12 w-12 rounded-full bg-sky-500 flex items-center justify-center">
                 <BsBagCheck className="text-2xl text-white" />
@@ -91,7 +91,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:justify-around mx-8 mb-4">
+        <div className="flex flex-col lg:flex-row lg:justify-around  mx-8 mb-4">
           <Transaction />
           <BuyerChart />
         </div>

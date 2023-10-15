@@ -3,7 +3,6 @@ import { SidebarContext } from "../../contexts/SidebarContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
-import Logo from "../../img/eco.webp";
 import { useNavigate } from "react-router-dom";
 import { BsFillCloudSunFill, BsWallet } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
@@ -113,9 +112,10 @@ const Header = () => {
             : "bg-white dark:bg-black  shadow-md dark:shadow-cyan-300"
         } sticky top-0 w-full z-50 transition-all ` }
       >
-        <div className="container mx-auto flex items-center justify-between h-full p-2 ">
+        <div className="container mx-auto flex items-center justify-between h-full
+          font-primary text-4xl p-3 text-primary dark:text-cyan-400">
           <Link to={"/"}>
-            <img src={Logo} alt="logo" className="h-14 w-14 rounded-full" />
+            Corat Store
           </Link>
 
           <button

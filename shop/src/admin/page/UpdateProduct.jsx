@@ -3,6 +3,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Layout from "../../components/layout/Layout";
 import { useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 //Image
 import { storage } from "../../firebase/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -18,7 +21,9 @@ const UpdateProduct = () => {
     rating: "",
   });
   const [image, setImage] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const { productId } = useParams();
+  const navigate = useNavigate()
   console.log("productId" , productId)
 
   
@@ -41,30 +46,22 @@ const UpdateProduct = () => {
     fetchProduct();
   }, [productId]);
 
-
-
+  useEffect(() => {
+    if (updatedProduct.date) {
+      setSelectedDate(new Date(updatedProduct.date)); 
+    }
+  }, [updatedProduct]);
 
   const updateProduct = async (event) => {
     event.preventDefault();
-    const { title, description, price, category, stock, rating } =
-      updatedProduct;
-    // if (
-    //   title.trim() === "" ||
-    //   description.trim() === "" ||
-    //   price.trim() === "" ||
-    //   category.trim() === "" ||
-    //   stock.trim() === "" ||
-    //   rating.trim() === ""
-    // ) {
-    //   toast.error("All input required");
-    // }
-
+ 
     try {
       const response = await axios.put(
         `http://localhost:3000/products/${productId}`,
         {
           ...updatedProduct,
           image,
+          date: selectedDate,
         }
       );
 
@@ -74,6 +71,8 @@ const UpdateProduct = () => {
         setUpdatedProduct(response.data);
         toast.success("Product added successfully!");
         resetForm();
+        navigate('/dashboard')
+
       }
     } catch (error) {
       console.log(error);
@@ -182,6 +181,13 @@ const UpdateProduct = () => {
               />
             </div>
             <div>
+            <div>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                className="bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+              />
+            </div>
               <textarea
                 cols="30"
                 rows="3"

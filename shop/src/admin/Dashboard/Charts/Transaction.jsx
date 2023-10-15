@@ -33,7 +33,7 @@ const Transaction = () => {
 
   return (
     <>
-      <div className="bg-white w-[28rem] md:w-[50rem] lg:w-[72rem] h-[20rem] mb-6 border border-gray-300 dark:border-cyan-300 flex dark:bg-black rounded-sm">
+      <div className="w-[23rem] md:w-[50rem] lg:w-[72rem] h-[20rem] mb-6 border border-gray-300 dark:border-cyan-300 flex dark:bg-black rounded-sm">
         <div className="w-full mt-3 flex-1 text-xs">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
@@ -52,8 +52,8 @@ const Transaction = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="Expense" fill="#8884d8" />
-              <Bar dataKey="Income" fill="#82ca9d" />
+              <Bar dataKey="Expense" fill="#7069f1" />
+              <Bar dataKey="Income" fill="#3fef82" />
             </BarChart>
           </ResponsiveContainer>
         </div>

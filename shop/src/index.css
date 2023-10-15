@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-dots li button {
+  background: cyan;
+  border-radius: 50%;
+}

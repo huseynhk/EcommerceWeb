@@ -29,7 +29,7 @@ const Home = () => {
             <div
               className="rounded-sm bg-slate-200 dark:bg-slate-800
               flex-row  w-[400px] h-[200px]  
-              md-flex-col  md:w-[270px] md:h-[620px] "
+              md-flex-col  md:w-[250px] md:h-[600px] mt-10  md:mt-0 "
             >
               <div className="my-2">
                 <input
