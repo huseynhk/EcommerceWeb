@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 const Product = ({ product }) => {
   const { id, title, category, price, image, rating } = product;
   const dispatch = useDispatch();
-  console.log(image);
 
   const addToCartHandler = () => {
     dispatch(

@@ -110,8 +110,8 @@ const Header = () => {
         className={`${
           isActive
             ? "bg-indigo-100 dark:bg-gray-500/75 "
-            : "bg-white dark:bg-black  shadow-lg"
-        } sticky top-0 w-full z-50 transition-all `}
+            : "bg-white dark:bg-black  shadow-md dark:shadow-cyan-300"
+        } sticky top-0 w-full z-50 transition-all ` }
       >
         <div className="container mx-auto flex items-center justify-between h-full p-2 ">
           <Link to={"/"}>

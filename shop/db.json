@@ -109,5 +109,67 @@
       "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2FGS.jpg?alt=media&token=c4d4cb10-aeea-433f-9f53-fb15e6ed523c",
       "id": 516
     }
+  ],
+  "data": [
+    {
+      "name": "Jan",
+      "Expense": 2100,
+      "Income": 4400
+    },
+    {
+      "name": "Feb",
+      "Expense": 600,
+      "Income": 1100
+    },
+    {
+      "name": "March",
+      "Expense": 1900,
+      "Income": 1400
+    },
+    {
+      "name": "Apr",
+      "Expense": 1436,
+      "Income": 5565
+    },
+    {
+      "name": "May",
+      "Expense": 500,
+      "Income": 831
+    },
+    {
+      "name": "June",
+      "Expense": 4204,
+      "Income": 500
+    },
+    {
+      "name": "July",
+      "Expense": 1100,
+      "Income": 2400
+    },
+    {
+      "name": "Aug",
+      "Expense": 3527,
+      "Income": 1211
+    },
+    {
+      "name": "Sep",
+      "Expense": 7658,
+      "Income": 453
+    },
+    {
+      "name": "Oct",
+      "Expense": 3527,
+      "Income": 2211
+    },
+    {
+      "name": "Nov",
+      "Expense": 7865,
+      "Income": 1265
+    },
+    {
+      "name": "Dec",
+      "Expense": 11000,
+      "Income": 1453
+    }
   ]
 }

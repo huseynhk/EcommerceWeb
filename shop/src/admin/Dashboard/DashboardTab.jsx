@@ -9,12 +9,11 @@ import { Link, useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
 const DashboardTab = () => {
-  const { filteredProducts, user } = useContext(ProductContext);
+  const { filteredProducts, user, deleteProduct } = useContext(ProductContext);
   const navigate = useNavigate();
   const addProductPage = () => {
     navigate("/addproduct");
   };
-
 
   //Pagination
   const [pageNumber, setPageNumber] = useState(0);
@@ -47,7 +46,7 @@ const DashboardTab = () => {
       <div className="container mx-auto">
         <div className="tab container mx-auto ">
           <Tabs defaultIndex={0} className=" ">
-            <TabList className="md:flex md:space-x-8 bg-  grid grid-cols-2 text-center gap-4  md:justify-center mb-10 ">
+            <TabList className="md:flex md:space-x-8  grid grid-cols-2 text-center gap-4  md:justify-center mb-10 ">
               <Tab>
                 <button
                   type="button"
@@ -73,8 +72,8 @@ const DashboardTab = () => {
             </TabList>
 
             <TabPanel>
-              <div className="  px-4 md:px-0 mb-16">
-                <h1 className=" text-center mb-5 text-3xl font-semibold underline">
+              <div className="px-4 md:px-0 mb-16 ">
+                <h1 className=" text-center mb-5 text-3xl font-semibold underline text-primary dark:text-cyan-400">
                   Product Details
                 </h1>
                 <div className=" flex justify-end">
@@ -91,8 +90,8 @@ const DashboardTab = () => {
                   </button>
                 </div>
                 <div className="relative overflow-x-auto ">
-                  <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  ">
-                    <thead className="text-xs border border-gray-600 text-black uppercase bg-gray-200 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]">
+                  <table className="w-full text-sm text-left text-gray-500 dark:text-white ">
+                    <thead className="text-xs border bg-gray-200 dark:text-cyan-300 dark:bg-gray-900">
                       <tr>
                         <th scope="col" className="px-6 py-3">
                           S.No
@@ -123,14 +122,14 @@ const DashboardTab = () => {
 
                     {displayProducts.map((item, index) => {
                       return (
-                        <tbody className="" key={index}>
-                          <tr className="bg-gray-50 border-b  dark:border-gray-700">
-                            <td className="px-6 py-4 text-black ">
+                        <tbody  key={index}>
+                          <tr className="bg-gray-100 dark:bg-primary dark:text-white  border-b  dark:border-cyan-300">
+                            <td className="px-6 py-4 text-black dark:text-white">
                               {index + 1}.
                             </td>
                             <th
                               scope="row"
-                              className="px-6 py-4 font-medium text-black whitespace-nowrap"
+                              className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-white"
                             >
                               <img
                                 className=" w-[100px]  h-[100px] object-cover rounded-lg"
@@ -138,33 +137,33 @@ const DashboardTab = () => {
                                 alt="img"
                               />
                             </th>
-                            <td className="px-6 py-4 text-black ">
+                            <td className="px-6 py-3">
                               {item.title}
                             </td>
-                            <td className="px-6 py-4 text-black ">
+                            <td className="px-6 py-3">
                               ${item.price}
                             </td>
-                            <td className="px-6 py-4 text-black ">
+                            <td className="px-6 py-3">
                               {item.category}
                             </td>
-                            <td className="px-6 py-4 text-black ">
+                            <td className="px-6 py-3">
                               {item.stock}
                             </td>
-                            <td className="px-6 py-4 text-black ">
+                            <td className="px-6 py-3">
                               {item.date}
                             </td>
                             <td className="px-6 py-4">
                               <div className=" flex gap-2">
-                                <div className=" flex gap-2 cursor-pointer text-black ">
+                                <div className=" flex gap-2 cursor-pointer  ">
                                   <div
-                                    className="text-2xl text-red-500"
-                                    // onClick={() => deleteProduct(item)}
+                                    className="text-2xl text-gega-red"
+                                    onClick={() => deleteProduct(item.id)}
                                   >
                                     <AiFillDelete size={30} />
                                   </div>
 
                                   <Link to={`/updateproduct/${item.id}`}>
-                                    <div className="text-2xl text-green-500">
+                                    <div className="text-2xl text-green-600">
                                       <AiFillPlusCircle size={30} />
                                     </div>
                                   </Link>
@@ -202,11 +201,11 @@ const DashboardTab = () => {
 
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
-                <h1 className=" text-center mb-5 text-3xl font-semibold underline">
+                <h1 className=" text-center mb-5 text-3xl font-semibold underline  text-primary dark:text-green-400">
                   User Details
                 </h1>
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                  <thead className="text-xs text-black uppercase bg-gray-200 ">
+                  <thead className="text-xs text-black uppercase bg-gray-200 dark:text-cyan-300 dark:bg-gray-900">
                     <tr>
                       <th scope="col" className="px-6 py-3">
                         S.No
@@ -227,13 +226,14 @@ const DashboardTab = () => {
                   <tbody>
                     {displayUsers.map((item, index) => (
                       <tr
-                        className="bg-gray-50 border-b  dark:border-gray-700"
+                        className="bg-gray-100 dark:bg-primary dark:text-white border-b 
+                         dark:border-cyan-300"
                         key={index}
                       >
-                        <td className="px-6 py-4 text-black ">{index + 1}</td>
-                        <td className="px-6 py-4 text-black ">{item.name}</td>
-                        <td className="px-6 py-4 text-black ">{item.email}</td>
-                        <td className="px-6 py-4 text-black ">{item.uid}</td>
+                        <td className="px-6 py-5">{index + 1}</td>
+                        <td className="px-6 py-5">{item.name}</td>
+                        <td className="px-6 py-5">{item.email}</td>
+                        <td className="px-6 py-5">{item.uid}</td>
                       </tr>
                     ))}
                   </tbody>

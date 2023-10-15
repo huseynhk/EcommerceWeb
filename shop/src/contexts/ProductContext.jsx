@@ -92,7 +92,7 @@ const ProductContextProvider = ({ children }) => {
     try {
       const response = await axios.get("http://localhost:3000/products");
       if (response.status !== 200) {
-        console.log(error);
+        throw new Error("Something went wrong!");
       } else {
         setProducts(response.data);
         setFilteredProducts(response.data);
@@ -103,6 +103,23 @@ const ProductContextProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
+
+  const deleteProduct = async (productId) => {
+   try {
+    const response = await axios.delete(`http://localhost:3000/products/${productId}`)
+    if (response.status !== 200) {
+      throw new Error("Something went wrong!");
+    }
+    else{
+      const deletedProduct = products.filter((product) => product.id !== productId)
+      setProducts(deletedProduct)
+      setFilteredProducts(deletedProduct);
+    }
+   } catch (error) {
+    console.log(error.message)
+   }
+  }
 
   const getCategories = () => {
     const addCategories = [
@@ -165,6 +182,7 @@ const ProductContextProvider = ({ children }) => {
     loading,
     setLoading,
     user,
+    deleteProduct,
   };
 
   return (
