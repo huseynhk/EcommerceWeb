@@ -46,7 +46,7 @@ const Sidebar = () => {
           <div className="w-full flex justify-between items-center mt-10 uppercase font-semibold">
             <h2 className="my-2 text-red-800 ">
               <span className="ml-1 text-indigo-800 ">TotalPrice:</span> $
-              {totalPrice.toFixed(2)}
+              {totalPrice}
             </h2>
 
             <div

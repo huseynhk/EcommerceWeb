@@ -30,7 +30,7 @@ const Product = ({ product }) => {
     <>
       <div
         key={id}
-        className="w-full h-[340px] mb-4 bg-indigo-50 rounded-sm border border-indigo-600 dark:border-gega-melon
+        className="w-full h-[340px] mb-4 bg-indigo-50 rounded-md border border-indigo-600 dark:border-cyan-300
         relative overflow-hidden group transition"
       >
         <div className="w-full h-full flex justify-center items-center flex-col  dark:bg-gray-500/75 dark:text-gray-200">
@@ -38,7 +38,7 @@ const Product = ({ product }) => {
             <img
               src={image}
               alt={title}
-              className=" -mt-8 h-[120px] w-[270px] md:w-[150px] object-cover group-hover:scale-110 rounded-md transition duration-500"
+              className=" -mt-8 h-[125px] w-[275px] md:w-[150px] object-cover group-hover:scale-110 rounded-md transition duration-500"
             />
 
             <div className="absolute top-2 -right-4 group-hover:right-1 opacity-0 group-hover:opacity-100 transition duration-500">
@@ -63,7 +63,7 @@ const Product = ({ product }) => {
                 Category:{category}
               </div>
               <Link to={`/product/${id}`}>
-                <h3 className="font-semibold my-1">{title.slice(0, 20)}</h3>
+                <h3 className="font-semibold my-1">{title}</h3>
               </Link>
 
               <div className="font-semibold text-violet-600 dark:text-cyan-200">

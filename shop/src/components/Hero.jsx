@@ -11,9 +11,11 @@ import sliderImg9 from "../img/t-shirt1.jpg";
 import sliderImg10 from "../img/jeans5.jpg";
 import sliderImg11 from "../img/bag1.jpg";
 import sliderImg12 from "../img/dress2.jpg";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 
 const Hero = () => {
   const images = [
@@ -31,35 +33,39 @@ const Hero = () => {
     sliderImg12,
   ];
   const settings = {
-    dots: true,
-    infinite: true,
-    speed: 600,
+    slidesToScroll: 3,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    indicators: true,
+    autoplay: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 800,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
+          slidesToShow: 3,
+          slidesToScroll: 3,
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 0,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1,
         },
-      },
+      }
+      
     ],
   };
 
   return (
-    <section className="-mb-2 ">
-      <Slider {...settings}>
+    <section className="-mb-8 ">
+      <Slide {...settings}>
         {images.map((image, index) => (
           <div key={index} className="h-[80vh]">
             <img
@@ -69,7 +75,7 @@ const Hero = () => {
             />
           </div>
         ))}
-      </Slider>
+      </Slide>
     </section>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Layout from "../../components/layout/Layout";
@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 //Image Firebase
 import { storage } from "../../firebase/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ProductContext } from "../../contexts/ProductContext";
 const AddProduct = () => {
+  const { categories } = useContext(ProductContext);
   const [newProduct, setNewProduct] = useState({
     title: "",
     description: "",
@@ -19,7 +21,7 @@ const AddProduct = () => {
   });
   const [image, setImage] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const resetForm = () => {
     setNewProduct({
       title: "",
@@ -41,9 +43,7 @@ const AddProduct = () => {
       price.trim() === "" ||
       category.trim() === "" ||
       stock.trim() === "" ||
-      rating.trim() === "" ||
-      selectedDate.trim() === ""
-
+      rating.trim() === ""
     ) {
       toast.error("All input required");
     }
@@ -54,13 +54,13 @@ const AddProduct = () => {
         image,
         date: selectedDate,
       });
-      if (response.status !== 200) {
+      if (response.status !== 201) {
         throw new Error("Error");
       } else {
         setNewProduct(response.data);
         toast.success("Product added successfully!");
         resetForm();
-        navigate('/dashboard')
+        navigate("/dashboard");
       }
     } catch (error) {
       console.log(error);
@@ -69,6 +69,7 @@ const AddProduct = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    console.log([name], value);
     setNewProduct({
       ...newProduct,
       [name]: value,
@@ -136,18 +137,17 @@ const AddProduct = () => {
                 onChange={handleImage}
                 name="imageurl"
                 className=" bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
-                placeholder="Product imageUrl"
+                placeholder="Product Image"
               />
             </div>
             <div>
-              <input
-                type="text"
-                value={newProduct.category}
-                onChange={handleInputChange}
-                name="category"
-                className=" bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
-                placeholder="Product category"
-              />
+              <select onChange={handleInputChange} name="category">
+                {categories.map((catergory, index) => (
+                  <option value={catergory.id} key={index}>
+                    {catergory.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <input

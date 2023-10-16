@@ -1,4 +1,3 @@
-import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
@@ -11,6 +10,8 @@ import Dashboard from "./admin/Dashboard/Dashboard";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
 import NoPage from "./pages/NoPage";
+import AddCategory from "./admin/page/AddCategory";
+import UpdateCategory from "./admin/page/UpdateCategory";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -33,6 +34,14 @@ function App() {
           }
         />
         <Route
+          path="/addcategory"
+          element={
+            <RouteForAdmin>
+              <AddCategory />
+            </RouteForAdmin>
+          }
+        />
+        <Route
           path="/dashboard"
           element={
             <RouteForAdmin>
@@ -46,6 +55,14 @@ function App() {
           element={
             <RouteForAdmin>
               <UpdateProduct />
+            </RouteForAdmin>
+          }
+        />
+        <Route
+          path="/updatecategory/:productId"
+          element={
+            <RouteForAdmin>
+              <UpdateCategory />
             </RouteForAdmin>
           }
         />

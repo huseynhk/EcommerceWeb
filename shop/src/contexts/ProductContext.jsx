@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 //Get FireBase User
 import { collection, getDocs } from "firebase/firestore";
 import { fireDB } from "../firebase/firebaseConfig";
@@ -18,17 +19,6 @@ const ProductContextProvider = ({ children }) => {
     search: "",
   });
   const [loading, setLoading] = useState(false);
-
-  const filterProductsByCategory = () => {
-    if (selectedCategory === "all") {
-      setFilteredProducts(products);
-    } else {
-      const filteredByCategory = products.filter(
-        (product) => product.category === selectedCategory
-      );
-      setFilteredProducts(filteredByCategory);
-    }
-  };
 
   const applyFilters = () => {
     let filtered = [...products];
@@ -104,36 +94,75 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
+  const getAllCategories = async () => {
+    try {
+      const request = await axios.get("http://localhost:3000/categories");
+      if (request.status !== 200) {
+        throw new Error("Something went wrong");
+      } else {
+        setCategories(request.data);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   const deleteProduct = async (productId) => {
-   try {
-    const response = await axios.delete(`http://localhost:3000/products/${productId}`)
-    if (response.status !== 200) {
-      throw new Error("Something went wrong!");
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/products/${productId}`
+      );
+      if (response.status !== 200) {
+        throw new Error("Something went wrong!");
+      } else {
+        const deletedProduct = products.filter(
+          (product) => product.id !== productId
+        );
+        toast.success("Product is deleted");
+        setProducts(deletedProduct);
+        setFilteredProducts(deletedProduct);
+      }
+    } catch (error) {
+      console.log(error.message);
     }
-    else{
-      const deletedProduct = products.filter((product) => product.id !== productId)
-      setProducts(deletedProduct)
-      setFilteredProducts(deletedProduct);
-    }
-   } catch (error) {
-    console.log(error.message)
-   }
-  }
+  };
 
-  const getCategories = () => {
-    const addCategories = [
-      ...new Set(products.map((product) => product.category)),
-    ];
-    setCategories(addCategories);
+  const deleteCategory = async (categoryId) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/products/${categoryId}`
+      );
+      if (response.status !== 200) {
+        throw new Error("Something went wrong!");
+      } else {
+        const deletedProduct = categories.filter(
+          (category) => category.id !== categoryId
+        );
+        toast.success("Category is deleted");
+        setCategories(deletedProduct);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const filterProductsByCategory = () => {
+    if (selectedCategory === "all") {
+      setFilteredProducts(products);
+    } else {
+      let filteredByCategory = products.filter(
+        (product) => product.category === selectedCategory
+      );
+      setFilteredProducts(filteredByCategory);
+      console.log("filteredByCategory", filteredByCategory);
+    }
   };
 
   const resetFilters = () => {
     setFilteredProducts(products);
   };
 
-
-  //USER
+  //USER Firebase
   const [user, setUser] = useState([]);
   const getUserData = async () => {
     setLoading(true);
@@ -156,11 +185,8 @@ const ProductContextProvider = ({ children }) => {
   useEffect(() => {
     getAllProducts();
     getUserData();
+    getAllCategories();
   }, []);
-
-  useEffect(() => {
-    getCategories();
-  }, [products]);
 
   useEffect(() => {
     applyFilters();
@@ -168,7 +194,7 @@ const ProductContextProvider = ({ children }) => {
 
   useEffect(() => {
     filterProductsByCategory();
-  }, [selectedCategory]);
+  }, [selectedCategory, products]);
 
   const contextValue = {
     filteredProducts,
@@ -176,6 +202,7 @@ const ProductContextProvider = ({ children }) => {
     setFilters,
     sortProducts,
     categories,
+    setCategories,
     selectedCategory,
     setSelectedCategory,
     resetFilters,
@@ -183,6 +210,9 @@ const ProductContextProvider = ({ children }) => {
     setLoading,
     user,
     deleteProduct,
+    deleteCategory,
+    getAllProducts,
+    getAllCategories,
   };
 
   return (
@@ -193,3 +223,13 @@ const ProductContextProvider = ({ children }) => {
 };
 
 export { ProductContext, ProductContextProvider };
+
+// const getCategories = () => {
+//   const addCategories = [
+//     ...new Set(products.map((product) => product.category)),
+//   ];
+//   setCategories(addCategories);
+// };
+// useEffect(() => {
+//   getCategories();
+// }, [products]);

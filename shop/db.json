@@ -1,137 +1,26 @@
 {
   "products": [
     {
-      "id": 58,
-      "title": "Alaba",
-      "price": "3333",
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2FGS.jpg?alt=media&token=c4d4cb10-aeea-433f-9f53-fb15e6ed523c",
-      "category": "car",
-      "stock": 3,
-      "rating": 3.2
+      "title": "Product1",
+      "description": "Babaddi ozum olum !!!",
+      "price": "44",
+      "category": "2",
+      "stock": "3",
+      "rating": "3",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdress4.jpg?alt=media&token=4145bc5c-1d10-4d5b-9a46-0c595fc6ad4f",
+      "date": "2023-10-17T14:41:13.000Z",
+      "id": 1
     },
     {
-      "id": 59,
-      "title": "Balaba",
-      "price": 140,
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": null,
-      "category": "men",
-      "rating": "9.9",
-      "stock": "22",
-      "date": "2024-04-25T22:01:06.000Z"
-    },
-    {
-      "id": 53,
-      "title": "Practical Granite Car",
-      "price": 40,
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "category": "women",
-      "stock": 3,
-      "rating": 7.2
-    },
-    {
-      "id": 63,
-      "title": "Practical Granite Car",
-      "price": 2400,
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "category": "toys",
-      "stock": 3,
-      "rating": 9.2
-    },
-    {
-      "id": 93,
-      "title": "Practical Granite Car",
-      "price": 2140,
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "category": "Men",
-      "stock": 3,
-      "rating": 1.1
-    },
-    {
-      "id": 513,
-      "title": "Cractical Granite Car",
-      "price": 24,
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "category": "kids",
-      "stock": 3,
-      "rating": 3
-    },
-    {
-      "id": 23,
-      "title": "Bractical Granite Car",
-      "price": 20,
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "category": "phone",
-      "stock": 3,
-      "rating": 7.4
-    },
-    {
-      "id": 153,
-      "title": "Aractical Granite Car",
-      "price": 33,
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "image": "https://images.unsplash.com/photo-1696209172169-a0b08d5db7ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60",
-      "category": "mouse",
-      "stock": 3,
-      "rating": 5.5
-    },
-    {
-      "title": "dede",
-      "description": "gooood",
-      "price": "43",
-      "category": "dortmind",
-      "stock": "23",
-      "rating": "3.6",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdd.png?alt=media&token=bbb217bc-492a-4624-bced-5146daa02038",
-      "id": 514
-    },
-    {
-      "title": "Baton",
-      "description": "liked",
-      "price": "33",
-      "category": "konfet",
-      "stock": "343",
-      "rating": "7",
-      "image": null,
-      "id": 515
-    },
-    {
-      "title": "Light",
-      "description": "Good Baby",
-      "price": "34",
-      "category": "Bag",
-      "stock": "21",
-      "rating": "7.1",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fbag3.jpg?alt=media&token=5264dc84-4f32-447e-9fad-b2405e2a2719",
-      "id": 517
-    },
-    {
-      "title": "Blue",
-      "description": "liked",
-      "price": "99",
-      "category": "jeans",
-      "stock": "33",
-      "rating": "7",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fjeans8.jpg?alt=media&token=dea2fe1f-0492-4772-aa8f-14594dc52e23",
-      "date": "2023-10-15T21:43:29.754Z",
-      "id": 518
-    },
-    {
-      "title": "Kostyum",
-      "description": "beylik",
-      "price": "555",
-      "category": "Suit",
-      "stock": "41",
-      "rating": "7.8",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit7.jpg?alt=media&token=83d69407-4811-4154-ae83-6901a9d06d00",
-      "date": "2023-11-23T21:53:13.000Z",
-      "id": 519
+      "title": "Product2",
+      "description": "Babaddi ozum olum !!!",
+      "price": "41",
+      "category": "2",
+      "stock": "5",
+      "rating": "3",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdress1.jpg?alt=media&token=5df27103-c424-40f7-aea2-45358a873fe6",
+      "date": "2023-10-17T14:41:13.000Z",
+      "id": 2
     }
   ],
   "data": [
@@ -194,6 +83,28 @@
       "name": "Dec",
       "Expense": 11000,
       "Income": 1453
+    }
+  ],
+  "categories": [
+    {
+      "name": "Cat1",
+      "id": 1
+    },
+    {
+      "name": "Cat2",
+      "id": 2
+    },
+    {
+      "name": "dress",
+      "id": 3
+    },
+    {
+      "name": "man",
+      "id": 4
+    },
+    {
+      "name": "suits",
+      "id": 5
     }
   ]
 }

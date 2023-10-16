@@ -24,7 +24,6 @@ const UpdateProduct = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { productId } = useParams();
   const navigate = useNavigate()
-  console.log("productId" , productId)
 
   
   const fetchProduct = async () => {
@@ -34,13 +33,13 @@ const UpdateProduct = () => {
         throw new Error("Error fetching product");
       } else {
         setUpdatedProduct(response.data);
+        setImage(response.data.image)
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log("updatedProduct" , updatedProduct)
 
   useEffect(() => {
     fetchProduct();
@@ -52,6 +51,17 @@ const UpdateProduct = () => {
     }
   }, [updatedProduct]);
 
+  const resetForm = () => {
+    setUpdatedProduct({
+      title: "",
+      description: "",
+      price: "",
+      category: "",
+      stock: "",
+      rating: "",
+    });
+    setImage(null);
+  };
   const updateProduct = async (event) => {
     event.preventDefault();
  
@@ -75,7 +85,7 @@ const UpdateProduct = () => {
 
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
 
@@ -111,6 +121,8 @@ const UpdateProduct = () => {
       }
     );
   };
+
+  
   return (
     <>
       <Layout>

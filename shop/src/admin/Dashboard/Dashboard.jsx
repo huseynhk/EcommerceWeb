@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { BsBagCheck, BsPieChart } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { SlBasketLoaded } from "react-icons/sl";
@@ -6,8 +6,15 @@ import Layout from "../../components/layout/Layout";
 import DashboardTab from "./DashboardTab";
 import Transaction from "./Charts/Transaction";
 import BuyerChart from "./Charts/BuyerChart";
-
+import { ProductContext } from "../../contexts/ProductContext";
 const Dashboard = () => {
+  const { getAllProducts, getAllCategories } = useContext(ProductContext);
+
+  useEffect(() => {
+    getAllProducts();
+    getAllCategories();
+  }, []);
+  
   return (
     <Layout>
       <section className="text-blue-200  dark:bg-black">
