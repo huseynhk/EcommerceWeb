@@ -58,7 +58,10 @@ const AddProduct = () => {
         throw new Error("Error");
       } else {
         setNewProduct(response.data);
-        toast.success("Product added successfully!");
+        toast.success("Product added successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        });
         resetForm();
         navigate("/dashboard");
       }

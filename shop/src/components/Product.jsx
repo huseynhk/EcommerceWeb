@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
 import { addToCart } from "../features/slices/basketSlice";
 import { useDispatch } from "react-redux";
+import {toast} from "react-toastify"
 
 const Product = ({ product }) => {
   const { id, title, category, price, image, rating } = product;
@@ -24,6 +25,10 @@ const Product = ({ product }) => {
         discountPercentage: product.discountPercentage,
       })
     );
+    toast.success('Product added to cart successfully!', {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 1000, 
+    });
   };
 
   return (

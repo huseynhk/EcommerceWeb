@@ -130,7 +130,7 @@ const ProductContextProvider = ({ children }) => {
   const deleteCategory = async (categoryId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/products/${categoryId}`
+        `http://localhost:3000/categories/${categoryId}`
       );
       if (response.status !== 200) {
         throw new Error("Something went wrong!");
@@ -138,7 +138,10 @@ const ProductContextProvider = ({ children }) => {
         const deletedProduct = categories.filter(
           (category) => category.id !== categoryId
         );
-        toast.success("Category is deleted");
+        toast.success("Category is deleted", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        });
         setCategories(deletedProduct);
       }
     } catch (error) {

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../features/slices/basketSlice";
 import Layout from "../components/layout/Layout";
 import axios from "axios";
+import {toast} from "react-toastify"
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -45,6 +46,10 @@ const ProductDetails = () => {
         discountPercentage: product.discountPercentage,
       })
     );
+    toast.success('Product added to cart successfully!', {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 1000, 
+    });
   };
 
   return (

@@ -21,6 +21,17 @@
       "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdress1.jpg?alt=media&token=5df27103-c424-40f7-aea2-45358a873fe6",
       "date": "2023-10-17T14:41:13.000Z",
       "id": 2
+    },
+    {
+      "title": "kostyum",
+      "description": "qessey",
+      "price": "333",
+      "category": "5",
+      "stock": "33",
+      "rating": "5.5",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit7.jpg?alt=media&token=359622bd-50fd-4dd9-aabd-83d491aa9e26",
+      "date": "2023-10-31T22:34:58.000Z",
+      "id": 3
     }
   ],
   "data": [
@@ -93,14 +104,6 @@
     {
       "name": "Cat2",
       "id": 2
-    },
-    {
-      "name": "dress",
-      "id": 3
-    },
-    {
-      "name": "man",
-      "id": 4
     },
     {
       "name": "suits",

@@ -44,7 +44,10 @@ const UpdateCategory = () => {
         throw new Error("Error");
       } else {
         setEditCategory(response.data.name);
-        toast.success("Category added successfully!");
+        toast.success("Category added successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        });
         setEditCategory("");
         navigate("/dashboard");
       }

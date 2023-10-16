@@ -62,6 +62,8 @@ const UpdateProduct = () => {
     });
     setImage(null);
   };
+
+
   const updateProduct = async (event) => {
     event.preventDefault();
  
@@ -79,7 +81,10 @@ const UpdateProduct = () => {
         throw new Error("Error");
       } else {
         setUpdatedProduct(response.data);
-        toast.success("Product added successfully!");
+        toast.success("Product added successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        });
         resetForm();
         navigate('/dashboard')
 
@@ -122,7 +127,7 @@ const UpdateProduct = () => {
     );
   };
 
-  
+
   return (
     <>
       <Layout>

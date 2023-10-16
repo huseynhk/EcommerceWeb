@@ -22,7 +22,10 @@ const AddCategory = () => {
         throw new Error("Error");
       } else {
         setNewCategory(response.data.name);
-        toast.success("Category added successfully!");
+        toast.success("Category added successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        });
         setNewCategory("");
         navigate("/dashboard");
       }

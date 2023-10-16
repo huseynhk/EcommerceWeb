@@ -138,7 +138,7 @@ const Header = () => {
 
             {user?.email === "khuseyn693@gmail.com" && (
               <Link
-                to={"/addproduct"}
+                to={"/dashboard"}
                 className="text-xl font-medium text-primary dark:text-gray-100 mx-2 hidden md:block"
               >
                 Admin
