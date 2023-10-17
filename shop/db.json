@@ -1,36 +1,36 @@
 {
   "products": [
     {
-      "title": "Product1",
-      "description": "Babaddi ozum olum !!!",
-      "price": "44",
+      "title": "Kostyum",
+      "description": "liked",
+      "price": "444",
       "category": "2",
-      "stock": "3",
-      "rating": "3",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdress4.jpg?alt=media&token=4145bc5c-1d10-4d5b-9a46-0c595fc6ad4f",
-      "date": "2023-10-17T14:41:13.000Z",
+      "stock": "4",
+      "rating": "6.6",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit2.jpg?alt=media&token=c826ec48-55ec-4ef0-b5c1-872e88c05631",
+      "date": "2023-10-30T21:05:50.000Z",
       "id": 1
     },
     {
-      "title": "Product2",
-      "description": "Babaddi ozum olum !!!",
-      "price": "41",
-      "category": "2",
+      "title": "don",
+      "description": "good",
+      "price": "56",
+      "category": "1",
       "stock": "5",
-      "rating": "3",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdress1.jpg?alt=media&token=5df27103-c424-40f7-aea2-45358a873fe6",
-      "date": "2023-10-17T14:41:13.000Z",
+      "rating": "5",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdress6.jpg?alt=media&token=1cf6b087-646e-46a5-aec9-7c642d59422f",
+      "date": "2023-10-23T21:09:55.000Z",
       "id": 2
     },
     {
-      "title": "kostyum",
-      "description": "qessey",
-      "price": "333",
-      "category": "5",
-      "stock": "33",
-      "rating": "5.5",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit7.jpg?alt=media&token=359622bd-50fd-4dd9-aabd-83d491aa9e26",
-      "date": "2023-10-31T22:34:58.000Z",
+      "title": "canta",
+      "description": "pretty",
+      "price": "19",
+      "category": "3",
+      "stock": "8",
+      "rating": "7.6",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fbag3.jpg?alt=media&token=f55462f9-7262-4252-9988-1320d72df3de",
+      "date": "2023-10-19T21:10:30.000Z",
       "id": 3
     }
   ],
@@ -98,16 +98,16 @@
   ],
   "categories": [
     {
-      "name": "Cat1",
+      "name": "Dress",
       "id": 1
     },
     {
-      "name": "Cat2",
+      "name": "Suit",
       "id": 2
     },
     {
-      "name": "suits",
-      "id": 5
+      "name": "Bag",
+      "id": 3
     }
   ]
 }

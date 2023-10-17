@@ -28,6 +28,7 @@ const ViewCart = () => {
         <div className="dark:bg-black">
           <div className="flex gap-x-4 py-2 lg:px-6 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] mt-[160px] md:mt-[60px] container">
+              
               {cart.map((product, index) => {
                 const { id, title, price, image, amount, category, rating } =
                   product;

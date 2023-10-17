@@ -72,9 +72,14 @@ export const basketSlice = createSlice({
       state.totalAmount = 0;
       state.totalPrice = 0;
     },
+
+    setDiscountedPrice: (state, action) => {
+      state.totalPrice = action.payload;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, increament, decrement, clearBasket } =
+
+export const { addToCart, removeFromCart, increament, decrement, clearBasket, setDiscountedPrice } =
   basketSlice.actions;
 export default basketSlice.reducer;

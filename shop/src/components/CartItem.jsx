@@ -26,7 +26,7 @@ const CartItem = ({ product }) => {
           </div>
 
           <div className="cursor-pointer" onClick={() => dispatch(removeFromCart(product))} >
-            <IoMdClose className="text-red-500/50 hover:text-red-500 text-2xl transition duration-300 mt-12" />
+            <IoMdClose className="text-gega-red hover:text-red-500 text-2xl transition duration-300 mt-12" />
           </div>
         </div>
 

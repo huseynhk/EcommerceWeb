@@ -145,6 +145,7 @@ const AddProduct = () => {
             </div>
             <div>
               <select onChange={handleInputChange} name="category">
+              <option value="select">Select a Category</option> 
                 {categories.map((catergory, index) => (
                   <option value={catergory.id} key={index}>
                     {catergory.name}

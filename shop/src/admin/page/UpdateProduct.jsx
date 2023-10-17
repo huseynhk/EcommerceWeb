@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ProductContext } from "../../contexts/ProductContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Layout from "../../components/layout/Layout";
@@ -11,7 +12,7 @@ import { storage } from "../../firebase/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const UpdateProduct = () => {
-
+  const { categories } = useContext(ProductContext);
   const [updatedProduct, setUpdatedProduct] = useState({
     title: "",
     description: "",
@@ -23,23 +24,23 @@ const UpdateProduct = () => {
   const [image, setImage] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { productId } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  
   const fetchProduct = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/products/${productId}`);
+      const response = await axios.get(
+        `http://localhost:3000/products/${productId}`
+      );
       if (response.status !== 200) {
         throw new Error("Error fetching product");
       } else {
         setUpdatedProduct(response.data);
-        setImage(response.data.image)
+        setImage(response.data.image);
       }
     } catch (error) {
       console.log(error);
     }
   };
-
 
   useEffect(() => {
     fetchProduct();
@@ -47,7 +48,7 @@ const UpdateProduct = () => {
 
   useEffect(() => {
     if (updatedProduct.date) {
-      setSelectedDate(new Date(updatedProduct.date)); 
+      setSelectedDate(new Date(updatedProduct.date));
     }
   }, [updatedProduct]);
 
@@ -63,10 +64,9 @@ const UpdateProduct = () => {
     setImage(null);
   };
 
-
   const updateProduct = async (event) => {
     event.preventDefault();
- 
+
     try {
       const response = await axios.put(
         `http://localhost:3000/products/${productId}`,
@@ -86,8 +86,7 @@ const UpdateProduct = () => {
           autoClose: 1000,
         });
         resetForm();
-        navigate('/dashboard')
-
+        navigate("/dashboard");
       }
     } catch (error) {
       toast.error(error.message);
@@ -126,7 +125,6 @@ const UpdateProduct = () => {
       }
     );
   };
-
 
   return (
     <>
@@ -168,14 +166,14 @@ const UpdateProduct = () => {
               />
             </div>
             <div>
-              <input
-                type="text"
-                value={updatedProduct.category}
-                onChange={handleInputChange}
-                name="category"
-                className=" bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
-                placeholder="Product category"
-              />
+              <select onChange={handleInputChange} name="category">
+                <option value="select">Select a Category</option>
+                {categories.map((catergory, index) => (
+                  <option value={catergory.id} key={index}>
+                    {catergory.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <input
@@ -198,13 +196,13 @@ const UpdateProduct = () => {
               />
             </div>
             <div>
-            <div>
-              <DatePicker
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                className="bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
-              />
-            </div>
+              <div>
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  className="bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                />
+              </div>
               <textarea
                 cols="30"
                 rows="3"
