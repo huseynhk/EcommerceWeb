@@ -51,7 +51,7 @@ const Sidebar = () => {
 
             <div
               className="cursor-pionter py-4 bg-red-500 rounded-md w-10 h-10 flex
-           justify-center items-center text-2xl text-white cursor-pointer mr-2"
+              justify-center items-center text-2xl text-white cursor-pointer mr-2"
               onClick={() => dispatch(clearBasket())}
             >
               <FiTrash />
@@ -60,15 +60,15 @@ const Sidebar = () => {
 
           <div className="mr-2">
             <Link
-              to={"/"}
-              className="bg-gray-300 p-2 flex justify-center items-center rounded-sm my-1 text-primary w-full font-medium"
+              to={"/view"}
+              className="bg-gray-300 p-2 flex justify-center items-center rounded-sm my-1 text-primary dark:bg-gray-400 w-full font-medium"
             >
               View Cart
             </Link>
 
             <Link
-              to={"/"}
-              className="bg-primary p-2 flex justify-center items-center rounded-sm text-gray-300 w-full font-medium"
+              to={"/check"}
+              className="bg-primary p-2 flex justify-center items-center rounded-sm text-gray-200 dark:bg-gray-600 w-full font-medium"
             >
               Checkout
             </Link>

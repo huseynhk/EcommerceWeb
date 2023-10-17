@@ -12,6 +12,8 @@ import SignUp from "./pages/registration/SignUp";
 import NoPage from "./pages/NoPage";
 import AddCategory from "./admin/page/AddCategory";
 import UpdateCategory from "./admin/page/UpdateCategory";
+import ViewCart from "./pages/ViewCart";
+import Checkout from "./pages/Checkout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -66,7 +68,22 @@ function App() {
             </RouteForAdmin>
           }
         />
-
+        <Route
+          path="/view"
+          element={
+            <RouteForUser>
+              <ViewCart />
+            </RouteForUser>
+          }
+        />
+        <Route
+          path="/check"
+          element={
+            <RouteForUser>
+              <Checkout />
+            </RouteForUser>
+          }
+        />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
       </Routes>

@@ -20,7 +20,7 @@ export default {
     },
     extend: {
       colors: {
-        primary: "#222222",
+        primary: "#555",
         secondary: "#F5E6E0",
         "gega-red": "#BC1A45",
         "gega-melon": "#FFD369",
