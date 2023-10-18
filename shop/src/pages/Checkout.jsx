@@ -29,9 +29,15 @@ const Checkout = () => {
       const discountedTotal = (totalPrice - totalPrice * 0.2).toFixed(2);
       dispatch(setDiscountedPrice(discountedTotal));
       setDiscountApplied(true);
-      toast.success("Discount applied successfully!");
+      toast.success("Discount applied successfully!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1000,
+      });
     } else {
-      toast.error("Invalid discount code");
+      toast.error("Invalid discount code", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1000,
+      });
     }
   };
 
@@ -48,7 +54,7 @@ const Checkout = () => {
               Balance: ${walletAmounth}
             </div>
             <div className=" dark:text-white p-2 text-2xl">
-              TotalPrice: ${totalPrice}
+              TotalPrice: $ {parseFloat(totalPrice).toFixed(2)}
             </div>
             <div className="w-[150px] my-3">
               <Modal />

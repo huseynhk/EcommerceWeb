@@ -16,7 +16,6 @@ export const walletSlice = createSlice({
       state.balans -= action.payload;
     },
 
-  
   },
 });
 

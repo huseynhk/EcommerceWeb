@@ -1,10 +1,9 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
 import { Link } from "react-router-dom";
-import { IoMdClose, IoMdRemove, IoMdAdd } from "react-icons/io";
+import { IoMdRemove, IoMdAdd } from "react-icons/io";
 import { FiTrash } from "react-icons/fi";
-import { MdPayment } from "react-icons/md";
-
+import { FcFullTrash } from "react-icons/fc";
 import {
   removeFromCart,
   increament,
@@ -28,7 +27,6 @@ const ViewCart = () => {
         <div className="dark:bg-black">
           <div className="flex gap-x-4 py-2 lg:px-6 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] mt-[160px] md:mt-[60px] container">
-              
               {cart.map((product, index) => {
                 const { id, title, price, image, amount, category, rating } =
                   product;
@@ -96,7 +94,7 @@ const ViewCart = () => {
                               className="cursor-pointer"
                               onClick={() => dispatch(removeFromCart(product))}
                             >
-                              <IoMdClose className="text-gega-red hover:text-red-500 text-2xl transition duration-300 " />
+                              <FcFullTrash className="text-3xl" />
                             </div>
                           </div>
                         </div>
@@ -108,30 +106,32 @@ const ViewCart = () => {
             </div>
           </div>
 
-          <div className="bg-gray-400 dark:bg:gray-700 w-[480px] py-4  rounded-sm -mb-2 flex justfy-center items-center mx-auto my-5">
+          <div className="bg-gray-400 dark:bg:gray-700 w-[480px] py-4  rounded-sm  flex justfy-center items-center mx-auto mt-5 ">
             <h2 className="m-2 text-gega-red ">
               <span className=" text-primary text-lg">TotalPrice:</span> $
-              {totalPrice}
+              {parseFloat(totalPrice).toFixed(2)}
             </h2>
             <h2 className="m-2 text-gega-red ">
-              <span className=" text-primary font-semibold ">TotalAmount:  </span>
+              <span className=" text-primary font-semibold ">
+                TotalAmount:
+              </span>
               {totalAmount}
             </h2>
-          <div className="flex w-[200px]">
-          <div
-              className="cursor-pionter py-4  bg-gega-red rounded-md w-16 h-10 flex
+            <div className="flex w-[200px]">
+              <div
+                className="cursor-pionter py-4  bg-gega-red rounded-md w-16 h-10 flex
               justify-center items-center text-2xl text-white cursor-pointer mx-8"
-              onClick={() => dispatch(clearBasket())}
-            >
-              <FiTrash />
-            </div>
-            <div
-              className="cursor-pionter p-4 bg-blue-500 rounded-md w-[100px] h-10 flex
+                onClick={() => dispatch(clearBasket())}
+              >
+                <FiTrash />
+              </div>
+              <div
+                className="cursor-pionter p-4 bg-blue-500 rounded-md w-[100px] h-10 flex
               justify-center items-center text-lg text-white cursor-pointer"
-            >
-              <Link to={'/check'} >Payment</Link>
+              >
+                <Link to={"/check"}>Payment</Link>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </>

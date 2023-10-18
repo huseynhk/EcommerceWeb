@@ -16,7 +16,7 @@ export default function Modal() {
   const handlePayment = () => {
     if (myBalance >= totalPrice) {
       dispatch(decrementAmounth(totalPrice));
-      // dispatch(clearBasket());
+      dispatch(clearBasket());
       closeModal();
     } else {
       alert("Balance is not enough");
@@ -97,7 +97,7 @@ export default function Modal() {
                                 htmlFor="email"
                                 className="block mb-2 text-sm font-medium text-gray-900"
                               >
-                                Enter Full Address
+                                Enter Address
                               </label>
                               <input
                                 type="text"

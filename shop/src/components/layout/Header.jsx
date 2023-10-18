@@ -110,13 +110,13 @@ const Header = () => {
           isActive
             ? "bg-indigo-100 dark:bg-gray-500/75 "
             : "bg-white dark:bg-black  shadow-md dark:shadow-cyan-300"
-        } sticky top-0 w-full z-50 transition-all ` }
+        } sticky top-0 w-full z-50 transition-all `}
       >
-        <div className="container mx-auto flex items-center justify-between h-full 
-          font-primary text-4xl p-3 text-primary dark:text-cyan-400">
-          <Link to={"/"}>
-            Corat Store
-          </Link>
+        <div
+          className="container mx-auto flex items-center justify-between h-full 
+          font-primary text-4xl p-3 text-primary dark:text-cyan-400 "
+        >
+          <Link to={"/"}>StoreAz</Link>
 
           <button
             type="button"
