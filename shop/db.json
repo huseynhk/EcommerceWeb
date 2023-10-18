@@ -1,37 +1,69 @@
 {
   "products": [
     {
-      "title": "Kostyum",
-      "description": "liked",
-      "price": "444",
-      "category": "2",
+      "title": "Beylik",
+      "description": "ela",
+      "price": "333",
+      "category": {
+        "name": "Bag",
+        "id": 3
+      },
       "stock": "4",
+      "subcategory": {
+        "name": "dede",
+        "categoryId": 3,
+        "id": 5
+      },
       "rating": "6.6",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit2.jpg?alt=media&token=c826ec48-55ec-4ef0-b5c1-872e88c05631",
-      "date": "2023-10-30T21:05:50.000Z",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit8.jpg?alt=media&token=5f78b8a2-d275-4e9c-8c37-3516ee4f4ab6",
+      "date": "2023-10-23T20:54:55.000Z",
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "Dresses",
       "id": 1
     },
     {
-      "title": "don",
-      "description": "good",
-      "price": "56",
-      "category": "1",
-      "stock": "5",
-      "rating": "5",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fdress6.jpg?alt=media&token=1cf6b087-646e-46a5-aec9-7c642d59422f",
-      "date": "2023-10-23T21:09:55.000Z",
+      "name": "Suit",
       "id": 2
     },
     {
-      "title": "canta",
-      "description": "pretty",
-      "price": "19",
-      "category": "3",
-      "stock": "8",
-      "rating": "7.6",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fbag3.jpg?alt=media&token=f55462f9-7262-4252-9988-1320d72df3de",
-      "date": "2023-10-19T21:10:30.000Z",
+      "name": "Bag",
       "id": 3
+    }
+  ],
+  "subCategories": [
+    {
+      "name": "subcat3",
+      "categoryId": 3,
+      "id": 2
+    },
+    {
+      "name": "sumkacik",
+      "categoryId": 3,
+      "id": 3
+    },
+    {
+      "name": "Rahim",
+      "categoryId": 2,
+      "id": 4
+    },
+    {
+      "name": "dede",
+      "categoryId": 3,
+      "id": 5
+    },
+    {
+      "name": "kakaka",
+      "categoryId": 1,
+      "id": 6
+    },
+    {
+      "name": "mehsul",
+      "categoryId": 2,
+      "id": 7
     }
   ],
   "data": [
@@ -96,18 +128,12 @@
       "Income": 1453
     }
   ],
-  "categories": [
+  "orders": [
     {
-      "name": "Dress",
-      "id": 1
-    },
-    {
-      "name": "Suit",
-      "id": 2
-    },
-    {
-      "name": "Bag",
-      "id": 3
+      "id": 1,
+      "orderItems": [],
+      "total_price": 75,
+      "discount_percentage": 20
     }
   ]
 }

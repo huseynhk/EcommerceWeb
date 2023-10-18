@@ -10,40 +10,38 @@ import { useNavigate } from "react-router-dom";
 //Image
 import { storage } from "../../firebase/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { fetchProduct } from "../../api/getRequest";
 
 const UpdateProduct = () => {
-  const { categories } = useContext(ProductContext);
+  const { categories, subcategories } = useContext(ProductContext);
   const [updatedProduct, setUpdatedProduct] = useState({
     title: "",
     description: "",
     price: "",
     category: "",
+    subcategory: "",
     stock: "",
     rating: "",
   });
+  const [editFilterSubCategories, setEditFilterSubCategories] = useState([]);
+
   const [image, setImage] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  const fetchProduct = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/products/${productId}`
-      );
-      if (response.status !== 200) {
-        throw new Error("Error fetching product");
-      } else {
-        setUpdatedProduct(response.data);
-        setImage(response.data.image);
-      }
-    } catch (error) {
-      console.log(error);
+  const resultFetchProduct = async () => {
+    const result = await fetchProduct(productId);
+    if (typeof result == "string") {
+      toast.error(result);
+    } else {
+      setUpdatedProduct(result);
+      setImage(result.image);
     }
   };
 
   useEffect(() => {
-    fetchProduct();
+    resultFetchProduct();
   }, [productId]);
 
   useEffect(() => {
@@ -58,6 +56,7 @@ const UpdateProduct = () => {
       description: "",
       price: "",
       category: "",
+      subcategory: "",
       stock: "",
       rating: "",
     });
@@ -93,11 +92,30 @@ const UpdateProduct = () => {
     }
   };
 
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setUpdatedProduct({
+  //     ...updatedProduct,
+  //     [name]: value,
+  //   });
+  // };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    if ([name] == "category") {
+      const filterSubCatsByCatId = subcategories.filter(
+        (sub) => sub.categoryId == value
+      );
+      setEditFilterSubCategories(filterSubCatsByCatId);
+    }
     setUpdatedProduct({
       ...updatedProduct,
-      [name]: value,
+      [name]:
+        [name] == "category"
+          ? categories.find((category) => category.id == value)
+          : [name] == "subcategory"
+          ? subcategories.find((subcategory) => subcategory.id == value)
+          : value,
     });
   };
 
@@ -168,11 +186,31 @@ const UpdateProduct = () => {
             <div>
               <select onChange={handleInputChange} name="category">
                 <option value="select">Select a Category</option>
-                {categories.map((catergory, index) => (
-                  <option value={catergory.id} key={index}>
-                    {catergory.name}
+                {categories.map((category, index) => (
+                  <option
+                    value={category.id}
+                    selected={category.id === updatedProduct.category.id}
+                    key={index}
+                  >
+                    {category.name}
                   </option>
                 ))}
+              </select>
+
+              <select onChange={handleInputChange} value={updatedProduct.subcategory.id} name="subcategory">
+                {/* <option value="select">Select a Sub Category</option> */}
+                {editFilterSubCategories.length > 0 &&
+                  editFilterSubCategories.map((subcategory, index) => (
+                    <option
+                      value={subcategory.id}
+                      selected={
+                        subcategory.id === updatedProduct.subcategory.id
+                      }
+                      key={index}
+                    >
+                      {subcategory.name}
+                    </option>
+                  ))}
               </select>
             </div>
             <div>

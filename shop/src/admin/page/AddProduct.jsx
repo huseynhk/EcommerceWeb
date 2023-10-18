@@ -10,17 +10,19 @@ import { storage } from "../../firebase/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { ProductContext } from "../../contexts/ProductContext";
 const AddProduct = () => {
-  const { categories } = useContext(ProductContext);
+  const { categories, subcategories } = useContext(ProductContext);
   const [newProduct, setNewProduct] = useState({
     title: "",
     description: "",
     price: "",
     category: "",
     stock: "",
+    subcategory: "",
     rating: "",
   });
   const [image, setImage] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [filterSubCategories, setFilterSubCategories] = useState([]);
   const navigate = useNavigate();
   const resetForm = () => {
     setNewProduct({
@@ -36,12 +38,14 @@ const AddProduct = () => {
 
   const addProduct = async (event) => {
     event.preventDefault();
-    const { title, description, price, category, stock, rating } = newProduct;
+    const { title, description, price, category, stock, rating, subcategory } =
+      newProduct;
     if (
       title.trim() === "" ||
       description.trim() === "" ||
       price.trim() === "" ||
-      category.trim() === "" ||
+      typeof category != "object" ||
+      typeof subcategory != "object" ||
       stock.trim() === "" ||
       rating.trim() === ""
     ) {
@@ -72,10 +76,22 @@ const AddProduct = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log([name], value);
+    if ([name] == "category") {
+      const filterSubCatsByCatId = subcategories.filter(
+        (sub) => sub.categoryId == value
+      );
+      // category-e click edende onun subcategorylerin tapmaq
+      // console.log('filterSubCatsByCatId',filterSubCatsByCatId)
+      setFilterSubCategories(filterSubCatsByCatId);
+    }
     setNewProduct({
       ...newProduct,
-      [name]: value,
+      [name]:
+        [name] == "category"
+          ? categories.find((category) => category.id == value)
+          : [name] == "subcategory"
+          ? subcategories.find((subcategory) => subcategory.id == value)
+          : value,
     });
   };
 
@@ -145,12 +161,21 @@ const AddProduct = () => {
             </div>
             <div>
               <select onChange={handleInputChange} name="category">
-              <option value="select">Select a Category</option> 
+                <option value="select">Select a Category</option>
                 {categories.map((catergory, index) => (
                   <option value={catergory.id} key={index}>
                     {catergory.name}
                   </option>
                 ))}
+              </select>
+              <select onChange={handleInputChange} name="subcategory">
+                <option value="select">Select a Sub Category</option>
+                {filterSubCategories.length > 0 &&
+                  filterSubCategories.map((subcatergory, index) => (
+                    <option value={subcatergory.id} key={index}>
+                      {subcatergory.name}
+                    </option>
+                  ))}
               </select>
             </div>
             <div>

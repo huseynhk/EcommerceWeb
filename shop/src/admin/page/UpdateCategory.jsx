@@ -3,31 +3,27 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Layout from "../../components/layout/Layout";
 import { useNavigate, useParams } from "react-router-dom";
+import { fetchCategory } from "../../api/getRequest";
 
 const UpdateCategory = () => {
   const [editCategory, setEditCategory] = useState("");
 
   const navigate = useNavigate();
-  const { productId } = useParams();
+  const { categoryId } = useParams();
 
-  const fetchProduct = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/categories/${productId}`
-      );
-      if (response.status !== 200) {
-        throw new Error("Error fetching product");
-      } else {
-        setEditCategory(response.data.name);
-      }
-    } catch (error) {
-      console.log(error);
+  const resultFetchProduct = async () => {
+    const result = await fetchCategory(categoryId);
+    if (typeof result == "string") {
+      toast.error(result);
+    } else {
+      console.log(result);
+      setEditCategory(result.name);
     }
   };
 
   useEffect(() => {
-    fetchProduct();
-  }, [productId]);
+    resultFetchProduct();
+  }, [categoryId]);
 
   const updateCategory = async (event) => {
     event.preventDefault();

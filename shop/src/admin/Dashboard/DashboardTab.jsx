@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { MdOutlineProductionQuantityLimits, MdOutlineCategory } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { BiSolidCartAdd, BiCategoryAlt } from "react-icons/bi";
 import { AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
@@ -10,14 +10,24 @@ import ReactPaginate from "react-paginate";
 import moment from "moment";
 
 const DashboardTab = () => {
-  const { filteredProducts, user, deleteProduct, categories, deleteCategory } =
-    useContext(ProductContext);
+  const {
+    filteredProducts,
+    user,
+    deleteProduct,
+    categories,
+    deleteCategory,
+    subcategories,
+    deleteSubCategory,
+  } = useContext(ProductContext);
   const navigate = useNavigate();
   const addProductPage = () => {
     navigate("/addproduct");
   };
   const addCategoryPage = () => {
     navigate("/addcategory");
+  };
+  const addSubCategoryPage = () => {
+    navigate("/addsubcategory");
   };
   //Pagination
   const [pageNumber, setPageNumber] = useState(0);
@@ -45,6 +55,21 @@ const DashboardTab = () => {
     setPageNumber(selected);
   };
 
+  //Sub Categories Pagination
+  const subcategoriesPerPage = subcategories.length == 0 ? 0 : 3;
+  const pagesVisitedSubCategories = pageNumber * subcategoriesPerPage;
+  const displaySubCategories = subcategories.slice(
+    pagesVisitedSubCategories,
+    pagesVisitedSubCategories + subcategoriesPerPage
+  );
+  console.log(subcategories);
+  const subcategoryPageCount = Math.ceil(
+    subcategories.length / subcategoriesPerPage
+  );
+  const changeSubCategoryPage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   //User Pagination
   const usersPerPage = user.length == 0 ? 0 : 3;
   const pagesVisitedUsers = pageNumber * usersPerPage;
@@ -60,9 +85,9 @@ const DashboardTab = () => {
   return (
     <>
       <div className="container mx-auto">
-        <div className="tab container mx-auto ">
+        <div className="tab container mx-auto pb-7">
           <Tabs defaultIndex={0} className=" ">
-            <TabList className="md:flex md:space-x-8  grid grid-cols-2 text-center gap-4  md:justify-center mb-10 ">
+            <TabList className="md:flex md:space-x-8  grid grid-cols-2 text-center gap-4 md:justify-center mb-10 ">
               <Tab>
                 <button
                   type="button"
@@ -89,6 +114,17 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
+                  className="font-medium border-b-2 border-yellow-500 bg-[#605d5d12] text-yellow-500 rounded-lg text-xl  hover:shadow-yellow-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                >
+                  <div className="flex gap-2 items-center">
+                    <MdOutlineCategory /> Sub Categories
+                  </div>
+                </button>
+              </Tab>
+
+              <Tab>
+                <button
+                  type="button"
                   className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
@@ -100,13 +136,13 @@ const DashboardTab = () => {
 
             <TabPanel>
               <div className="px-4 md:px-0 mb-16 ">
-                <h1 className=" text-center mb-5 text-3xl font-semibold underline text-primary dark:text-cyan-400">
+                <h1 className=" text-center mb-5 text-3xl font-semibold underline text-purple-500">
                   Product Details
                 </h1>
                 <div className="flex justify-center">
                   <button
                     type="button"
-                    className="focus:outline-none text-white bg-blue-600 dark:bg-cyan-600  border hover:opacity-90 outline-0 font-semibold rounded-md text-md py-2 px-5 mb-5 transition duration-500 ease-in-out"
+                    className="focus:outline-none text-white bg-purple-500  border hover:opacity-90 outline-0 font-semibold rounded-md text-md py-2 px-5 mb-5 transition duration-500 ease-in-out"
                   >
                     <div
                       className="flex gap-2 items-center "
@@ -152,13 +188,6 @@ const DashboardTab = () => {
 
                     {displayProducts.map((item, index) => {
                       const actualIndex = pagesVisited + index + 1;
-                      const findCategoryById = categories.find(
-                        (cat) => cat.id == item.category
-                      )
-                        ? categories.find((cat) => cat.id == item.category)
-                            ?.name
-                        : "Not Found";
-                        
                       return (
                         <tbody key={index}>
                           <tr className="bg-gray-100 dark:bg-primary dark:text-white  border-b  dark:border-cyan-300">
@@ -177,7 +206,7 @@ const DashboardTab = () => {
                             </th>
                             <td className="px-6 py-3">{item.title}</td>
                             <td className="px-6 py-3">${item.price}</td>
-                            <td className="px-6 py-3">{findCategoryById}</td>
+                            <td className="px-6 py-3">{item.category.name}</td>
                             <td className="px-6 py-3">{item.stock}</td>
                             <td className="px-6 py-3">{item.rating}</td>
                             <td className="px-6 py-3">
@@ -228,13 +257,13 @@ const DashboardTab = () => {
 
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
-                <h1 className=" text-center mb-5 text-3xl font-semibold underline  text-primary dark:text-cyan-400">
+                <h1 className=" text-center mb-5 text-3xl font-semibold underline text-cyan-500">
                   Category Details
                 </h1>
                 <div className="flex justify-center">
                   <button
                     type="button"
-                    className="focus:outline-none text-white bg-blue-600 dark:bg-cyan-600  border hover:opacity-90 outline-0 font-semibold rounded-md text-md py-2 px-5 mb-5 transition duration-500 ease-in-out"
+                    className="focus:outline-none text-white bg-cyan-500  border hover:opacity-90 outline-0 font-semibold rounded-md text-md py-2 px-5 mb-5 transition duration-500 ease-in-out"
                   >
                     <div
                       className="flex gap-2 items-center "
@@ -275,23 +304,23 @@ const DashboardTab = () => {
                           <td className="px-6 py-5">{item.id}</td>
                           <td className="px-6 py-5">{item.name}</td>
                           <td className="px-6 py-4">
-                              <div className=" flex gap-2">
-                                <div className=" flex gap-2 cursor-pointer  ">
-                                  <div
-                                    className="text-2xl text-gega-red"
-                                    onClick={() => deleteCategory(item.id)}
-                                  >
-                                    <AiFillDelete size={30} />
-                                  </div>
-
-                                  <Link to={`/updatecategory/${item.id}`}>
-                                    <div className="text-2xl text-green-600">
-                                      <AiFillPlusCircle size={30} />
-                                    </div>
-                                  </Link>
+                            <div className=" flex gap-2">
+                              <div className=" flex gap-2 cursor-pointer  ">
+                                <div
+                                  className="text-2xl text-gega-red"
+                                  onClick={() => deleteCategory(item.id)}
+                                >
+                                  <AiFillDelete size={30} />
                                 </div>
+
+                                <Link to={`/updatecategory/${item.id}`}>
+                                  <div className="text-2xl text-green-600">
+                                    <AiFillPlusCircle size={30} />
+                                  </div>
+                                </Link>
                               </div>
-                            </td>
+                            </div>
+                          </td>
                         </tr>
                       );
                     })}
@@ -318,7 +347,98 @@ const DashboardTab = () => {
 
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
-                <h1 className=" text-center mb-5 text-3xl font-semibold underline  text-primary dark:text-green-400">
+                <h1 className=" text-center mb-5 text-3xl font-semibold underline text-yellow-500">
+                  Sub Category Details
+                </h1>
+                <div className="flex justify-center">
+                  <button
+                    type="button"
+                    className="focus:outline-none text-white bg-yellow-500  border hover:opacity-90 outline-0 font-semibold rounded-md text-md py-2 px-5 mb-5 transition duration-500 ease-in-out"
+                  >
+                    <div
+                      className="flex gap-2 items-center "
+                      onClick={addSubCategoryPage}
+                    >
+                      Add Sub Category <BiSolidCartAdd size={30} />
+                    </div>
+                  </button>
+                </div>
+                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                  <thead className="text-xs text-black uppercase bg-gray-200 dark:text-cyan-300 dark:bg-gray-900">
+                    <tr>
+                      <th scope="col" className="px-6 py-3">
+                        S.No
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Id
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Name
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {displaySubCategories.map((item, index) => {
+                      const actualIndex = pagesVisitedSubCategories + index + 1;
+                      return (
+                        <tr
+                          className="bg-gray-100 dark:bg-primary dark:text-white border-b 
+                         dark:border-cyan-300"
+                          key={index}
+                        >
+                          <td className="px-6 py-5">{actualIndex}</td>
+                          <td className="px-6 py-5">{item.id}</td>
+                          <td className="px-6 py-5">{item.name}</td>
+                          <td className="px-6 py-4">
+                            <div className=" flex gap-2">
+                              <div className=" flex gap-2 cursor-pointer  ">
+                                <div
+                                  className="text-2xl text-gega-red"
+                                  onClick={() => deleteSubCategory(item.id)}
+                                >
+                                  <AiFillDelete size={30} />
+                                </div>
+
+                                <Link to={`/updatesubcategory/${item.id}`}>
+                                  <div className="text-2xl text-green-600">
+                                    <AiFillPlusCircle size={30} />
+                                  </div>
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              {/* pagination */}
+              <div className=" flex items-center justify-center ">
+                <ReactPaginate
+                  previousLabel={"Previous"}
+                  nextLabel={"Next"}
+                  pageCount={subcategoryPageCount}
+                  onPageChange={changeSubCategoryPage}
+                  containerClassName={"flex py-1 px-4 space-x-2"}
+                  previousLinkClassName={"mr-2 p-2 "}
+                  nextLinkClassName={"ml-2 p-2"}
+                  disabledClassName={"text-gray-500 cursor-not-allowed"}
+                  activeClassName={
+                    "bg-cyan-500 text-white border border-cyan-500 rounded-sm px-2"
+                  }
+                />
+              </div>
+            </TabPanel>
+
+
+            <TabPanel>
+              <div className="relative overflow-x-auto mb-10">
+                <h1 className=" text-center mb-5 text-3xl font-semibold underline  text-green-500">
                   User Details
                 </h1>
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -376,6 +496,7 @@ const DashboardTab = () => {
                 />
               </div>
             </TabPanel>
+
           </Tabs>
         </div>
       </div>

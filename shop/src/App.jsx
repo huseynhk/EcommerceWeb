@@ -16,6 +16,8 @@ import ViewCart from "./pages/ViewCart";
 import Checkout from "./pages/Checkout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AddSubCategory from "./admin/page/AddSubCategory";
+import UpdateSubCategory from "./admin/page/UpdateSubCategory";
 
 function App() {
   return (
@@ -44,6 +46,14 @@ function App() {
           }
         />
         <Route
+          path="/addsubcategory"
+          element={
+            <RouteForAdmin>
+              <AddSubCategory />
+            </RouteForAdmin>
+          }
+        />
+        <Route
           path="/dashboard"
           element={
             <RouteForAdmin>
@@ -61,10 +71,18 @@ function App() {
           }
         />
         <Route
-          path="/updatecategory/:productId"
+          path="/updatecategory/:categoryId"
           element={
             <RouteForAdmin>
               <UpdateCategory />
+            </RouteForAdmin>
+          }
+        />
+        <Route
+          path="/updatesubcategory/:subcategoryId"
+          element={
+            <RouteForAdmin>
+              <UpdateSubCategory />
             </RouteForAdmin>
           }
         />

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import {toast} from "react-toastify"
 
 const Product = ({ product }) => {
-  const { id, title, category, price, image, rating } = product;
+  const { id, title, category, price, image, rating,subcategory } = product;
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
@@ -65,7 +65,10 @@ const Product = ({ product }) => {
           <div className="mt-5 me-1 ">
             <div className="ml-0 md:ml-4 text-2xl md:text-lg">
               <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">
-                Category:{category}
+                Category:{category.name}
+              </div>
+              <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">
+                Sub Category:{subcategory.name}
               </div>
               <Link to={`/product/${id}`}>
                 <h3 className="font-semibold my-1">{title}</h3>

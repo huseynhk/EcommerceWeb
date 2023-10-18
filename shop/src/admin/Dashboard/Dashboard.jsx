@@ -8,13 +8,15 @@ import Transaction from "./Charts/Transaction";
 import BuyerChart from "./Charts/BuyerChart";
 import { ProductContext } from "../../contexts/ProductContext";
 const Dashboard = () => {
-  const { getAllProducts, getAllCategories } = useContext(ProductContext);
+  const { getAllProducts, getAllCategories, getAllSubCategories } =
+    useContext(ProductContext);
 
   useEffect(() => {
     getAllProducts();
     getAllCategories();
+    getAllSubCategories();
   }, []);
-  
+
   return (
     <Layout>
       <section className="text-blue-200  dark:bg-black">

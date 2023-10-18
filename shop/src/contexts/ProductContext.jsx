@@ -12,6 +12,7 @@ const ProductContextProvider = ({ children }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [subcategories, setSubCategories] = useState([]);
   const [filters, setFilters] = useState({
     minPrice: "",
     maxPrice: "",
@@ -107,6 +108,19 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
+  const getAllSubCategories = async () => {
+    try {
+      const request = await axios.get("http://localhost:3000/subcategories");
+      if (request.status !== 200) {
+        throw new Error("Something went wrong");
+      } else {
+        setSubCategories(request.data);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   const deleteProduct = async (productId) => {
     try {
       const response = await axios.delete(
@@ -135,26 +149,49 @@ const ProductContextProvider = ({ children }) => {
       if (response.status !== 200) {
         throw new Error("Something went wrong!");
       } else {
-        const deletedProduct = categories.filter(
+        const deletedCategory = categories.filter(
           (category) => category.id !== categoryId
         );
         toast.success("Category is deleted", {
           position: toast.POSITION.TOP_RIGHT,
           autoClose: 1000,
         });
-        setCategories(deletedProduct);
+        setCategories(deletedCategory);
       }
     } catch (error) {
       console.log(error.message);
     }
   };
 
+  const deleteSubCategory = async (subCategoryId) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/subCategories/${subCategoryId}`
+      );
+      if (response.status !== 200) {
+        throw new Error("Something went wrong!");
+      } else {
+        const deletedSubCategory = subcategories.filter(
+          (subcategory) => subcategory.id !== subCategoryId
+        );
+        toast.success("Sub Category is deleted", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        });
+        setSubCategories(deletedSubCategory);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
   const filterProductsByCategory = () => {
     if (selectedCategory === "all") {
       setFilteredProducts(products);
     } else {
       let filteredByCategory = products.filter(
-        (product) => product.category === selectedCategory
+        (product) => product.category.id == selectedCategory
       );
       setFilteredProducts(filteredByCategory);
       console.log("filteredByCategory", filteredByCategory);
@@ -189,6 +226,7 @@ const ProductContextProvider = ({ children }) => {
     getAllProducts();
     getUserData();
     getAllCategories();
+    getAllSubCategories();
   }, []);
 
   useEffect(() => {
@@ -205,6 +243,7 @@ const ProductContextProvider = ({ children }) => {
     setFilters,
     sortProducts,
     categories,
+    subcategories,
     setCategories,
     selectedCategory,
     setSelectedCategory,
@@ -214,8 +253,10 @@ const ProductContextProvider = ({ children }) => {
     user,
     deleteProduct,
     deleteCategory,
+    deleteSubCategory,
     getAllProducts,
     getAllCategories,
+    getAllSubCategories,
   };
 
   return (
