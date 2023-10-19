@@ -28,7 +28,7 @@ const ViewCart = () => {
           <div className="flex gap-x-4 py-2 lg:px-6 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] mt-[160px] md:mt-[60px] container">
               {cart.map((product, index) => {
-                const { id, title, price, image, amount, category, rating } =
+                const { id, title, price, image, amount, category, disCountPrice } =
                   product;
                 return (
                   <div
@@ -49,14 +49,14 @@ const ViewCart = () => {
                         <div className="flex flex-col justify-center items-center ">
                           <div>
                             <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">
-                              Category:{category}
+                              Category:{category ? category.name : ""}
                             </div>
                             <Link to={`/product/${id}`}>
                               <h3 className="font-semibold my-1">{title}</h3>
                             </Link>
 
                             <div className="font-semibold text-violet-600 dark:text-cyan-200">
-                              Rating:{rating}
+                            DisCountPrice:{disCountPrice}
                             </div>
                           </div>
 

@@ -12,6 +12,7 @@ const ProductContextProvider = ({ children }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedSubtCategory, setSubSelectedCategory] = useState("all");
   const [subcategories, setSubCategories] = useState([]);
   const [filters, setFilters] = useState({
     minPrice: "",
@@ -194,7 +195,18 @@ const ProductContextProvider = ({ children }) => {
         (product) => product.category.id == selectedCategory
       );
       setFilteredProducts(filteredByCategory);
-      console.log("filteredByCategory", filteredByCategory);
+    }
+  };
+
+  const filterProductsBySubCategory = () => {
+    if (selectedSubtCategory === "all") {
+      setFilteredProducts(products);
+    } else {
+      let filteredBySubCategory = products.filter(
+        (product) => product.subcategory.id == selectedSubtCategory
+      );
+      setFilteredProducts(filteredBySubCategory);
+      console.log("filteredBySubCategory", filteredBySubCategory);
     }
   };
 
@@ -235,7 +247,8 @@ const ProductContextProvider = ({ children }) => {
 
   useEffect(() => {
     filterProductsByCategory();
-  }, [selectedCategory, products]);
+    filterProductsBySubCategory();
+  }, [selectedCategory, selectedSubtCategory, products]);
 
   const contextValue = {
     filteredProducts,
@@ -247,6 +260,8 @@ const ProductContextProvider = ({ children }) => {
     setCategories,
     selectedCategory,
     setSelectedCategory,
+    selectedSubtCategory,
+    setSubSelectedCategory,
     resetFilters,
     loading,
     setLoading,

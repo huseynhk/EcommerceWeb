@@ -22,7 +22,7 @@ const AddSubCategory = () => {
     event.preventDefault();
 
     try {
-      if (newSubCategory.name  == "" || newSubCategory.categoryId == 0) {
+      if (newSubCategory.name  == "" ) {
         throw new Error("All input required");
       } else {
         const createdSubCategory = {

@@ -17,7 +17,6 @@ const Sidebar = () => {
     (state) => state.persistedReducer.basket.totalAmount
   );
   const dispatch = useDispatch();
-
   return (
     <>
       <div

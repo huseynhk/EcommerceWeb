@@ -15,8 +15,10 @@ const Home = () => {
     selectedCategory,
     setSelectedCategory,
     resetFilters,
+    subcategories,
+    selectedSubtCategory,
+    setSubSelectedCategory,
   } = useContext(ProductContext);
-  console.log("selectedCategory", selectedCategory);
 
   return (
     <Layout>
@@ -92,13 +94,28 @@ const Home = () => {
                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
                     dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                      dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                     value={selectedCategory}
-                     onChange={(e) => setSelectedCategory(e.target.value)}
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
                 >
-                  <option value="all">All</option>
+                  <option value="all">All Categories</option>
                   {categories.map((category, index) => (
                     <option key={index} value={category.id}>
                       {category.name}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  className="my-2 md:my-0 md:mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+                    dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  value={selectedSubtCategory}
+                  onChange={(e) => setSubSelectedCategory(e.target.value)}
+                >
+                  <option value="all">All Sub Categories</option>
+                  {subcategories.map((subcategory, index) => (
+                    <option key={index} value={subcategory.id}>
+                      {subcategory.name}
                     </option>
                   ))}
                 </select>

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../features/slices/basketSlice";
 import Layout from "../components/layout/Layout";
 import axios from "axios";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -24,12 +24,24 @@ const ProductDetails = () => {
     }
   };
 
-
   useEffect(() => {
     fetchProduct();
   }, [id]);
 
-  const { title, price, description, image, category, rating } = product;
+  const {
+    title,
+    category,
+    price,
+    image,
+    rating,
+    subcategory,
+    color,
+    size,
+    gender,
+    disCountPrice,
+    brand,
+    description,
+  } = product;
   const addToCartHandler = () => {
     dispatch(
       addToCart({
@@ -43,12 +55,14 @@ const ProductDetails = () => {
         rating: product.rating,
         brand: product.brand,
         category: product.category,
-        discountPercentage: product.discountPercentage,
+        disCountPrice: product.disCountPrice,
+        subcategory: product.subcategory,
+        color: product.color,
       })
     );
-    toast.success('Product added to cart successfully!', {
+    toast.success("Product added to cart successfully!", {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 1000, 
+      autoClose: 1000,
     });
   };
 
@@ -71,10 +85,30 @@ const ProductDetails = () => {
                   {title}
                 </h1>
                 <h1 className=" text-cyan-700 uppercase font-semibold text-2xl">
-                  Category:{category}
+                  Category:{category ? category.name : ""}
                 </h1>
-                <h1 className="text-gega-red font-medium mb-6 text-3xl">
-                  $ {price}
+                <div className="flex  flex-col justify-center">
+                  <h1 className="text-gega-red mr-3 font-medium mb-6 text-3xl">
+                   Price: $ {price}
+                  </h1>
+                  <h1 className="text-green-500 font-medium mb-6 text-3xl">
+                  DisCountPrice:  $ {price - disCountPrice}
+                  </h1>
+                </div>
+                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                  Rating:{rating}
+                </h1>
+                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                  Size:{size}
+                </h1>
+                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                  SubCategory:{subcategory ? subcategory.name : ""}
+                </h1>
+                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                  Gender:{gender}
+                </h1>
+                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                  Brand:{brand}
                 </h1>
                 <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
                   Rating:{rating}

@@ -5,10 +5,12 @@ import Layout from "../../components/layout/Layout";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
+import { ProductContext } from "../../contexts/ProductContext";
+import { SketchPicker } from "react-color";
 //Image Firebase
 import { storage } from "../../firebase/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { ProductContext } from "../../contexts/ProductContext";
+
 const AddProduct = () => {
   const { categories, subcategories } = useContext(ProductContext);
   const [newProduct, setNewProduct] = useState({
@@ -19,6 +21,11 @@ const AddProduct = () => {
     stock: "",
     subcategory: "",
     rating: "",
+    size: "",
+    gender: ["man", "woman", "uni"],
+    disCountPrice: "",
+    color: "#000",
+    brand: "",
   });
   const [image, setImage] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -32,14 +39,29 @@ const AddProduct = () => {
       category: "",
       stock: "",
       rating: "",
+      gender: "",
+      color: "",
+      disCountPrice: "",
+      brand: "",
     });
     setImage(null);
   };
 
   const addProduct = async (event) => {
     event.preventDefault();
-    const { title, description, price, category, stock, rating, subcategory } =
-      newProduct;
+    const {
+      title,
+      description,
+      price,
+      category,
+      stock,
+      rating,
+      subcategory,
+      size,
+      gender,
+      disCountPrice,
+      brand,
+    } = newProduct;
     if (
       title.trim() === "" ||
       description.trim() === "" ||
@@ -47,7 +69,11 @@ const AddProduct = () => {
       typeof category != "object" ||
       typeof subcategory != "object" ||
       stock.trim() === "" ||
-      rating.trim() === ""
+      rating.trim() === "" ||
+      size.trim() === "" ||
+      gender.trim() === "" ||
+      disCountPrice.trim() === "" ||
+      brand.trim() === ""
     ) {
       toast.error("All input required");
     }
@@ -72,6 +98,10 @@ const AddProduct = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleColorChange = (newColor) => {
+    setNewProduct({ ...newProduct, color: newColor.hex });
   };
 
   const handleInputChange = (event) => {
@@ -124,19 +154,19 @@ const AddProduct = () => {
     <>
       <Layout>
         <div className="flex justify-center items-center h-screen dark:bg-black">
-          <div className=" bg-primary px-10 py-10 rounded-md mb-16 dark:bg-cyan-700">
+          <div className=" bg-primary px-8 py-5 rounded-md mb-16 dark:bg-cyan-700">
             <div className="">
               <h1 className="text-center text-blue-200 text-lg mb-4 font-bold dark:text-white">
                 Add Product
               </h1>
             </div>
-            <div>
+            <div className="flex justify-center items-center">
               <input
                 type="text"
                 value={newProduct.title}
                 onChange={handleInputChange}
                 name="title"
-                className=" bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                className=" bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
                 placeholder="Product title"
               />
             </div>
@@ -146,8 +176,46 @@ const AddProduct = () => {
                 value={newProduct.price}
                 onChange={handleInputChange}
                 name="price"
-                className=" bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                className=" bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
                 placeholder="Product price"
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                value={newProduct.disCountPrice}
+                onChange={handleInputChange}
+                name="disCountPrice"
+                className=" bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                placeholder="Product disCountPrice"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                value={newProduct.size}
+                onChange={handleInputChange}
+                name="size"
+                className="bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                placeholder="Product Size"
+              />
+            </div>
+            <div>
+              <select onChange={handleInputChange} name="gender">
+                <option value="select">Select a Gender</option>
+                <option value="man">Man</option>
+                <option value="woman">Woman</option>
+                <option value="uni">Uni</option>
+              </select>
+            </div>
+            <div>
+              <input
+                type="text"
+                value={newProduct.brand}
+                onChange={handleInputChange}
+                name="brand"
+                className="bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                placeholder="Product Brand"
               />
             </div>
             <div>
@@ -155,7 +223,7 @@ const AddProduct = () => {
                 type="file"
                 onChange={handleImage}
                 name="imageurl"
-                className=" bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                className=" bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
                 placeholder="Product Image"
               />
             </div>
@@ -184,7 +252,7 @@ const AddProduct = () => {
                 value={newProduct.stock}
                 onChange={handleInputChange}
                 name="stock"
-                className="bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                className="bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
                 placeholder="Product stock"
               />
             </div>
@@ -194,7 +262,7 @@ const AddProduct = () => {
                 value={newProduct.rating}
                 onChange={handleInputChange}
                 name="rating"
-                className="bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                className="bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
                 placeholder="Product rating"
               />
             </div>
@@ -202,9 +270,10 @@ const AddProduct = () => {
               <DatePicker
                 selected={selectedDate}
                 onChange={(date) => setSelectedDate(date)}
-                className="bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                className="bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
               />
             </div>
+
             <div>
               <textarea
                 cols="30"
@@ -212,11 +281,11 @@ const AddProduct = () => {
                 name="description"
                 value={newProduct.description}
                 onChange={handleInputChange}
-                className=" bg-gray-600 mb-4 px-3 py-2 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
+                className=" bg-gray-600 mb-2 px-3 py-1 w-full lg:w-[20em] rounded-sm text-white placeholder:text-gray-200 outline-none"
                 placeholder="Product description"
               ></textarea>
             </div>
-            <div className=" flex justify-center mb-3">
+            <div className=" flex justify-center mb-2">
               <button
                 onClick={addProduct}
                 className=" bg-cyan-400 w-full text-primary font-bold  px-3 py-2 rounded-sm  dark:bg-gray-300"
@@ -224,6 +293,14 @@ const AddProduct = () => {
                 Add Product
               </button>
             </div>
+          </div>
+
+          <div>
+            <SketchPicker
+              color={newProduct.color}
+              onChangeComplete={handleColorChange}
+              className="ml-6 mb-[200px]"
+            />
           </div>
         </div>
       </Layout>

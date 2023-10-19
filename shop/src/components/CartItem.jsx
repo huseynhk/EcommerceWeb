@@ -5,9 +5,9 @@ import { removeFromCart, increament, decrement } from "../features/slices/basket
 import { useDispatch } from "react-redux";
 
 const CartItem = ({ product }) => {
-  const { id, title, price, image, amount } = product;
+  const { id, title, price, image, amount, disCountPrice } = product;
   const dispatch = useDispatch();
-
+  
   return (
     <div className="flex gap-x-4 py-2 lg:px-6 border-b border-gray-300 w-full ">
       <div className="w-full flex items-center gap-x-4">

@@ -19,8 +19,6 @@ export const basketSlice = createSlice({
         exist.amount++;
         exist.totalAmount++;
         exist.totalPrice += exist.price;
-        // state.totalAmount++
-        // state.totalPrice+= action.payload.price
       } else {
         state.basket.push(action.payload);
         state.totalAmount++;

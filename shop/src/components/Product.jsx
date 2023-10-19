@@ -3,10 +3,23 @@ import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
 import { addToCart } from "../features/slices/basketSlice";
 import { useDispatch } from "react-redux";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
-  const { id, title, category, price, image, rating,subcategory } = product;
+  const {
+    id,
+    title,
+    category,
+    price,
+    image,
+    rating,
+    subcategory,
+    color,
+    size,
+    gender,
+    disCountPrice,
+    brand,
+  } = product;
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
@@ -22,12 +35,14 @@ const Product = ({ product }) => {
         rating: product.rating,
         brand: product.brand,
         category: product.category,
-        discountPercentage: product.discountPercentage,
+        disCountPrice: product.disCountPrice,
+        subcategory: product.subcategory,
+        color: product.color,
       })
     );
-    toast.success('Product added to cart successfully!', {
+    toast.success("Product added to cart successfully!", {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 1000, 
+      autoClose: 1000,
     });
   };
 
@@ -35,15 +50,15 @@ const Product = ({ product }) => {
     <>
       <div
         key={id}
-        className="w-full h-[340px] mb-4 bg-indigo-50 rounded-md border border-indigo-600 dark:border-cyan-300
+        className="w-full h-[400px] mb-4 bg-indigo-50 rounded-md border border-indigo-600 dark:border-cyan-300
         relative overflow-hidden group transition"
       >
         <div className="w-full h-full flex justify-center items-center flex-col  dark:bg-gray-500/75 dark:text-gray-200">
-          <div className="w-[405px] md:w-[230px] mx-auto flex justify-center items-center mt-2">
+          <div className="w-[405px] md:w-[250px] mx-auto flex justify-center items-center mt-2">
             <img
               src={image}
               alt={title}
-              className=" -mt-8 h-[125px] w-[275px] md:w-[150px] object-cover group-hover:scale-110 rounded-md transition duration-500"
+              className=" -mt-8 h-[125px] w-[275px] md:w-full object-cover group-hover:scale-110 rounded-md transition duration-300"
             />
 
             <div className="absolute top-2 -right-4 group-hover:right-1 opacity-0 group-hover:opacity-100 transition duration-500">
@@ -74,11 +89,34 @@ const Product = ({ product }) => {
                 <h3 className="font-semibold my-1">{title}</h3>
               </Link>
 
+              <div className="flex items-center ">
+                <span className="mr-2">Color:</span>
+                {color && (
+                  <div
+                    className="h-5 w-5 rounded-full"
+                    style={{ backgroundColor: color }}
+                  ></div>
+                )}
+              </div>
               <div className="font-semibold text-violet-600 dark:text-cyan-200">
                 Rating:{rating}
               </div>
+              <div className="flex items-center ">
+                <div className="font-semibold text-green-600 dark:text-green-200 mr-2">
+                  ${price}
+                </div>
+                <div className="font-semibold text-red-600 dark:text-red-200">
+                  ${disCountPrice}
+                </div>
+              </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200">
-                ${price}
+               Size: {size}
+              </div>
+              <div className="font-semibold text-green-600 dark:text-cyan-200">
+               Gender: {gender}
+              </div>
+              <div className="font-semibold text-green-600 dark:text-cyan-200">
+               Brand: {brand}
               </div>
             </div>
           </div>

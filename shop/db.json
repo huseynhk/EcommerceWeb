@@ -1,23 +1,74 @@
 {
   "products": [
     {
-      "title": "Beylik",
-      "description": "ela",
-      "price": "333",
+      "title": "uyda",
+      "description": "huhuh",
+      "price": "789",
       "category": {
-        "name": "Bag",
-        "id": 3
+        "name": "Dresses",
+        "id": 1
       },
-      "stock": "4",
+      "stock": "55",
       "subcategory": {
-        "name": "dede",
-        "categoryId": 3,
-        "id": 5
+        "name": "kakaka",
+        "categoryId": 1,
+        "id": 6
       },
-      "rating": "6.6",
-      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit8.jpg?alt=media&token=5f78b8a2-d275-4e9c-8c37-3516ee4f4ab6",
-      "date": "2023-10-23T20:54:55.000Z",
-      "id": 1
+      "rating": "5",
+      "size": "lg",
+      "gender": "",
+      "disCountPrice": "",
+      "color": "#9013fe",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fjeans4.jpg?alt=media&token=156470ff-566b-4b7b-8a7b-74634b1894b0",
+      "date": "2023-10-24T11:24:35.000Z",
+      "id": 5
+    },
+    {
+      "title": "krasovka",
+      "description": "adidas malidi senol",
+      "price": "88",
+      "category": {
+        "name": "shoes",
+        "id": 4
+      },
+      "stock": "5",
+      "subcategory": {
+        "name": "jenski",
+        "categoryId": 4,
+        "id": 8
+      },
+      "rating": "7.5",
+      "size": "40",
+      "gender": "woman",
+      "disCountPrice": "6",
+      "color": "#ffffff",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fshoe11.jpg?alt=media&token=a3b80cb6-5d16-4c6c-8e68-5a307c38e19c",
+      "date": "2023-10-25T11:38:01.000Z",
+      "id": 6
+    },
+    {
+      "title": "ayaqqabi",
+      "description": "bomba kimidi",
+      "price": "99.99",
+      "category": {
+        "name": "shoes",
+        "id": 4
+      },
+      "stock": "6",
+      "subcategory": {
+        "name": "jenski",
+        "categoryId": 4,
+        "id": 8
+      },
+      "rating": "7.2",
+      "size": "42",
+      "gender": "woman",
+      "disCountPrice": "3.66",
+      "color": "#c37e0a",
+      "brand": "adidas",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fshoe9.jpg?alt=media&token=f85e9180-f00f-4d47-8a94-0ab92c6203db",
+      "date": "2023-10-23T11:42:13.000Z",
+      "id": 7
     }
   ],
   "categories": [
@@ -32,6 +83,10 @@
     {
       "name": "Bag",
       "id": 3
+    },
+    {
+      "name": "shoes",
+      "id": 4
     }
   ],
   "subCategories": [
@@ -64,6 +119,11 @@
       "name": "mehsul",
       "categoryId": 2,
       "id": 7
+    },
+    {
+      "name": "jenski",
+      "categoryId": 4,
+      "id": 8
     }
   ],
   "data": [

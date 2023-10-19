@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { MdOutlineProductionQuantityLimits, MdOutlineCategory } from "react-icons/md";
+import {
+  MdOutlineProductionQuantityLimits,
+  MdOutlineCategory,
+} from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { BiSolidCartAdd, BiCategoryAlt } from "react-icons/bi";
 import { AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
@@ -177,6 +180,22 @@ const DashboardTab = () => {
                         <th scope="col" className="px-6 py-3">
                           Rating
                         </th>
+                       
+                        <th scope="col" className="px-6 py-3">
+                          Brand
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                          Size
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                          DisCountPrice
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                          Color
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                          Gender
+                        </th>
                         <th scope="col" className="px-6 py-3">
                           Date
                         </th>
@@ -199,9 +218,9 @@ const DashboardTab = () => {
                               className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-white"
                             >
                               <img
-                                className=" w-[75px]  h-[75px] object-cover rounded-md"
+                                className=" w-[80px]  h-[70px] object-cover rounded-md"
                                 src={item.image}
-                                alt="img"
+                                alt={item.title}
                               />
                             </th>
                             <td className="px-6 py-3">{item.title}</td>
@@ -209,6 +228,12 @@ const DashboardTab = () => {
                             <td className="px-6 py-3">{item.category.name}</td>
                             <td className="px-6 py-3">{item.stock}</td>
                             <td className="px-6 py-3">{item.rating}</td>
+                            <td className="px-6 py-3">{item.brand}</td>
+                            <td className="px-6 py-3">{item.size}</td>
+                            <td className="px-6 py-3">{item.disCountPrice}</td>
+                            <td className="px-6 py-3">{item.color}</td>
+                            <td className="px-6 py-3">{item.gender}</td>
+
                             <td className="px-6 py-3">
                               {moment(item.date).format("MM.DD.YYYY")}
                             </td>
@@ -435,7 +460,6 @@ const DashboardTab = () => {
               </div>
             </TabPanel>
 
-
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
                 <h1 className=" text-center mb-5 text-3xl font-semibold underline  text-green-500">
@@ -496,7 +520,6 @@ const DashboardTab = () => {
                 />
               </div>
             </TabPanel>
-
           </Tabs>
         </div>
       </div>
