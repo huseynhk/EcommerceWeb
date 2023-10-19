@@ -74,46 +74,54 @@ const ProductDetails = () => {
             <div className="flex flex-col lg:flex-row">
               <div className="flex flex-1 justify-center items-center mb-8 lg:mb-0">
                 <img
-                  className="max-w-[200px] lg:max-w-sm h-[550px] object-cover rounded-md"
+                  className="max-w-[250px] lg:max-w-sm h-[600px] object-cover rounded-lg"
                   src={image}
                   alt={title}
                 />
               </div>
 
               <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-[27px] font-medium mb-2 max-w-[450px] mx-auto text-gega-melon">
+                <h2 className="text-[27px] font-medium mb-2 max-w-[450px] mx-auto text-gega-melon">
                   {title}
-                </h1>
-                <h1 className=" text-cyan-700 uppercase font-semibold text-2xl">
+                </h2>
+                <h2 className=" text-cyan-700 uppercase font-semibold text-2xl">
                   Category:{category ? category.name : ""}
-                </h1>
+                </h2>
                 <div className="flex  flex-col justify-center">
-                  <h1 className="text-gega-red mr-3 font-medium mb-6 text-3xl">
-                   Price: $ {price}
-                  </h1>
-                  <h1 className="text-green-500 font-medium mb-6 text-3xl">
-                  DisCountPrice:  $ {price - disCountPrice}
-                  </h1>
+                  <h2 className="text-gega-red mr-3 font-medium mb-6 text-3xl">
+                    Price: $ {price}
+                  </h2>
+                  <h2 className="text-green-500 font-medium mb-6 text-3xl">
+                    DisCountPrice: $ {price - disCountPrice}
+                  </h2>
                 </div>
-                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
                   Rating:{rating}
-                </h1>
-                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                </h2>
+                <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
                   Size:{size}
-                </h1>
-                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                </h2>
+                <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
                   SubCategory:{subcategory ? subcategory.name : ""}
-                </h1>
-                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                </h2>
+                <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
                   Gender:{gender}
-                </h1>
-                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                </h2>
+                <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
                   Brand:{brand}
-                </h1>
-                <h1 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
+                </h2>
+                <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
                   Rating:{rating}
-                </h1>
-
+                </h2>
+                <div className="flex items-center ">
+                  <span className="mr-2 text-3xl dark:text-white">Color:</span>
+                  {color && (
+                    <div
+                      className="h-10 w-10 rounded-full"
+                      style={{ backgroundColor: color }}
+                    ></div>
+                  )}
+                </div>
                 <p className="mb-8 text-cyan-500">{description}</p>
 
                 <button

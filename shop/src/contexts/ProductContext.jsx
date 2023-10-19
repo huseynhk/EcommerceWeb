@@ -13,6 +13,19 @@ const ProductContextProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedSubtCategory, setSubSelectedCategory] = useState("all");
+
+  const [genders, setGenders] = useState([]);
+  const [selectedtGender, setSelectedGender] = useState("all");
+
+  const [sizes, setSizes] = useState([]);
+  const [selectedtSize, setSelectedSize] = useState("all");
+
+  const [brands, setBrands] = useState([]);
+  const [selectedtBrand, setSelectedBrand] = useState("all");
+
+  const [colors, setColors] = useState([]);
+  const [selectedColor, setSelectedColor] = useState("all");
+
   const [subcategories, setSubCategories] = useState([]);
   const [filters, setFilters] = useState({
     minPrice: "",
@@ -186,7 +199,6 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
-
   const filterProductsByCategory = () => {
     if (selectedCategory === "all") {
       setFilteredProducts(products);
@@ -194,6 +206,7 @@ const ProductContextProvider = ({ children }) => {
       let filteredByCategory = products.filter(
         (product) => product.category.id == selectedCategory
       );
+      console.log("filteredByCategory", filteredByCategory);
       setFilteredProducts(filteredByCategory);
     }
   };
@@ -206,14 +219,99 @@ const ProductContextProvider = ({ children }) => {
         (product) => product.subcategory.id == selectedSubtCategory
       );
       setFilteredProducts(filteredBySubCategory);
-      console.log("filteredBySubCategory", filteredBySubCategory);
     }
   };
 
-  const resetFilters = () => {
-    setFilteredProducts(products);
+
+
+//Gender
+
+  const filterProductsByGender = () => {
+    if (selectedtGender === "all") {
+      setFilteredProducts(products);
+    } else {
+      let filteredByGender = products.filter(
+        (product) => product.gender === selectedtGender
+      );
+      setFilteredProducts(filteredByGender);
+    }
+  };
+  const getAllGenders = () => {
+    const allGenders = [...new Set(products.map((product) => product.gender))];
+    setGenders(allGenders);
+  };
+  useEffect(() => {
+    filterProductsByGender();
+  }, [selectedtGender, products]);
+
+  //Size
+  const filterProductsBySize = () => {
+    if (selectedtSize === "all") {
+      setFilteredProducts(products);
+    } else {
+      let filteredBySize = products.filter(
+        (product) => product.size === selectedtSize
+      );
+      setFilteredProducts(filteredBySize);
+    }
+  };
+  const getAllSizes = () => {
+    const allSizes = [...new Set(products.map((product) => product.size))];
+    setSizes(allSizes);
+  };
+  useEffect(() => {
+    filterProductsBySize();
+  }, [selectedtSize, products]);
+
+  // Brand
+  const filterProductsByBrand = () => {
+    if (selectedtBrand === "all") {
+      setFilteredProducts(products);
+    } else {
+      let filteredByBrand = products.filter(
+        (product) => product.brand === selectedtBrand
+      );
+      setFilteredProducts(filteredByBrand);
+    }
   };
 
+  const getAllBrands = () => {
+    const allBrands = [...new Set(products.map((product) => product.brand))];
+    setBrands(allBrands);
+  };
+  useEffect(() => {
+    filterProductsByBrand();
+  }, [selectedtBrand, products]);
+
+  ///////////////////////////////////////////////////////
+  //Color
+  const filterProductsByColor = () => {
+    if (selectedColor === "all") {
+      setFilteredProducts(products);
+    } else {
+      let filteredByColor = products.filter(
+        (product) => product.color === selectedColor
+      );
+      setFilteredProducts(filteredByColor);
+    }
+  };
+
+  const getAllColors = () => {
+    const allColors = [...new Set(products.map((product) => product.color))];
+    setColors(allColors);
+  };
+  useEffect(() => {
+    filterProductsByColor();
+  }, [selectedColor, products]);
+  ///////////////////////////////////////////////////////
+
+  useEffect(() => {
+    getAllColors();
+    getAllBrands();
+    getAllSizes();
+    getAllGenders();
+  }, [products]);
+  // /////////////////////////////////////////////////////
   //USER Firebase
   const [user, setUser] = useState([]);
   const getUserData = async () => {
@@ -233,6 +331,10 @@ const ProductContextProvider = ({ children }) => {
       setLoading(false);
     }
   };
+  const resetFilters = () => {
+    setFilteredProducts(products);
+  };
+  // /////////////////////////////////////////////////////
 
   useEffect(() => {
     getAllProducts();
@@ -245,10 +347,15 @@ const ProductContextProvider = ({ children }) => {
     applyFilters();
   }, [filters, products]);
 
+
+
   useEffect(() => {
     filterProductsByCategory();
+  }, [selectedCategory, products]);
+
+  useEffect(() => {
     filterProductsBySubCategory();
-  }, [selectedCategory, selectedSubtCategory, products]);
+  }, [selectedSubtCategory, products]);
 
   const contextValue = {
     filteredProducts,
@@ -272,6 +379,18 @@ const ProductContextProvider = ({ children }) => {
     getAllProducts,
     getAllCategories,
     getAllSubCategories,
+    genders,
+    selectedtGender,
+    setSelectedGender,
+    sizes,
+    selectedtSize,
+    setSelectedSize,
+    brands,
+    selectedtBrand,
+    setSelectedBrand,
+    colors,
+    selectedColor,
+    setSelectedColor,
   };
 
   return (
@@ -282,13 +401,3 @@ const ProductContextProvider = ({ children }) => {
 };
 
 export { ProductContext, ProductContextProvider };
-
-// const getCategories = () => {
-//   const addCategories = [
-//     ...new Set(products.map((product) => product.category)),
-//   ];
-//   setCategories(addCategories);
-// };
-// useEffect(() => {
-//   getCategories();
-// }, [products]);

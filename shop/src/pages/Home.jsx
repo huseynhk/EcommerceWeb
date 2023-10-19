@@ -18,6 +18,18 @@ const Home = () => {
     subcategories,
     selectedSubtCategory,
     setSubSelectedCategory,
+    genders,
+    selectedtGender,
+    setSelectedGender,
+    sizes,
+    selectedtSize,
+    setSelectedSize,
+    brands,
+    selectedtBrand,
+    setSelectedBrand,
+    colors,
+    selectedColor,
+    setSelectedColor,
   } = useContext(ProductContext);
 
   return (
@@ -27,8 +39,8 @@ const Home = () => {
           <title>Home Page</title>
         </Helmet>
         <Hero />
-        <section className="py-4 dark:bg-black dark:text-gray-100">
-          <div className="container flex flex-col  items-center justify-around">
+        <section className="py-4 dark:bg-black dark:text-gray-100 ">
+          <div className="container flex flex-col  items-center justify-around ">
             <div
               className="rounded-sm bg-slate-200 dark:bg-slate-800
               flex-row  w-[400px] h-[200px]  
@@ -119,7 +131,81 @@ const Home = () => {
                     </option>
                   ))}
                 </select>
+
+                <select
+                  className="my-2 md:my-0 md:mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+                    dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  value={selectedtGender}
+                  onChange={(e) => {
+                    setSelectedGender(e.target.value);
+                  }}
+                >
+                  <option value="all">All Genders</option>
+                  {genders.map((gender, index) => (
+                    <option key={index} value={gender}>
+                      {gender}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  className="my-2 md:my-0 md:mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+                    dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  value={selectedtSize}
+                  onChange={(e) => {
+                    setSelectedSize(e.target.value);
+                  }}
+                >
+                  <option value="all">All Sizes</option>
+                  {sizes.map((size, index) => (
+                    <option key={index} value={size}>
+                      {size}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  className="my-2 md:my-0 md:mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+                    dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  value={selectedtBrand}
+                  onChange={(e) => {
+                    setSelectedBrand(e.target.value);
+                  }}
+                >
+                  <option value="all">All Brands</option>
+                  {brands.map((brand, index) => (
+                    <option key={index} value={brand}>
+                      {brand}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  className="my-2 md:my-0 md:mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+                   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  value={selectedColor}
+                  onChange={(e) => setSelectedColor(e.target.value)}
+                >
+                  <option value="all">All Colors</option>
+                  {colors.map((color, index) => (
+                    <option
+                      key={index}
+                      value={color}
+                      style={{ backgroundColor: color }}
+                    >
+                    </option>
+                  ))}
+                </select>
               </div>
+
               <button
                 className="bg-slate-700 dark:bg-slate-300 p-2 flex justify-center items-center rounded-sm my-1 dark:text-primary text-gray-200 w-full font-medium"
                 onClick={resetFilters}
@@ -129,7 +215,7 @@ const Home = () => {
             </div>
 
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] mt-[160px] md:mt-[60px] 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[35px] mt-[450px] md:mt-[100px] 
               mx-w-sm  md:max-w-none md:mx-w-0 md:container md:ml-20"
             >
               {filteredProducts.map((product) => {

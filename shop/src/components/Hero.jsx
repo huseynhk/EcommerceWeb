@@ -65,7 +65,7 @@ const Hero = () => {
 
   return (
     <section className="-mb-8 ">
-      <Slide {...settings}>
+      {/* <Slide {...settings}>
         {images.map((image, index) => (
           <div key={index} className="h-[85vh]">
             <img
@@ -75,7 +75,7 @@ const Hero = () => {
             />
           </div>
         ))}
-      </Slide>
+      </Slide> */}
     </section>
   );
 };

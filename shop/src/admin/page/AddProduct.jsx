@@ -22,7 +22,7 @@ const AddProduct = () => {
     subcategory: "",
     rating: "",
     size: "",
-    gender: ["man", "woman", "uni"],
+    gender: "",
     disCountPrice: "",
     color: "#000",
     brand: "",
@@ -62,21 +62,21 @@ const AddProduct = () => {
       disCountPrice,
       brand,
     } = newProduct;
-    if (
-      title.trim() === "" ||
-      description.trim() === "" ||
-      price.trim() === "" ||
-      typeof category != "object" ||
-      typeof subcategory != "object" ||
-      stock.trim() === "" ||
-      rating.trim() === "" ||
-      size.trim() === "" ||
-      gender.trim() === "" ||
-      disCountPrice.trim() === "" ||
-      brand.trim() === ""
-    ) {
-      toast.error("All input required");
-    }
+    // if (
+    //   title.trim() === "" ||
+    //   description.trim() === "" ||
+    //   price.trim() === "" ||
+    //   typeof category != "object" ||
+    //   typeof subcategory != "object" ||
+    //   stock.trim() === "" ||
+    //   rating.trim() === "" ||
+    //   size.trim() === "" ||
+    //   gender.trim() === "" ||
+    //   disCountPrice.trim() === "" ||
+    //   brand.trim() === ""
+    // ) {
+    //   toast.error("All input required");
+    // }
 
     try {
       const response = await axios.post("http://localhost:3000/products", {

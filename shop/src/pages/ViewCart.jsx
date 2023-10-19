@@ -28,8 +28,15 @@ const ViewCart = () => {
           <div className="flex gap-x-4 py-2 lg:px-6 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] mt-[160px] md:mt-[60px] container">
               {cart.map((product, index) => {
-                const { id, title, price, image, amount, category, disCountPrice } =
-                  product;
+                const {
+                  id,
+                  title,
+                  price,
+                  image,
+                  amount,
+                  category,
+                  disCountPrice,
+                } = product;
                 return (
                   <div
                     key={index}
@@ -54,9 +61,9 @@ const ViewCart = () => {
                             <Link to={`/product/${id}`}>
                               <h3 className="font-semibold my-1">{title}</h3>
                             </Link>
-
+                            
                             <div className="font-semibold text-violet-600 dark:text-cyan-200">
-                            DisCountPrice:{disCountPrice}
+                              DisCountPrice:{disCountPrice}
                             </div>
                           </div>
 
@@ -112,9 +119,7 @@ const ViewCart = () => {
               {parseFloat(totalPrice).toFixed(2)}
             </h2>
             <h2 className="m-2 text-gega-red ">
-              <span className=" text-primary font-semibold ">
-                TotalAmount:
-              </span>
+              <span className=" text-primary font-semibold ">TotalAmount:</span>
               {totalAmount}
             </h2>
             <div className="flex w-[200px]">

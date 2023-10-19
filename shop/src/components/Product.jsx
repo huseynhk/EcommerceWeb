@@ -50,18 +50,18 @@ const Product = ({ product }) => {
     <>
       <div
         key={id}
-        className="w-full h-[400px] mb-4 bg-indigo-50 rounded-md border border-indigo-600 dark:border-cyan-300
+        className="w-full h-[450px]  mb-4 bg-indigo-50 rounded-md border border-indigo-600 dark:border-cyan-300
         relative overflow-hidden group transition"
       >
-        <div className="w-full h-full flex justify-center items-center flex-col  dark:bg-gray-500/75 dark:text-gray-200">
-          <div className="w-[405px] md:w-[250px] mx-auto flex justify-center items-center mt-2">
+        <div className="w-full h-full flex justify-center items-center flex-col text-md  dark:bg-gray-500/75 dark:text-gray-200">
+          <div className="w-full flex justify-center items-center ">
             <img
               src={image}
               alt={title}
-              className=" -mt-8 h-[125px] w-[275px] md:w-full object-cover group-hover:scale-110 rounded-md transition duration-300"
+              className=" -mt-4 h-[200px] w-[350px]  object-cover group-hover:scale-110 rounded-md transition duration-300"
             />
 
-            <div className="absolute top-2 -right-4 group-hover:right-1 opacity-0 group-hover:opacity-100 transition duration-500">
+            <div className="absolute top-2 -right-4 group-hover:right-1 opacity-0 group-hover:opacity-100 transition duration-500 ">
               <button onClick={addToCartHandler}>
                 <div className="flex justify-center items-center text-red-50 w-8 h-8 bg-blue-500 rounded-sm">
                   <BsPlus className="text-3xl" />
