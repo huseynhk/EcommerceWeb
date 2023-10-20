@@ -180,7 +180,7 @@ const DashboardTab = () => {
                         <th scope="col" className="px-6 py-3">
                           Rating
                         </th>
-                       
+
                         <th scope="col" className="px-6 py-3">
                           Brand
                         </th>
@@ -188,7 +188,7 @@ const DashboardTab = () => {
                           Size
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          DisCountPrice
+                          DisCount
                         </th>
                         <th scope="col" className="px-6 py-3">
                           Color
@@ -231,7 +231,12 @@ const DashboardTab = () => {
                             <td className="px-6 py-3">{item.brand}</td>
                             <td className="px-6 py-3">{item.size}</td>
                             <td className="px-6 py-3">{item.disCountPrice}</td>
-                            <td className="px-6 py-3">{item.color}</td>
+                            <td className="px-6 py-3">
+                              <div
+                                className="h-7 w-7 rounded-full"
+                                style={{ backgroundColor: item.color }}
+                              ></div>
+                            </td>
                             <td className="px-6 py-3">{item.gender}</td>
 
                             <td className="px-6 py-3">

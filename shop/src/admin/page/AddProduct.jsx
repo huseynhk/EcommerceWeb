@@ -154,7 +154,7 @@ const AddProduct = () => {
     <>
       <Layout>
         <div className="flex justify-center items-center h-screen dark:bg-black">
-          <div className=" bg-primary px-8 py-5 rounded-md mb-16 dark:bg-cyan-700">
+          <div className=" bg-primary px-8 py-4 rounded-md mb-16 dark:bg-cyan-700">
             <div className="">
               <h1 className="text-center text-blue-200 text-lg mb-4 font-bold dark:text-white">
                 Add Product
