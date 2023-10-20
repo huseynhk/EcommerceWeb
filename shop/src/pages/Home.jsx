@@ -201,6 +201,7 @@ const Home = () => {
                       value={color}
                       style={{ backgroundColor: color }}
                     >
+                      <div>{color}</div>
                     </option>
                   ))}
                 </select>

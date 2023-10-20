@@ -14,6 +14,10 @@ const Checkout = () => {
   const totalPrice = useSelector(
     (state) => state.persistedReducer.basket.totalPrice
   );
+  const totalDiscountPrice = useSelector(
+    (state) => state.persistedReducer.basket.totalDiscountPrice
+  );
+  const resultTotal = Number(totalPrice - totalDiscountPrice).toFixed(2);
   const dispatch = useDispatch();
 
   const addAmounth = () => {
@@ -26,7 +30,7 @@ const Checkout = () => {
 
   const applyDiscount = () => {
     if (!discountApplied && discountCode === "gs1905") {
-      const discountedTotal = (totalPrice - totalPrice * 0.2).toFixed(2);
+      const discountedTotal = (resultTotal - resultTotal * 0.2).toFixed(2);
       dispatch(setDiscountedPrice(discountedTotal));
       setDiscountApplied(true);
       toast.success("Discount applied successfully!", {
@@ -51,10 +55,10 @@ const Checkout = () => {
 
           <div className=" bg-gray-300 dark:bg-primary w-[300px] mb-10 flex flex-col justify-center items-center rounded-md">
             <div className=" dark:text-white p-2 text-2xl ">
-              Balance: ${walletAmounth}
+              Balance: ${walletAmounth.toFixed(2)}
             </div>
             <div className=" dark:text-white p-2 text-2xl">
-              TotalPrice: $ {parseFloat(totalPrice).toFixed(2)}
+              TotalPrice: $ {parseFloat(resultTotal).toFixed(2)}
             </div>
             <div className="w-[150px] my-3">
               <Modal />

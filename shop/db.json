@@ -3,7 +3,7 @@
     {
       "title": "uyda",
       "description": "huhuh",
-      "price": "789",
+      "price": "50",
       "category": {
         "name": "Dresses",
         "id": 1
@@ -17,7 +17,7 @@
       "rating": "5",
       "size": "xl",
       "gender": "uni",
-      "disCountPrice": "22",
+      "disCountPrice": "",
       "color": "#b40182",
       "brand": "gucci",
       "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fjeans4.jpg?alt=media&token=156470ff-566b-4b7b-8a7b-74634b1894b0",

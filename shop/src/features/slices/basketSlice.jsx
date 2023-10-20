@@ -5,6 +5,7 @@ export const initialState = {
   amount: 0,
   totalAmount: 0,
   totalPrice: 0,
+  totalDiscountPrice: 0,
 };
 
 export const basketSlice = createSlice({
@@ -18,11 +19,18 @@ export const basketSlice = createSlice({
       if (exist) {
         exist.amount++;
         exist.totalAmount++;
-        exist.totalPrice += exist.price;
+        exist.totalPrice += Number(exist.price * exist.amount);
+        exist.totalDiscountPrice += Number(exist.disCountPrice * exist.amount);
+        state.totalPrice += Number(exist.price);
+        state.totalDiscountPrice += Number(exist.disCountPrice);
+        state.totalAmount++;
       } else {
         state.basket.push(action.payload);
         state.totalAmount++;
         state.totalPrice += action.payload.price;
+        state.totalDiscountPrice += action.payload.disCountPrice
+          ? action.payload.disCountPrice
+          : action.payload.price;
       }
     },
 
@@ -36,6 +44,7 @@ export const basketSlice = createSlice({
         );
         state.totalAmount -= exist.amount;
         state.totalPrice -= exist.totalPrice;
+        state.totalDiscountPrice -= exist.totalDiscountPrice;
       }
     },
 
@@ -47,8 +56,10 @@ export const basketSlice = createSlice({
         exist.amount++;
         exist.totalAmount++;
         exist.totalPrice += exist.price;
+        exist.totalDiscountPrice += exist.disCountPrice;
         state.totalAmount++;
         state.totalPrice += exist.price;
+        state.totalDiscountPrice += exist.disCountPrice;
       }
     },
 
@@ -60,8 +71,10 @@ export const basketSlice = createSlice({
         exist.amount--;
         exist.totalAmount--;
         exist.totalPrice -= exist.price;
+        exist.totalDiscountPrice -= exist.disCountPrice;
         state.totalAmount--;
         state.totalPrice -= exist.price;
+        state.totalDiscountPrice -= exist.disCountPrice;
       }
     },
 
@@ -69,6 +82,7 @@ export const basketSlice = createSlice({
       state.basket = [];
       state.totalAmount = 0;
       state.totalPrice = 0;
+      state.totalDiscountPrice = 0;
     },
 
     setDiscountedPrice: (state, action) => {
@@ -77,7 +91,12 @@ export const basketSlice = createSlice({
   },
 });
 
-
-export const { addToCart, removeFromCart, increament, decrement, clearBasket, setDiscountedPrice } =
-  basketSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  increament,
+  decrement,
+  clearBasket,
+  setDiscountedPrice,
+} = basketSlice.actions;
 export default basketSlice.reducer;

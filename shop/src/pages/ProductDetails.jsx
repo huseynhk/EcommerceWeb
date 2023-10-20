@@ -49,13 +49,15 @@ const ProductDetails = () => {
         price: Number(product.price),
         amount: 1,
         image: product.image,
+        totalDiscountPrice: Number(product.disCountPrice),
         totalPrice: Number(product.price),
+      
         title: product.title,
         description: product.description,
         rating: product.rating,
         brand: product.brand,
         category: product.category,
-        disCountPrice: product.disCountPrice,
+        disCountPrice: Number(product.disCountPrice),
         subcategory: product.subcategory,
         color: product.color,
       })

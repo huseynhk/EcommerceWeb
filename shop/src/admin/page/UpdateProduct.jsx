@@ -14,7 +14,7 @@ import { storage } from "../../firebase/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const UpdateProduct = () => {
-  const { categories, subcategories } = useContext(ProductContext);
+  const { categories, subcategories,genders } = useContext(ProductContext);
   const [updatedProduct, setUpdatedProduct] = useState({
     title: "",
     description: "",
@@ -33,6 +33,7 @@ const UpdateProduct = () => {
 
   const [image, setImage] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
+
   const { productId } = useParams();
   const navigate = useNavigate();
 
@@ -53,6 +54,13 @@ const UpdateProduct = () => {
   useEffect(() => {
     resultFetchProduct();
   }, [productId]);
+
+  useEffect(() => {
+    const filterSubCatsByCatId = subcategories.filter(
+      (sub) => sub.categoryId == updatedProduct.category.id
+    );
+    setEditFilterSubCategories(filterSubCatsByCatId);
+  },[updatedProduct])
 
   useEffect(() => {
     if (updatedProduct.date) {
@@ -207,9 +215,9 @@ const UpdateProduct = () => {
             <div>
               <select onChange={handleInputChange} name="gender">
                 <option value="select">Select a Gender</option>
-                <option value="man">Man</option>
-                <option value="woman">Woman</option>
-                <option value="uni">Uni</option>
+                {genders.length > 0 && genders.map((g, i) => (
+                   <option key={i} selected={g == updatedProduct.gender ? true : false} value={g}>{g}</option>
+                ))}
               </select>
             </div>
             <div>

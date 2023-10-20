@@ -13,9 +13,13 @@ const Sidebar = () => {
   const totalPrice = useSelector(
     (state) => state.persistedReducer.basket.totalPrice
   );
+  const totalDiscountPrice = useSelector(
+    (state) => state.persistedReducer.basket.totalDiscountPrice
+  );
   const totalAmount = useSelector(
     (state) => state.persistedReducer.basket.totalAmount
   );
+
   const dispatch = useDispatch();
   return (
     <>
@@ -45,9 +49,13 @@ const Sidebar = () => {
           <div className="w-full flex justify-between items-center mt-10 uppercase font-semibold">
             <h2 className="my-2 text-red-800 ">
               <span className="ml-1 text-indigo-800 ">TotalPrice:</span> $
-              {totalPrice}
+              {Number(totalPrice)}
             </h2>
+            <h2 className="my-2 text-red-800 ">
+              <span className="ml-1 text-indigo-800 ">Discount:</span> $
+              {Number(totalDiscountPrice)}
 
+            </h2>
             <div
               className="cursor-pionter py-4 bg-red-500 rounded-md w-10 h-10 flex
               justify-center items-center text-2xl text-white cursor-pointer mr-2"
