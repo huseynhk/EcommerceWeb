@@ -28,9 +28,7 @@ export const basketSlice = createSlice({
         state.basket.push(action.payload);
         state.totalAmount++;
         state.totalPrice += action.payload.price;
-        state.totalDiscountPrice += action.payload.disCountPrice
-          ? action.payload.disCountPrice
-          : action.payload.price;
+        state.totalDiscountPrice += action.payload.disCountPrice;
       }
     },
 

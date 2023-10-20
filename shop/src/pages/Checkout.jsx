@@ -21,7 +21,7 @@ const Checkout = () => {
   const dispatch = useDispatch();
 
   const addAmounth = () => {
-    dispatch(increamentBalans(parseInt(amounth)));
+    dispatch(increamentBalans(Number(amounth)));
     setAmounth(0);
   };
 
@@ -55,7 +55,7 @@ const Checkout = () => {
 
           <div className=" bg-gray-300 dark:bg-primary w-[300px] mb-10 flex flex-col justify-center items-center rounded-md">
             <div className=" dark:text-white p-2 text-2xl ">
-              Balance: ${walletAmounth.toFixed(2)}
+              Balance: ${Number(walletAmounth.toFixed(2))}
             </div>
             <div className=" dark:text-white p-2 text-2xl">
               TotalPrice: $ {parseFloat(resultTotal).toFixed(2)}

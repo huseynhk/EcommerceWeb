@@ -19,6 +19,9 @@ const ViewCart = () => {
   const totalAmount = useSelector(
     (state) => state.persistedReducer.basket.totalAmount
   );
+  const totalDiscountPrice = useSelector(
+    (state) => state.persistedReducer.basket.totalDiscountPrice
+  );
   const dispatch = useDispatch();
 
   return (
@@ -113,13 +116,21 @@ const ViewCart = () => {
             </div>
           </div>
 
-          <div className="bg-gray-400 dark:bg:gray-700 w-[480px] py-4  rounded-sm  flex justfy-center items-center mx-auto mt-5 ">
-            <h2 className="m-2 text-gega-red ">
-              <span className=" text-primary text-lg">TotalPrice:</span> $
+          <div className="bg-gray-500 dark:bg:gray-700 w-[800px] py-4  rounded-sm  flex justfy-center items-center mx-auto mt-5 ">
+            <h2 className="m-2 text-gega-melon ">
+              <span className=" text-blue-50 text-lg">TotalPrice:</span> $
               {parseFloat(totalPrice).toFixed(2)}
             </h2>
-            <h2 className="m-2 text-gega-red ">
-              <span className=" text-primary font-semibold ">TotalAmount:</span>
+            <h2 className="m-2 text-gega-melon ">
+              <span className=" text-blue-50 text-lg">DisCount:</span> $
+              {parseFloat(totalDiscountPrice).toFixed(2)}
+            </h2>
+            <h2 className="m-2 text-gega-melon ">
+              <span className=" text-blue-50 text-lg">Result:</span> $
+              {parseFloat(totalPrice-totalDiscountPrice).toFixed(2)}
+            </h2>
+            <h2 className="m-2 text-gega-melon ">
+              <span className=" text-blue-50 font-semibold ">TotalAmount: </span>
               {totalAmount}
             </h2>
             <div className="flex w-[200px]">

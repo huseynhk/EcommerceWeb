@@ -216,7 +216,7 @@ const Home = () => {
             </div>
 
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[35px] mt-[450px] md:mt-[100px] 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-[60px] mt-[450px] md:mt-[100px] 
               mx-w-sm  md:max-w-none md:mx-w-0 md:container md:ml-20"
             >
               {filteredProducts.map((product) => {

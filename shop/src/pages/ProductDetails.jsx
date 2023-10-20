@@ -51,7 +51,6 @@ const ProductDetails = () => {
         image: product.image,
         totalDiscountPrice: Number(product.disCountPrice),
         totalPrice: Number(product.price),
-      
         title: product.title,
         description: product.description,
         rating: product.rating,

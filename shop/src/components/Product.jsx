@@ -59,7 +59,7 @@ const Product = ({ product }) => {
             <img
               src={image}
               alt={title}
-              className=" -mt-4 h-[200px] w-[350px]  object-cover group-hover:scale-110 rounded-md transition duration-300"
+              className=" -mt-[50px] h-[230px] w-[450px]  object-cover group-hover:scale-110 rounded-md transition duration-300"
             />
 
             <div className="absolute top-2 -right-4 group-hover:right-1 opacity-0 group-hover:opacity-100 transition duration-500 ">
@@ -78,17 +78,19 @@ const Product = ({ product }) => {
             </div>
           </div>
 
-          <div className="mt-5 me-1 ">
-            <div className="ml-0 md:ml-4 text-2xl md:text-lg">
-              <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">
-                Category:{category.name}
+          <div className="flex items-center mt-12">
+            <div className="text-xl mr-12 flex items-center justify-center flex-col">
+              <div className=" capitalize text-gray-600 dark:text-black font-semibold">
+               Category: {category.name}
               </div>
-              <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">
-                Sub Category:{subcategory.name}
+              <div className="capitalize text-gray-600 dark:text-black font-semibold">
+               Sub: {subcategory.name}
               </div>
-              <Link to={`/product/${id}`}>
-                <h3 className="font-semibold my-1">{title}</h3>
-              </Link>
+              <div>
+                <Link to={`/product/${id}`}>
+                  <h3 className="font-semibold my-1">Title: {title}</h3>
+                </Link>
+              </div>
 
               <div className="flex items-center ">
                 <span className="mr-2">Color:</span>
@@ -99,25 +101,29 @@ const Product = ({ product }) => {
                   ></div>
                 )}
               </div>
+
+              <div className="flex items-center ">
+                <div className="font-semibold text-green-600 dark:text-green-200 mr-2">
+                  $ {price}
+                </div>
+                <div className="font-semibold text-red-600 dark:text-red-200">
+                  $ {disCountPrice > 0 ? disCountPrice : "Zero"}
+                </div>
+              </div>
+            </div>
+
+            <div className="text-xl flex items-center justify-center flex-col">
               <div className="font-semibold text-violet-600 dark:text-cyan-200">
                 Rating:{rating}
               </div>
-              <div className="flex items-center ">
-                <div className="font-semibold text-green-600 dark:text-green-200 mr-2">
-                  ${price}
-                </div>
-                <div className="font-semibold text-red-600 dark:text-red-200">
-                  ${disCountPrice}
-                </div>
+              <div className="font-semibold text-green-600 dark:text-cyan-200">
+                Size: {size}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200">
-               Size: {size}
+                Gender: {gender}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200">
-               Gender: {gender}
-              </div>
-              <div className="font-semibold text-green-600 dark:text-cyan-200">
-               Brand: {brand}
+                Brand: {brand}
               </div>
             </div>
           </div>
