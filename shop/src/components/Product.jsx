@@ -116,10 +116,10 @@ const Product = ({ product }) => {
               <div className="font-semibold text-violet-600 dark:text-cyan-200">
                 Rating:{rating}
               </div>
-              <div className="font-semibold text-green-600 dark:text-cyan-200">
+              <div className="font-semibold text-green-600 dark:text-cyan-200 mt-3">
                 Size: {size}
               </div>
-              <div className="font-semibold text-green-600 dark:text-cyan-200">
+              <div className="font-semibold text-green-600 dark:text-cyan-200 my-3">
                 Gender: {gender}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200">

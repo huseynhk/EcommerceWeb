@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const currentDate = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -15,6 +17,8 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
+                 <h2>{t('welcome')}</h2>
+
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
                     Home
                   </a>

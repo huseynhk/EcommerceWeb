@@ -9,8 +9,15 @@ import { FiSun } from "react-icons/fi";
 import { Dialog, Transition } from "@headlessui/react";
 import { RxCross2 } from "react-icons/rx";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
+  const clickhandler = async (lang) => {
+    await i18n.changeLanguage(lang);
+    localStorage.setItem("lang" , lang) 
+  };
+
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { handleThemeSwitch, theme } = useContext(ThemeContext);
   const totalAmount = useSelector(
@@ -151,6 +158,20 @@ const Header = () => {
             >
               Signup
             </Link>
+
+            <button
+              className="p-3 bg-green-300 text-md"
+              onClick={() => clickhandler("en")}
+            >
+              En
+            </button>
+            <button
+              className="p-3 bg-blue-300 text-md"
+              onClick={() => clickhandler("az")}
+            >
+              Az
+            </button>
+            <h2>{t('welcome')}</h2>
 
             <button
               className="p-2 mr-3 dark:text-white"

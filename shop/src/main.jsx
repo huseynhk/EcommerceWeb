@@ -13,6 +13,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 import rootReducer from "./features/app/rootReducer.jsx";
+import i18n from "./i18n/i18n.jsx";
 
 const persistConfig = {
   key: "root",
