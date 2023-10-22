@@ -4,6 +4,8 @@ import { BsPlus, BsEyeFill } from "react-icons/bs";
 import { addToCart } from "../features/slices/basketSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+
 
 const Product = ({ product }) => {
   const {
@@ -21,6 +23,7 @@ const Product = ({ product }) => {
     brand,
   } = product;
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const addToCartHandler = () => {
     dispatch(
@@ -81,19 +84,19 @@ const Product = ({ product }) => {
           <div className="flex items-center mt-12">
             <div className="text-xl mr-12 flex items-center justify-center flex-col">
               <div className=" capitalize text-gray-600 dark:text-black font-semibold">
-               Category: {category.name}
+                {t("category")}: {category.name}
               </div>
               <div className="capitalize text-gray-600 dark:text-black font-semibold">
-               Sub: {subcategory.name}
+                {t("subCat")}: {subcategory.name}
               </div>
               <div>
                 <Link to={`/product/${id}`}>
-                  <h3 className="font-semibold my-1">Title: {title}</h3>
+                  <h3 className="font-semibold my-1"> {t("title")}: {title}</h3>
                 </Link>
               </div>
 
               <div className="flex items-center ">
-                <span className="mr-2">Color:</span>
+                <span className="mr-2"> {t("color")}:</span>
                 {color && (
                   <div
                     className="h-5 w-5 rounded-full"
@@ -114,16 +117,16 @@ const Product = ({ product }) => {
 
             <div className="text-xl flex items-center justify-center flex-col">
               <div className="font-semibold text-violet-600 dark:text-cyan-200">
-                Rating:{rating}
+              {t("rating")}:{rating}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200 mt-3">
-                Size: {size}
+              {t("size")}: {size}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200 my-3">
-                Gender: {gender}
+              {t("gender")}: {gender}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200">
-                Brand: {brand}
+              {t("brand")}: {brand}
               </div>
             </div>
           </div>

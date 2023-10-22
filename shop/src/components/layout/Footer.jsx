@@ -13,41 +13,39 @@ const Footer = () => {
           <div className="flex flex-wrap md:text-left text-center order-first ">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 dark:text-white tracking-widest text-sm mb-3">
-                CATEGORIES
+                {t("categories")}
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                 <h2>{t('welcome')}</h2>
-
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Home
+                    {t("home")}
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Order
+                    {t("order")}
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Local For Vocal
+                    {t("local")}
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Cart
+                    {t("cart")}
                   </a>
                 </li>
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 uppercase dark:text-white">
-                Customer Service
+                {t("customer")}
               </h2>
               <nav className="list-none mb-10">
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Return Policy
+                    {t("return")}
                   </a>
                 </li>
                 <li>
@@ -55,7 +53,7 @@ const Footer = () => {
                     to={"/about"}
                     className="text-gray-600 hover:text-gray-800 dark:text-white"
                   >
-                    About
+                    {t("about")}
                   </Link>
                 </li>
                 <li>
@@ -63,7 +61,7 @@ const Footer = () => {
                     to={"/contact"}
                     className="text-gray-600 hover:text-gray-800 dark:text-white"
                   >
-                    Contact Us
+                    {t("contact")}
                   </Link>
                 </li>
               </nav>
@@ -71,7 +69,7 @@ const Footer = () => {
 
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 dark:text-white">
-                Services
+                {t("services")}
               </h2>
               <nav className="list-none mb-10">
                 <li>
@@ -79,7 +77,7 @@ const Footer = () => {
                     to={"/privacypolicy"}
                     className="text-gray-600 hover:text-gray-800 dark:text-white"
                   >
-                    Privacy
+                    {t("privacy")}
                   </Link>
                 </li>
               </nav>

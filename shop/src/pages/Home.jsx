@@ -4,7 +4,7 @@ import { ProductContext } from "../contexts/ProductContext";
 import Product from "../components/Product";
 import Hero from "../components/Hero";
 import { Helmet } from "react-helmet-async";
-
+import { useTranslation } from "react-i18next";
 const Home = () => {
   const {
     filters,
@@ -31,6 +31,7 @@ const Home = () => {
     selectedColor,
     setSelectedColor,
   } = useContext(ProductContext);
+  const { t } = useTranslation();
 
   return (
     <Layout>
@@ -54,7 +55,7 @@ const Home = () => {
                     setFilters({ ...filters, search: e.target.value })
                   }
                   className="bg-gray-50 border md:mx-1 my-2 md:my-0 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Search Product"
+                  placeholder={t("searchPr")}
                 />
                 <input
                   type="number"
@@ -63,7 +64,7 @@ const Home = () => {
                     setFilters({ ...filters, rating: e.target.value })
                   }
                   className="bg-gray-50 border md:mx-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Rating"
+                  placeholder={t("rating")}
                 />
                 <input
                   type="number"
@@ -72,7 +73,7 @@ const Home = () => {
                     setFilters({ ...filters, minPrice: e.target.value })
                   }
                   className="bg-gray-50 border my-2 md:my-0 md:mx-1 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Min Price"
+                  placeholder={t("minPrice")}
                 />
                 <input
                   type="number"
@@ -81,7 +82,7 @@ const Home = () => {
                     setFilters({ ...filters, maxPrice: e.target.value })
                   }
                   className="bg-gray-50 border md:mx-1  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Max Price"
+                  placeholder={t("maxPrice")}
                 />
               </div>
               <div className="md:flex">
@@ -89,16 +90,16 @@ const Home = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 md:mx-1 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   onChange={sortProducts}
                 >
-                  <option value="title">Sort Products</option>
+                  <option value="title">{t("sortPr")}</option>
 
-                  <option value="az">AZ Name</option>
-                  <option value="za">ZA Name</option>
+                  <option value="az">{t("azName")}</option>
+                  <option value="za">{t("zaName")}</option>
 
-                  <option value="low">Low to High</option>
-                  <option value="high">High to Low</option>
+                  <option value="low">{t("low")}</option>
+                  <option value="high">{t("high")}</option>
 
-                  <option value="azRating">AZ Rating</option>
-                  <option value="zaRating">ZA Rating</option>
+                  <option value="azRating">{t("lowRating")}</option>
+                  <option value="zaRating">{t("highRating")}</option>
                 </select>
 
                 <select
@@ -109,7 +110,7 @@ const Home = () => {
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
-                  <option value="all">All Categories</option>
+                  <option value="all">{t("allCategories")} </option>
                   {categories.map((category, index) => (
                     <option key={index} value={category.id}>
                       {category.name}
@@ -124,7 +125,7 @@ const Home = () => {
                   value={selectedSubtCategory}
                   onChange={(e) => setSubSelectedCategory(e.target.value)}
                 >
-                  <option value="all">All Sub Categories</option>
+                  <option value="all">{t("allSub")}</option>
                   {subcategories.map((subcategory, index) => (
                     <option key={index} value={subcategory.id}>
                       {subcategory.name}
@@ -142,7 +143,7 @@ const Home = () => {
                     setSelectedGender(e.target.value);
                   }}
                 >
-                  <option value="all">All Genders</option>
+                  <option value="all">{t("allGender")}</option>
                   {genders.map((gender, index) => (
                     <option key={index} value={gender}>
                       {gender}
@@ -160,7 +161,7 @@ const Home = () => {
                     setSelectedSize(e.target.value);
                   }}
                 >
-                  <option value="all">All Sizes</option>
+                  <option value="all">{t("allSizes")}</option>
                   {sizes.map((size, index) => (
                     <option key={index} value={size}>
                       {size}
@@ -178,7 +179,7 @@ const Home = () => {
                     setSelectedBrand(e.target.value);
                   }}
                 >
-                  <option value="all">All Brands</option>
+                  <option value="all">{t("allBrands")}</option>
                   {brands.map((brand, index) => (
                     <option key={index} value={brand}>
                       {brand}
@@ -194,7 +195,7 @@ const Home = () => {
                   value={selectedColor}
                   onChange={(e) => setSelectedColor(e.target.value)}
                 >
-                  <option value="all">All Colors</option>
+                  <option value="all">{t("allColors")}</option>
                   {colors.map((color, index) => (
                     <option
                       key={index}
@@ -211,7 +212,7 @@ const Home = () => {
                 className="bg-slate-700 dark:bg-slate-300 p-2 flex justify-center items-center rounded-sm my-1 dark:text-primary text-gray-200 w-full font-medium"
                 onClick={resetFilters}
               >
-                Reset
+                {t("reset")}
               </button>
             </div>
 

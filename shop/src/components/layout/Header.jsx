@@ -10,12 +10,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { RxCross2 } from "react-icons/rx";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
+import Select from "react-select";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
   const clickhandler = async (lang) => {
     await i18n.changeLanguage(lang);
-    localStorage.setItem("lang" , lang) 
+    localStorage.setItem("lang", lang);
   };
 
   const { isOpen, setIsOpen } = useContext(SidebarContext);
@@ -31,6 +32,28 @@ const Header = () => {
     localStorage.clear("user");
     navigate("/login");
   };
+  const languageOptions = [
+    {
+      value: "en",
+      label: (
+        <img
+          src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-square-250.png"
+          alt="En"
+          style={{ borderRadius: "50%" }}
+        />
+      ),
+    },
+    {
+      value: "az",
+      label: (
+        <img
+          src="https://cdn.countryflags.com/thumbs/azerbaijan/flag-square-250.png"
+          alt="Az"
+          style={{ borderRadius: "50%" }}
+        />
+      ),
+    },
+  ];
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -139,7 +162,7 @@ const Header = () => {
                 className="text-xl font-medium text-primary dark:text-gray-100 mx-2 hidden md:block"
                 onClick={logoutUser}
               >
-                LogOut
+                {t("logout")}
               </a>
             )}
 
@@ -148,7 +171,8 @@ const Header = () => {
                 to={"/dashboard"}
                 className="text-xl font-medium text-primary dark:text-gray-100 mx-2 hidden md:block"
               >
-                Admin
+               {t('admin')}
+                
               </Link>
             )}
 
@@ -156,22 +180,31 @@ const Header = () => {
               to={"/signup"}
               className="mx-2  text-xl font-medium text-primary dark:text-gray-100 cursor-pointer ml-2 hidden md:block"
             >
-              Signup
+              {t("signup")}
             </Link>
 
-            <button
-              className="p-3 bg-green-300 text-md"
-              onClick={() => clickhandler("en")}
+            {/* <select
+              className="px-3 py-1 bg-green-300 text-sm rounded-md mr-2"
+              value={i18n.language}
+              onChange={(e) => clickhandler(e.target.value)}
             >
-              En
-            </button>
-            <button
-              className="p-3 bg-blue-300 text-md"
-              onClick={() => clickhandler("az")}
-            >
-              Az
-            </button>
-            <h2>{t('welcome')}</h2>
+              <option value="en"> En</option>
+              <option value="az">Az</option>
+            </select> */}
+
+            <Select
+              className="text-sm rounded-md mx-2"
+              value={languageOptions.find(
+                (option) => option.value === i18n.language
+              )}
+              options={languageOptions}
+              onChange={(selectedOption) => clickhandler(selectedOption.value)}
+              getOptionLabel={(option) => (
+                <div className="w-[25px] h-[25px] ">
+                  <span> {option.label}</span>
+                </div>
+              )}
+            />
 
             <button
               className="p-2 mr-3 dark:text-white"
