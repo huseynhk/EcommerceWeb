@@ -171,8 +171,7 @@ const Header = () => {
                 to={"/dashboard"}
                 className="text-xl font-medium text-primary dark:text-gray-100 mx-2 hidden md:block"
               >
-               {t('admin')}
-                
+                {t("admin")}
               </Link>
             )}
 
@@ -193,7 +192,7 @@ const Header = () => {
             </select> */}
 
             <Select
-              className="text-sm rounded-md mx-2"
+              className="text-sm  mx-2"
               value={languageOptions.find(
                 (option) => option.value === i18n.language
               )}
@@ -201,9 +200,33 @@ const Header = () => {
               onChange={(selectedOption) => clickhandler(selectedOption.value)}
               getOptionLabel={(option) => (
                 <div className="w-[25px] h-[25px] ">
-                  <span> {option.label}</span>
+                  <span>{option.label}</span>
                 </div>
               )}
+              styles={{
+                control: (provided, state) => ({
+                  ...provided,
+                  backgroundColor: theme === "dark" ? "#000" : "#fff",
+                  color: theme === "dark" ? "#fff" : "#000",
+                }),
+                singleValue: (provided, state) => ({
+                  ...provided,
+                  color: theme === "dark" ? "#fff" : "#000",
+                }),
+                option: (provided, state) => ({
+                  ...provided,
+                  backgroundColor: theme === "dark" ? "#000" : "#fff",
+                  color: theme === "dark" ? "#fff" : "#000",
+                }),
+                dropdownIndicator: (provided, state) => ({
+                  ...provided,
+                  color: theme === "dark" ? "#fff" : "#000",
+                }),
+                indicatorSeparator: (provided, state) => ({
+                  ...provided,
+                  backgroundColor: theme === "dark" ? "#fff" : "#000",
+                }),
+              }}
             />
 
             <button

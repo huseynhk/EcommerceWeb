@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { IoMdRemove, IoMdAdd } from "react-icons/io";
 import { FiTrash } from "react-icons/fi";
 import { FcFullTrash } from "react-icons/fc";
+import { Helmet } from "react-helmet-async";
 import {
   removeFromCart,
   increament,
   decrement,
 } from "../features/slices/basketSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const ViewCart = () => {
   const cart = useSelector((state) => state.persistedReducer.basket.basket);
@@ -24,9 +26,14 @@ const ViewCart = () => {
   );
   const dispatch = useDispatch();
 
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <>
+        <Helmet>
+          <title>View Page</title>
+        </Helmet>
         <div className="dark:bg-black">
           <div className="flex gap-x-4 py-2 lg:px-6 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] mt-[160px] md:mt-[60px] container">
@@ -59,14 +66,14 @@ const ViewCart = () => {
                         <div className="flex flex-col justify-center items-center ">
                           <div>
                             <div className="text-sm capitalize text-gray-600 dark:text-black font-semibold">
-                              Category:{category ? category.name : ""}
+                              {t("category")}:{category ? category.name : ""}
                             </div>
                             <Link to={`/product/${id}`}>
                               <h3 className="font-semibold my-1">{title}</h3>
                             </Link>
-                            
+
                             <div className="font-semibold text-violet-600 dark:text-cyan-200">
-                              DisCountPrice:{disCountPrice}
+                              {t("disCountPrice")}: {disCountPrice}
                             </div>
                           </div>
 
@@ -127,10 +134,12 @@ const ViewCart = () => {
             </h2>
             <h2 className="m-2 text-gega-melon ">
               <span className=" text-blue-50 text-lg">Result:</span> $
-              {parseFloat(totalPrice-totalDiscountPrice).toFixed(2)}
+              {parseFloat(totalPrice - totalDiscountPrice).toFixed(2)}
             </h2>
             <h2 className="m-2 text-gega-melon ">
-              <span className=" text-blue-50 font-semibold ">TotalAmount: </span>
+              <span className=" text-blue-50 font-semibold ">
+                TotalAmount:{" "}
+              </span>
               {totalAmount}
             </h2>
             <div className="flex w-[200px]">

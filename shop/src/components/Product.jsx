@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
 import { addToCart } from "../features/slices/basketSlice";
 import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-
+import { Helmet } from "react-helmet-async";
 
 const Product = ({ product }) => {
   const {
@@ -21,6 +20,7 @@ const Product = ({ product }) => {
     gender,
     disCountPrice,
     brand,
+    stock,
   } = product;
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -42,16 +42,16 @@ const Product = ({ product }) => {
         disCountPrice: Number(product.disCountPrice),
         subcategory: product.subcategory,
         color: product.color,
+        stock: Number(product.stock),
       })
     );
-    toast.success("Product added to cart successfully!", {
-      position: toast.POSITION.TOP_RIGHT,
-      autoClose: 1000,
-    });
   };
 
   return (
     <>
+      <Helmet>
+        <title>Product Page</title>
+      </Helmet>
       <div
         key={id}
         className="w-full h-[450px]  mb-4 bg-indigo-50 rounded-md border border-indigo-600 dark:border-cyan-300
@@ -91,7 +91,10 @@ const Product = ({ product }) => {
               </div>
               <div>
                 <Link to={`/product/${id}`}>
-                  <h3 className="font-semibold my-1"> {t("title")}: {title}</h3>
+                  <h3 className="font-semibold my-1">
+                    {" "}
+                    {t("title")}: {title}
+                  </h3>
                 </Link>
               </div>
 
@@ -117,16 +120,16 @@ const Product = ({ product }) => {
 
             <div className="text-xl flex items-center justify-center flex-col">
               <div className="font-semibold text-violet-600 dark:text-cyan-200">
-              {t("rating")}:{rating}
+                {t("rating")}:{rating}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200 mt-3">
-              {t("size")}: {size}
+                {t("size")}: {size}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200 my-3">
-              {t("gender")}: {gender}
+                {t("gender")}: {gender}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200">
-              {t("brand")}: {brand}
+                {t("brand")}: {brand}
               </div>
             </div>
           </div>

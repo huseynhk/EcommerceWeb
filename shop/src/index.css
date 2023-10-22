@@ -4,5 +4,6 @@
 
 .each-slideshow-indicator::before  {
   background: cyan !important;
+  color: #d7e0e6;
 }
 

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 export const initialState = {
   basket: [],
@@ -17,6 +18,13 @@ export const basketSlice = createSlice({
         (product) => product.id === action.payload.id
       );
       if (exist) {
+        if (exist.amount >= action.payload.stock) {
+          toast.warn("Maximum stock reached for this product!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 1000,
+          });
+          return;
+        }
         exist.amount++;
         exist.totalAmount++;
         exist.totalPrice += Number(exist.price * exist.amount);
@@ -25,11 +33,22 @@ export const basketSlice = createSlice({
         state.totalDiscountPrice += Number(exist.disCountPrice);
         state.totalAmount++;
       } else {
+        if (action.payload.stock === 0) {
+          toast.warn("This product is out of stock!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 1000,
+          });
+          return;
+        }
         state.basket.push(action.payload);
         state.totalAmount++;
         state.totalPrice += action.payload.price;
         state.totalDiscountPrice += action.payload.disCountPrice;
       }
+      toast.success("Product added to cart successfully!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1000,
+      });
     },
 
     removeFromCart: (state, action) => {
@@ -51,6 +70,13 @@ export const basketSlice = createSlice({
         (product) => product.id === action.payload.id
       );
       if (exist) {
+        if (exist.amount >= action.payload.stock) {
+          toast.warn("Maximum stock reached for this product!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 1000,
+          });
+          return;
+        }
         exist.amount++;
         exist.totalAmount++;
         exist.totalPrice += exist.price;

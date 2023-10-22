@@ -4,12 +4,14 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../features/slices/basketSlice";
 import Layout from "../components/layout/Layout";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [product, setProduct] = useState([]);
+  const { t } = useTranslation();
 
   const fetchProduct = async () => {
     try {
@@ -41,6 +43,7 @@ const ProductDetails = () => {
     disCountPrice,
     brand,
     description,
+    stock,
   } = product;
   const addToCartHandler = () => {
     dispatch(
@@ -59,16 +62,16 @@ const ProductDetails = () => {
         disCountPrice: Number(product.disCountPrice),
         subcategory: product.subcategory,
         color: product.color,
+        stock: Number(product.stock),
       })
     );
-    toast.success("Product added to cart successfully!", {
-      position: toast.POSITION.TOP_RIGHT,
-      autoClose: 1000,
-    });
   };
 
   return (
     <>
+      <Helmet>
+        <title>Home Detail</title>
+      </Helmet>
       <Layout>
         <section className="pt-32 pb-12 lg:py-32 h-screen dark:bg-black">
           <div className="container mx-auto">
@@ -82,40 +85,41 @@ const ProductDetails = () => {
               </div>
 
               <div className="flex-1 text-center lg:text-left">
-                <h2 className="text-[27px] font-medium mb-2 max-w-[450px] mx-auto text-gega-melon">
-                  {title}
-                </h2>
+                <h1 className="text-[27px] font-medium mb-2 max-w-[450px] mx-auto text-gega-melon">
+                  {t("title")} {title}
+                </h1>
                 <h2 className=" text-cyan-700 uppercase font-semibold text-2xl">
-                  Category:{category ? category.name : ""}
+                  {t("category")}:{category ? category.name : ""}
                 </h2>
                 <div className="flex  flex-col justify-center">
                   <h2 className="text-gega-red mr-3 font-medium mb-6 text-3xl">
-                    Price: $ {price}
+                    {t("price")}: $ {price}
                   </h2>
                   <h2 className="text-green-500 font-medium mb-6 text-3xl">
-                    DisCountPrice: $ {price - disCountPrice}
+                    {t("disCountPrice")}: $ {price - disCountPrice}
                   </h2>
                 </div>
                 <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
-                  Rating:{rating}
+                  {t("rating")}:{rating}
                 </h2>
                 <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
-                  Size:{size}
+                  {t("size")}:{size}
                 </h2>
                 <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
-                  SubCategory:{subcategory ? subcategory.name : ""}
+                  {t("subCat")}:{subcategory ? subcategory.name : ""}
                 </h2>
                 <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
-                  Gender:{gender}
+                  {t("gender")}:{gender}
                 </h2>
                 <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
-                  Brand:{brand}
+                  {t("brand")}:{brand}
                 </h2>
-                <h2 className=" text-yellow-700 uppercase font-semibold text-2xl mb-2">
-                  Rating:{rating}
-                </h2>
+
                 <div className="flex items-center ">
-                  <span className="mr-2 text-3xl dark:text-white">Color:</span>
+                  <span className="mr-2 text-3xl dark:text-white">
+                    {" "}
+                    {t("color")}:
+                  </span>
                   {color && (
                     <div
                       className="h-10 w-10 rounded-full"
@@ -129,7 +133,7 @@ const ProductDetails = () => {
                   className="bg-slate-400 py-4 px-6 rounded-lg hover:bg-slate-300 transition duration-500"
                   onClick={addToCartHandler}
                 >
-                  Add To Cart
+                  {t("add")}
                 </button>
               </div>
             </div>
