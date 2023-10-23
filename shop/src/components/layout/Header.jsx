@@ -192,14 +192,14 @@ const Header = () => {
             </select> */}
 
             <Select
-              className="text-sm  mx-2"
+              className="text-sm mx-2"
               value={languageOptions.find(
                 (option) => option.value === i18n.language
               )}
               options={languageOptions}
               onChange={(selectedOption) => clickhandler(selectedOption.value)}
               getOptionLabel={(option) => (
-                <div className="w-[25px] h-[25px] ">
+                <div className="w-[25px] h-[25px] md:w-[30px] md:h-[30px] ">
                   <span>{option.label}</span>
                 </div>
               )}

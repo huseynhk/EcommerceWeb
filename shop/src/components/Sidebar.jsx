@@ -45,18 +45,26 @@ const Sidebar = () => {
         </div>
 
         <div className="flex flex-col gap-y-2 h-[550px] lg:h-[600px] border-b overflow-y-auto overflow-x-hidden ">
-          {cart.map((product) => (
-            <CartItem product={product} key={product.id} />
-          ))}
+          {cart.length > 0 ? (
+            cart.map((product) => (
+              <CartItem product={product} key={product.id} />
+            ))
+          ) : (
+            <p className="h-[100vh] text-center pt-[200px] dark:bg-black dark:text-cyan-300 text-3xl text-gega-red font-semibold">
+              Your Basket is Empty
+            </p>
+          )}
 
           <div className="w-full flex justify-between items-center mt-10 uppercase font-semibold">
-            <h2 className="my-2 text-red-800 ">
-              <span className="ml-1 text-indigo-800 "> {t("totalPr")}</span> $
+            <h2 className="my-2 text-red-600 ">
+              <span className="ml-1 text-indigo-500 "> {t("totalPr")}</span> $
               {Number(totalPrice).toFixed(2)}
             </h2>
-            <h2 className="my-2 text-red-800 ">
-              <span className="ml-1 text-indigo-800 "> {t("disCountAmount")}:</span> $
-              {Number(totalDiscountPrice)}
+            <h2 className="my-2 text-red-600 ">
+              <span className="ml-1 text-indigo-500 ">
+                {t("disCountAmount")}:
+              </span>
+              ${Number(totalDiscountPrice)}
             </h2>
             <div
               className="cursor-pionter py-4 bg-red-500 rounded-md w-10 h-10 flex
@@ -72,14 +80,14 @@ const Sidebar = () => {
               to={"/view"}
               className="bg-gray-300 p-2 flex justify-center items-center rounded-sm my-1 text-primary dark:bg-gray-400 w-full font-medium"
             >
-            {t("view")}
+              {t("view")}
             </Link>
 
             <Link
               to={"/check"}
               className="bg-primary p-2 flex justify-center items-center rounded-sm text-gray-200 dark:bg-gray-600 w-full font-medium"
             >
-             {t("check")}
+              {t("check")}
             </Link>
           </div>
         </div>

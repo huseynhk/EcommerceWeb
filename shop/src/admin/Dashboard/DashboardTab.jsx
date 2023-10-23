@@ -22,6 +22,7 @@ const DashboardTab = () => {
     deleteCategory,
     subcategories,
     deleteSubCategory,
+    orders,
   } = useContext(ProductContext);
 
   const navigate = useNavigate();
@@ -89,6 +90,18 @@ const DashboardTab = () => {
     setPageNumber(selected);
   };
 
+  //Order Pagination
+  const ordersPerPage = orders.length == 0 ? 0 : 3;
+  const ordersVisitedUsers = pageNumber * ordersPerPage;
+  const displayOders = orders.slice(
+    ordersVisitedUsers,
+    ordersVisitedUsers + ordersPerPage
+  );
+  const ordersPageCount = Math.ceil(orders.length / ordersPerPage);
+  const changeOrdersPage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   return (
     <>
       <div className="container mx-auto">
@@ -136,6 +149,17 @@ const DashboardTab = () => {
                 >
                   <div className="flex gap-2 items-center">
                     <FaUser /> {t("users")}
+                  </div>
+                </button>
+              </Tab>
+
+              <Tab>
+                <button
+                  type="button"
+                  className="font-medium border-b-2 border-blue-500 bg-[#605d5d12] text-blue-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                >
+                  <div className="flex gap-2 items-center">
+                    <FaUser /> {t("orders")}
                   </div>
                 </button>
               </Tab>
@@ -319,10 +343,10 @@ const DashboardTab = () => {
                         Id
                       </th>
                       <th scope="col" className="px-6 py-3">
-                      {t("name")}
+                        {t("name")}
                       </th>
                       <th scope="col" className="px-6 py-3">
-                      {t("actions")}
+                        {t("actions")}
                       </th>
                     </tr>
                   </thead>
@@ -410,10 +434,10 @@ const DashboardTab = () => {
                         Id
                       </th>
                       <th scope="col" className="px-6 py-3">
-                      {t("name")}
+                        {t("name")}
                       </th>
                       <th scope="col" className="px-6 py-3">
-                      {t("actions")}
+                        {t("actions")}
                       </th>
                     </tr>
                   </thead>
@@ -485,7 +509,7 @@ const DashboardTab = () => {
                       </th>
 
                       <th scope="col" className="px-6 py-3">
-                      {t("name")}
+                        {t("name")}
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Email
@@ -522,6 +546,88 @@ const DashboardTab = () => {
                   nextLabel={t("next")}
                   pageCount={userPageCount}
                   onPageChange={changeUserPage}
+                  containerClassName={"flex py-1 px-4 space-x-2"}
+                  previousLinkClassName={"mr-2 p-2 "}
+                  nextLinkClassName={"ml-2 p-2"}
+                  disabledClassName={"text-gray-500 cursor-not-allowed"}
+                  activeClassName={
+                    "bg-cyan-500 text-white border border-cyan-500 rounded-sm px-2"
+                  }
+                />
+              </div>
+            </TabPanel>
+
+            <TabPanel>
+              <div className="relative overflow-x-auto mb-10">
+                <h1 className=" text-center mb-5 text-3xl font-semibold underline  text-blue-500">
+                  {t("orderDetails")}
+                </h1>
+                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                  <thead className="text-xs text-black uppercase bg-gray-200 dark:text-cyan-300 dark:bg-gray-900">
+                    <tr>
+                      <th scope="col" className="px-6 py-3">
+                        S.No
+                      </th>
+
+                      <th scope="col" className="px-6 py-3">
+                        {t("product")}
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        {t("prAmount")}
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        {t("totalPr")}
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        {t("disCountAmount")}
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        {t("disCountPrice")}
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        {t("userEmail")}
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {displayOders.map((item, index) => {
+                      const actualIndex = ordersVisitedUsers + index + 1;
+                      return (
+                        <tr
+                          className="bg-gray-100 dark:bg-primary dark:text-white border-b 
+                         dark:border-cyan-300"
+                          key={index}
+                        >
+                          <td className="px-6 py-5">{actualIndex}</td>
+                          <td className="px-6 py-5">
+                            <img
+                              className="w-[80px]  h-[70px] object-cover rounded-md"
+                              src={item.order_items[0].image}
+                              alt=""
+                            />
+                          </td>
+                          <td className="px-6 py-5">
+                            {item.order_items[0].amount}
+                          </td>
+
+                          <td className="px-6 py-5">{item.total_price}</td>
+                          <td className="px-6 py-5">{item.discount_price}</td>
+                          <td className="px-6 py-5">{item.total_price-item.discount_price}</td>
+                          <td className="px-6 py-5">{item.user_email}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              {/* pagination */}
+              <div className=" flex items-center justify-center ">
+                <ReactPaginate
+                  previousLabel={t("prv")}
+                  nextLabel={t("next")}
+                  pageCount={ordersPageCount}
+                  onPageChange={changeOrdersPage}
                   containerClassName={"flex py-1 px-4 space-x-2"}
                   previousLinkClassName={"mr-2 p-2 "}
                   nextLinkClassName={"ml-2 p-2"}

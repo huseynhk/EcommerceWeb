@@ -5,6 +5,8 @@ import Product from "../components/Product";
 import Hero from "../components/Hero";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
+
+
 const Home = () => {
   const {
     filters,
@@ -44,8 +46,8 @@ const Home = () => {
           <div className="container flex flex-col  items-center justify-around ">
             <div
               className="rounded-sm bg-slate-200 dark:bg-slate-800
-              flex-row  w-[400px] h-[200px]  
-               mt-10  md:w-[800px] md:h-[150px] md:-mb-6"
+              flex-row  w-[440px] h-[210px]  
+               mt-10  md:w-full md:h-[140px] md:ml-20"
             >
               <div className="my-2 md:flex ">
                 <input

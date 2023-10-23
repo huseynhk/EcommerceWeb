@@ -14,6 +14,8 @@ const ProductContextProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedSubtCategory, setSubSelectedCategory] = useState("all");
+  const [orders, setOrders] = useState([]);
+
 
   const [genders, setGenders] = useState([]);
   const [selectedtGender, setSelectedGender] = useState("all");
@@ -223,7 +225,21 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
-
+  const getAllOrders = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get("http://localhost:3000/orders");
+      if (response.status !== 200) {
+        throw new Error("Something went wrong!");
+      } else {
+        setOrders(response.data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
 
 //Gender
 
@@ -342,6 +358,7 @@ const ProductContextProvider = ({ children }) => {
     getUserData();
     getAllCategories();
     getAllSubCategories();
+    getAllOrders();
   }, []);
 
   useEffect(() => {
@@ -392,6 +409,7 @@ const ProductContextProvider = ({ children }) => {
     colors,
     selectedColor,
     setSelectedColor,
+    orders,
   };
 
   return (

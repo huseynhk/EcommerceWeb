@@ -5,7 +5,7 @@ import { removeFromCart, increament, decrement } from "../features/slices/basket
 import { useDispatch } from "react-redux";
 
 const CartItem = ({ product }) => {
-  const { id, title, price, image, amount, disCountPrice } = product;
+  const { id, title, price, image, amount } = product;
   const dispatch = useDispatch();
   
   return (

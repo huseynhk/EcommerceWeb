@@ -4,24 +4,54 @@ import { useDispatch, useSelector } from "react-redux";
 import { decrementAmounth } from "../features/slices/walletSlice";
 import { clearBasket } from "../features/slices/basketSlice";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Modal() {
+  console.log(localStorage.getItem("user"));
   const myBalance = useSelector(
     (state) => state.persistedReducer.wallet.balans
   );
+  const basket = useSelector((state) => state.persistedReducer.basket.basket);
   const totalPrice = useSelector(
     (state) => state.persistedReducer.basket.totalPrice
   );
+  const totalDiscountPrice = useSelector(
+    (state) => state.persistedReducer.basket.totalDiscountPrice
+  );
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  
-  const handlePayment = () => {
-    if (myBalance >= totalPrice) {
-      dispatch(decrementAmounth(totalPrice));
-      dispatch(clearBasket());
-      closeModal();
-    } else {
-      alert("Balance is not enough");
+
+  const handlePayment = async () => {
+    try {
+      if (myBalance >= totalPrice) {
+        const data = {
+          order_items: basket,
+          total_price: Number(totalPrice),
+          discount_price: Number(totalDiscountPrice),
+          user_email: JSON.parse(localStorage.getItem("user"))?.email,
+        };
+        const request = await axios.post("http://localhost:3000/orders", data);
+
+        if (request.status === 201) {
+          toast.success("Ordered is successfully", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 1000,
+          });
+          dispatch(decrementAmounth(totalPrice));
+          dispatch(clearBasket());
+          closeModal();
+        } else {
+          throw new Error("Error");
+        }
+      } else {
+        throw new Error("Balance is not enough");
+      }
+    } catch (err) {
+      toast.error(err.message, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1000,
+      });
     }
   };
 
@@ -78,83 +108,12 @@ export default function Modal() {
                     <div className="flex flex-col items-center justify-center py-8 mx-auto  lg:py-0">
                       <div className="w-full  rounded-lg md:mt-0 sm:max-w-md xl:p-0 ">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                          <form className="space-y-4 md:space-y-6" action="#">
-                            <div>
-                              <label
-                                htmlFor="name"
-                                className="block mb-2 text-sm font-medium text-gray-900"
-                              >
-                                Enter Full Name
-                              </label>
-                              <input
-                                type="name"
-                                name="name"
-                                id="name"
-                                className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
-                                required
-                              />
-                            </div>
-                            <div>
-                              <label
-                                htmlFor="email"
-                                className="block mb-2 text-sm font-medium text-gray-900"
-                              >
-                                Enter Address
-                              </label>
-                              <input
-                                type="text"
-                                name="address"
-                                id="address"
-                                className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
-                                required
-                              />
-                            </div>
-                            <div>
-                              <label
-                                htmlFor="pincode"
-                                className="block mb-2 text-sm font-medium text-gray-900"
-                              >
-                                Enter Pincode
-                              </label>
-                              <input
-                                type="text"
-                                name="pincode"
-                                id="pincode"
-                                className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
-                                required
-                              />
-                            </div>
-                            <div>
-                              <label
-                                htmlFor="mobileNumber"
-                                className="block mb-2 text-sm font-medium text-gray-900"
-                              >
-                                Enter Mobile Number
-                              </label>
-                              <input
-                                type="text"
-                                name="mobileNumber"
-                                id="mobileNumber"
-                                className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
-                                required
-                              />
-                            </div>
-                          </form>
-                          <button
-                            onClick={() => {
-                              closeModal();
-                            }}
-                            type="button"
-                            className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
-                          >
-                            Close
-                          </button>
                           <button
                             onClick={handlePayment}
                             type="button"
                             className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
                           >
-                            Order Now
+                            {t("ordernow")}
                           </button>
                         </div>
                       </div>

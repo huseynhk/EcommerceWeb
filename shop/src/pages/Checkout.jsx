@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { increamentBalans } from "../features/slices/walletSlice";
 import { setDiscountedPrice } from "../features/slices/basketSlice";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 const Checkout = () => {
   const [amounth, setAmounth] = useState(0);
@@ -50,6 +51,9 @@ const Checkout = () => {
   return (
     <Layout>
       <>
+        <Helmet>
+          <title>Checkout</title>
+        </Helmet>
         <div className="h-[100vh]  dark:bg-black p-20 flex flex-col justify-start items-center font-primary">
           <h1 className="text-5xl dark:text-cyan-300 mb-4 font-semibold ">
             {t("pay")}

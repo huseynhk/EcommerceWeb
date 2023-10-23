@@ -47,9 +47,10 @@
     "customers": "Ümumi Müştərilər",
     "orders": "Ümumi Sifarişlər",
     "products": "Məhsullar",
+    "product": "Məhsul",
     "addProduct": "Məhsul əlavə ed",
     "prDetails": "Məhsul Təfərrüatları",
-    "ctDetails": "Kateqoriya təfərrüatları",
+    "ctDetails": "Kateqoriya Təfərrüatları",
     "addCategory": "Kateqoriya əlavə ed",
     "subCategory": "Alt Kateqoriyalar",
     "subDetails": "Alt Kateqoriya Təfərrüatları",
@@ -74,5 +75,9 @@
     "get": "Endirim əldə ed",
     "code": "Endirim kodu",
     "addAmount": "Məbləğ əlavə ed",
-    "bag":"Çanta"
+    "bag":"Çanta",
+    "prAmount": "Məhsulun Miqdarı",
+    "userEmail": "İstifadəçi  Emaili",
+    "ordernow":" Sifariş ed",
+    "orderDetails": "Sifariş Təfərrüatları"
 }

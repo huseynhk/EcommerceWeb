@@ -192,10 +192,61 @@
   ],
   "orders": [
     {
-      "id": 1,
-      "orderItems": [],
-      "total_price": 75,
-      "discount_percentage": 20
+      "order_items": [
+        {
+          "id": 6,
+          "price": 88,
+          "amount": 2,
+          "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fshoe11.jpg?alt=media&token=a3b80cb6-5d16-4c6c-8e68-5a307c38e19c",
+          "totalDiscountPrice": 12,
+          "totalPrice": 176,
+          "title": "krasovka",
+          "description": "adidas malidi senol",
+          "rating": "7.5",
+          "brand": "nike",
+          "category": {
+            "name": "shoes",
+            "id": 4
+          },
+          "disCountPrice": 6,
+          "subcategory": {
+            "name": "jenski",
+            "categoryId": 4,
+            "id": 8
+          },
+          "color": "#4a90e2",
+          "stock": 2,
+          "totalAmount": null
+        },
+        {
+          "id": 7,
+          "price": 99.99,
+          "amount": 1,
+          "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fshoe9.jpg?alt=media&token=f85e9180-f00f-4d47-8a94-0ab92c6203db",
+          "totalDiscountPrice": 3.66,
+          "totalPrice": 99.99,
+          "title": "ayaqqabi",
+          "description": "bomba kimidi",
+          "rating": "7.2",
+          "brand": "adidas",
+          "category": {
+            "name": "shoes",
+            "id": 4
+          },
+          "disCountPrice": 3.66,
+          "subcategory": {
+            "name": "jenski",
+            "categoryId": 4,
+            "id": 8
+          },
+          "color": "#c37e0a",
+          "stock": 5
+        }
+      ],
+      "total_price": 208.26,
+      "discount_price": 15.66,
+      "user_email": "khuseyn693@gmail.com",
+      "id": 1
     }
   ]
 }
