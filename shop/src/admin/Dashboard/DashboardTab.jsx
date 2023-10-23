@@ -11,6 +11,7 @@ import { AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import moment from "moment";
+import { useTranslation } from "react-i18next";
 
 const DashboardTab = () => {
   const {
@@ -22,7 +23,10 @@ const DashboardTab = () => {
     subcategories,
     deleteSubCategory,
   } = useContext(ProductContext);
+
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const addProductPage = () => {
     navigate("/addproduct");
   };
@@ -98,7 +102,7 @@ const DashboardTab = () => {
                 >
                   <div className="flex gap-2 items-center">
                     <MdOutlineProductionQuantityLimits />
-                    Products
+                    {t("products")}
                   </div>
                 </button>
               </Tab>
@@ -109,7 +113,7 @@ const DashboardTab = () => {
                   className="font-medium border-b-2 border-cyan-500 bg-[#605d5d12] text-cyan-500 rounded-lg text-xl  hover:shadow-cyan-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
-                    <BiCategoryAlt /> Categories
+                    <BiCategoryAlt /> {t("categories")}
                   </div>
                 </button>
               </Tab>
@@ -120,7 +124,7 @@ const DashboardTab = () => {
                   className="font-medium border-b-2 border-yellow-500 bg-[#605d5d12] text-yellow-500 rounded-lg text-xl  hover:shadow-yellow-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
-                    <MdOutlineCategory /> Sub Categories
+                    <MdOutlineCategory /> {t("subCategory")}
                   </div>
                 </button>
               </Tab>
@@ -131,7 +135,7 @@ const DashboardTab = () => {
                   className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
-                    <FaUser /> Users
+                    <FaUser /> {t("users")}
                   </div>
                 </button>
               </Tab>
@@ -140,7 +144,7 @@ const DashboardTab = () => {
             <TabPanel>
               <div className="px-4 md:px-0 mb-16 ">
                 <h1 className=" text-center mb-5 text-3xl font-semibold underline text-purple-500">
-                  Product Details
+                  {t("prDetails")}
                 </h1>
                 <div className="flex justify-center">
                   <button
@@ -151,7 +155,8 @@ const DashboardTab = () => {
                       className="flex gap-2 items-center "
                       onClick={addProductPage}
                     >
-                      Add Product <BiSolidCartAdd size={30} />
+                      {t("addProduct")}
+                      <BiSolidCartAdd size={30} />
                     </div>
                   </button>
                 </div>
@@ -163,44 +168,44 @@ const DashboardTab = () => {
                           S.No
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Image
+                          {t("img")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Title
+                          {t("title")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Price
+                          {t("price")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Category
+                          {t("category")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Stock
+                          {t("stock")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Rating
+                          {t("rating")}
                         </th>
 
                         <th scope="col" className="px-6 py-3">
-                          Brand
+                          {t("brand")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Size
+                          {t("size")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          DisCount
+                          {t("disCountPrice")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Color
+                          {t("color")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Gender
+                          {t("gender")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Date
+                          {t("date")}
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Action
+                          {t("actions")}
                         </th>
                       </tr>
                     </thead>
@@ -270,8 +275,8 @@ const DashboardTab = () => {
               {/* pagination */}
               <div className="flex items-center justify-center ">
                 <ReactPaginate
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
+                  previousLabel={t("prv")}
+                  nextLabel={t("next")}
                   pageCount={pageCount}
                   onPageChange={changePage}
                   containerClassName={"flex py-1 px-4 space-x-2"}
@@ -288,7 +293,7 @@ const DashboardTab = () => {
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
                 <h1 className=" text-center mb-5 text-3xl font-semibold underline text-cyan-500">
-                  Category Details
+                  {t("ctDetails")}
                 </h1>
                 <div className="flex justify-center">
                   <button
@@ -299,7 +304,8 @@ const DashboardTab = () => {
                       className="flex gap-2 items-center "
                       onClick={addCategoryPage}
                     >
-                      Add Category <BiSolidCartAdd size={30} />
+                      {t("addCategory")}
+                      <BiSolidCartAdd size={30} />
                     </div>
                   </button>
                 </div>
@@ -313,10 +319,10 @@ const DashboardTab = () => {
                         Id
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Name
+                      {t("name")}
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Actions
+                      {t("actions")}
                       </th>
                     </tr>
                   </thead>
@@ -360,8 +366,8 @@ const DashboardTab = () => {
               {/* pagination */}
               <div className=" flex items-center justify-center ">
                 <ReactPaginate
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
+                  previousLabel={t("prv")}
+                  nextLabel={t("next")}
                   pageCount={categoryPageCount}
                   onPageChange={changeCategoryPage}
                   containerClassName={"flex py-1 px-4 space-x-2"}
@@ -378,7 +384,7 @@ const DashboardTab = () => {
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
                 <h1 className=" text-center mb-5 text-3xl font-semibold underline text-yellow-500">
-                  Sub Category Details
+                  {t("subDetails")}
                 </h1>
                 <div className="flex justify-center">
                   <button
@@ -389,7 +395,8 @@ const DashboardTab = () => {
                       className="flex gap-2 items-center "
                       onClick={addSubCategoryPage}
                     >
-                      Add Sub Category <BiSolidCartAdd size={30} />
+                      {t("addSub")}
+                      <BiSolidCartAdd size={30} />
                     </div>
                   </button>
                 </div>
@@ -403,10 +410,10 @@ const DashboardTab = () => {
                         Id
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Name
+                      {t("name")}
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Actions
+                      {t("actions")}
                       </th>
                     </tr>
                   </thead>
@@ -450,8 +457,8 @@ const DashboardTab = () => {
               {/* pagination */}
               <div className=" flex items-center justify-center ">
                 <ReactPaginate
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
+                  previousLabel={t("prv")}
+                  nextLabel={t("next")}
                   pageCount={subcategoryPageCount}
                   onPageChange={changeSubCategoryPage}
                   containerClassName={"flex py-1 px-4 space-x-2"}
@@ -468,7 +475,7 @@ const DashboardTab = () => {
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
                 <h1 className=" text-center mb-5 text-3xl font-semibold underline  text-green-500">
-                  User Details
+                  {t("userDetails")}
                 </h1>
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead className="text-xs text-black uppercase bg-gray-200 dark:text-cyan-300 dark:bg-gray-900">
@@ -478,7 +485,7 @@ const DashboardTab = () => {
                       </th>
 
                       <th scope="col" className="px-6 py-3">
-                        Name
+                      {t("name")}
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Email
@@ -511,8 +518,8 @@ const DashboardTab = () => {
               {/* pagination */}
               <div className=" flex items-center justify-center ">
                 <ReactPaginate
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
+                  previousLabel={t("prv")}
+                  nextLabel={t("next")}
                   pageCount={userPageCount}
                   onPageChange={changeUserPage}
                   containerClassName={"flex py-1 px-4 space-x-2"}

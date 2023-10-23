@@ -6,6 +6,7 @@ import { FiTrash } from "react-icons/fi";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { useSelector, useDispatch } from "react-redux";
 import { clearBasket } from "../features/slices/basketSlice";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
@@ -21,6 +22,8 @@ const Sidebar = () => {
   );
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   return (
     <>
       <div
@@ -34,7 +37,7 @@ const Sidebar = () => {
           onClick={handleClose}
         >
           <p className="uppercase text-md font-semibold">
-            Bag(<span className="text-red-500">{totalAmount}</span>)
+            {t("bag")} (<span className="text-red-500">{totalAmount}</span>)
           </p>
           <div className="cursor-pointer w-8 h-8 flex justify-center items-center">
             <IoMdArrowForward className="text-3xl text-red-500" />
@@ -48,13 +51,12 @@ const Sidebar = () => {
 
           <div className="w-full flex justify-between items-center mt-10 uppercase font-semibold">
             <h2 className="my-2 text-red-800 ">
-              <span className="ml-1 text-indigo-800 ">TotalPrice:</span> $
+              <span className="ml-1 text-indigo-800 "> {t("totalPr")}</span> $
               {Number(totalPrice).toFixed(2)}
             </h2>
             <h2 className="my-2 text-red-800 ">
-              <span className="ml-1 text-indigo-800 ">Discount:</span> $
+              <span className="ml-1 text-indigo-800 "> {t("disCountAmount")}:</span> $
               {Number(totalDiscountPrice)}
-
             </h2>
             <div
               className="cursor-pionter py-4 bg-red-500 rounded-md w-10 h-10 flex
@@ -70,14 +72,14 @@ const Sidebar = () => {
               to={"/view"}
               className="bg-gray-300 p-2 flex justify-center items-center rounded-sm my-1 text-primary dark:bg-gray-400 w-full font-medium"
             >
-              View Cart
+            {t("view")}
             </Link>
 
             <Link
               to={"/check"}
               className="bg-primary p-2 flex justify-center items-center rounded-sm text-gray-200 dark:bg-gray-600 w-full font-medium"
             >
-              Checkout
+             {t("check")}
             </Link>
           </div>
         </div>

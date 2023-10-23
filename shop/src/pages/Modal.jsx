@@ -3,6 +3,7 @@ import { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decrementAmounth } from "../features/slices/walletSlice";
 import { clearBasket } from "../features/slices/basketSlice";
+import { useTranslation } from "react-i18next";
 
 export default function Modal() {
   const myBalance = useSelector(
@@ -12,7 +13,8 @@ export default function Modal() {
     (state) => state.persistedReducer.basket.totalPrice
   );
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
+  
   const handlePayment = () => {
     if (myBalance >= totalPrice) {
       dispatch(decrementAmounth(totalPrice));
@@ -42,7 +44,7 @@ export default function Modal() {
           onClick={openModal}
           className="w-full  bg-violet-600 py-2  text-center rounded-md text-white font-bold "
         >
-          Buy Now
+          {t("buy")}
         </button>
       </div>
 

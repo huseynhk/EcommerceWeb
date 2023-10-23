@@ -25,7 +25,6 @@ const ViewCart = () => {
     (state) => state.persistedReducer.basket.totalDiscountPrice
   );
   const dispatch = useDispatch();
-
   const { t } = useTranslation();
 
   return (
@@ -125,20 +124,20 @@ const ViewCart = () => {
 
           <div className="bg-gray-500 dark:bg:gray-700 w-[800px] py-4  rounded-sm  flex justfy-center items-center mx-auto mt-5 ">
             <h2 className="m-2 text-gega-melon ">
-              <span className=" text-blue-50 text-lg">TotalPrice:</span> $
+              <span className=" text-blue-50 text-lg">{t("totalPr")}: </span> $
               {parseFloat(totalPrice).toFixed(2)}
             </h2>
             <h2 className="m-2 text-gega-melon ">
-              <span className=" text-blue-50 text-lg">DisCount:</span> $
+              <span className=" text-blue-50 text-lg">{t("disCountAmount")}: </span> $
               {parseFloat(totalDiscountPrice).toFixed(2)}
             </h2>
             <h2 className="m-2 text-gega-melon ">
-              <span className=" text-blue-50 text-lg">Result:</span> $
+              <span className=" text-blue-50 text-lg">{t("result")}: </span> $
               {parseFloat(totalPrice - totalDiscountPrice).toFixed(2)}
             </h2>
             <h2 className="m-2 text-gega-melon ">
               <span className=" text-blue-50 font-semibold ">
-                TotalAmount:{" "}
+              {t("totalAmount")} : 
               </span>
               {totalAmount}
             </h2>
@@ -154,7 +153,7 @@ const ViewCart = () => {
                 className="cursor-pionter p-4 bg-blue-500 rounded-md w-[100px] h-10 flex
               justify-center items-center text-lg text-white cursor-pointer"
               >
-                <Link to={"/check"}>Payment</Link>
+                <Link to={"/check"}> {t("pay")}</Link>
               </div>
             </div>
           </div>

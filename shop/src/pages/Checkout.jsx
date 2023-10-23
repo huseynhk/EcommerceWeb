@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { increamentBalans } from "../features/slices/walletSlice";
 import { setDiscountedPrice } from "../features/slices/basketSlice";
+import { useTranslation } from "react-i18next";
 
 const Checkout = () => {
   const [amounth, setAmounth] = useState(0);
@@ -19,6 +20,7 @@ const Checkout = () => {
   );
   const resultTotal = Number(totalPrice - totalDiscountPrice).toFixed(2);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const addAmounth = () => {
     dispatch(increamentBalans(Number(amounth)));
@@ -50,15 +52,15 @@ const Checkout = () => {
       <>
         <div className="h-[100vh]  dark:bg-black p-20 flex flex-col justify-start items-center font-primary">
           <h1 className="text-5xl dark:text-cyan-300 mb-4 font-semibold ">
-            Payment
+            {t("pay")}
           </h1>
 
           <div className=" bg-gray-300 dark:bg-primary w-[300px] mb-10 flex flex-col justify-center items-center rounded-md">
             <div className=" dark:text-white p-2 text-2xl ">
-              Balance: ${Number(walletAmounth.toFixed(2))}
+              {t("balance")}: ${Number(walletAmounth.toFixed(2))}
             </div>
             <div className=" dark:text-white p-2 text-2xl">
-              TotalPrice: $ {parseFloat(resultTotal).toFixed(2)}
+              {t("totalPr")}: $ {parseFloat(resultTotal).toFixed(2)}
             </div>
             <div className="w-[150px] my-3">
               <Modal />
@@ -69,7 +71,7 @@ const Checkout = () => {
             <div className="flex justify-between">
               <input
                 type="text"
-                placeholder="Discount Code"
+                placeholder={t("code")}
                 value={discountCode}
                 onChange={(e) => setDiscountCode(e.target.value)}
                 className="bg-slate-100 p-2  rounded-md my-3"
@@ -80,14 +82,14 @@ const Checkout = () => {
               onClick={applyDiscount}
               disabled={discountApplied}
             >
-              Get Discount
+              {t("get")}
             </button>
           </div>
 
           <div className=" bg-gray-300 dark:bg-primary w-[300px]  flex flex-col justify-center items-center rounded-md">
             <input
               type="number"
-              placeholder="Balance"
+              placeholder={t("balance")}
               className=" bg-slate-100 p-2  rounded-md my-3"
               value={amounth}
               onChange={(e) => setAmounth(e.target.value)}
@@ -96,7 +98,7 @@ const Checkout = () => {
               className="w-[208px] mb-3  bg-violet-600 py-2  text-center rounded-md text-white font-bold"
               onClick={addAmounth}
             >
-              Add Amounth
+              {t("addAmount")}
             </button>
           </div>
         </div>

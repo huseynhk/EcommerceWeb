@@ -7,9 +7,13 @@ import DashboardTab from "./DashboardTab";
 import Transaction from "./Charts/Transaction";
 import BuyerChart from "./Charts/BuyerChart";
 import { ProductContext } from "../../contexts/ProductContext";
+import { useTranslation } from "react-i18next";
+
 const Dashboard = () => {
   const { getAllProducts, getAllCategories, getAllSubCategories } =
     useContext(ProductContext);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     getAllProducts();
@@ -28,7 +32,7 @@ const Dashboard = () => {
               </div>
               <div className="pl-4">
                 <span className="text-lg text-gray-500 font-medium dark:text-cyan-200">
-                  Toatal Sales
+                {t("sales")}
                 </span>
                 <div className="flex items-center">
                   <strong className="text-lg text-gray-500 font-medium dark:text-cyan-200">
@@ -47,7 +51,8 @@ const Dashboard = () => {
               </div>
               <div className="pl-4">
                 <span className="text-lg text-gray-500 font-medium dark:text-cyan-200">
-                  Toatal Expenses
+                {t("expenses")}
+
                 </span>
                 <div className="flex items-center">
                   <strong className="text-lg text-gray-500 font-medium dark:text-cyan-200">
@@ -66,7 +71,8 @@ const Dashboard = () => {
               </div>
               <div className="pl-4">
                 <span className="text-lg text-gray-500 font-medium dark:text-cyan-200">
-                  Toatal Customers
+                {t("customers")}
+
                 </span>
                 <div className="flex items-center">
                   <strong className="text-lg text-gray-500 font-medium dark:text-cyan-200">
@@ -85,7 +91,8 @@ const Dashboard = () => {
               </div>
               <div className="pl-4">
                 <span className="text-lg text-gray-500 font-medium dark:text-cyan-200">
-                  Toatal Orders
+                {t("orders")}
+
                 </span>
                 <div className="flex items-center">
                   <strong className="text-lg text-gray-500 font-medium dark:text-cyan-200">
