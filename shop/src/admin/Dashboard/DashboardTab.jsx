@@ -111,7 +111,7 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 hover:shadow-purple-700 border-purple-500 text-purple-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
+                  className="font-medium border-b-2 hover:shadow-purple-700 border-purple-500 text-purple-500 rounded-lg text-md md:text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)] px-2  md:px-5 py-1.5 text-center bg-[#605d5d12] "
                 >
                   <div className="flex gap-2 items-center">
                     <MdOutlineProductionQuantityLimits />
@@ -123,7 +123,7 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-cyan-500 bg-[#605d5d12] text-cyan-500 rounded-lg text-xl  hover:shadow-cyan-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                  className="font-medium border-b-2 border-cyan-500 bg-[#605d5d12] text-cyan-500 rounded-lg text-md md:text-xl  hover:shadow-cyan-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-2 md:px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
                     <BiCategoryAlt /> {t("categories")}
@@ -134,7 +134,7 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-yellow-500 bg-[#605d5d12] text-yellow-500 rounded-lg text-xl  hover:shadow-yellow-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                  className="font-medium border-b-2 border-yellow-500 bg-[#605d5d12] text-yellow-500 rounded-lg text-md md:text-xl  hover:shadow-yellow-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-2 md:px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
                     <MdOutlineCategory /> {t("subCategory")}
@@ -145,7 +145,7 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                  className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-md md:text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-2 md:px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
                     <FaUser /> {t("users")}
@@ -156,7 +156,7 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-blue-500 bg-[#605d5d12] text-blue-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                  className="font-medium border-b-2 border-blue-500 bg-[#605d5d12] text-blue-500 rounded-lg text-md md:text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-2 md:px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
                     <FaUser /> {t("orders")}

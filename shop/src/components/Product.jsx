@@ -55,9 +55,9 @@ const Product = ({ product }) => {
       <div
         key={id}
         className="w-full h-[450px]  mb-4 bg-indigo-50 rounded-md border border-indigo-600 dark:border-cyan-300
-        relative overflow-hidden group transition"
+        relative overflow-hidden group transition "
       >
-        <div className="w-full h-full flex justify-center items-center flex-col text-md  dark:bg-gray-500/75 dark:text-gray-200">
+        <div className="w-full h-full flex justify-center items-center flex-col text-sm md:text-lg  dark:bg-gray-500/75 dark:text-gray-200">
           <div className="w-full flex justify-center items-center ">
             <img
               src={image}
@@ -82,17 +82,16 @@ const Product = ({ product }) => {
           </div>
 
           <div className="flex items-center mt-12">
-            <div className="text-xl mr-12 flex items-center justify-center flex-col">
+            <div className=" mr-10 flex items-center justify-center flex-col">
               <div className=" capitalize text-gray-600 dark:text-black font-semibold">
                 {t("category")}: {category.name}
               </div>
-              <div className="capitalize text-gray-600 dark:text-black font-semibold">
+              <div className="capitalize  text-gray-600 dark:text-black font-semibold">
                 {t("subCat")}: {subcategory.name}
               </div>
               <div>
                 <Link to={`/product/${id}`}>
                   <h3 className="font-semibold my-1">
-                    {" "}
                     {t("title")}: {title}
                   </h3>
                 </Link>
@@ -109,7 +108,7 @@ const Product = ({ product }) => {
               </div>
 
               <div className="flex items-center ">
-                <div className="font-semibold text-green-600 dark:text-green-200 mr-2">
+                <div className="font-semibold text-green-600 dark:text-green-200 mr-2 ">
                   $ {price}
                 </div>
                 <div className="font-semibold text-red-600 dark:text-red-200">
@@ -118,7 +117,7 @@ const Product = ({ product }) => {
               </div>
             </div>
 
-            <div className="text-xl flex items-center justify-center flex-col">
+            <div className="flex items-center justify-center flex-col">
               <div className="font-semibold text-violet-600 dark:text-cyan-200">
                 {t("rating")}:{rating}
               </div>
@@ -126,10 +125,10 @@ const Product = ({ product }) => {
                 {t("size")}: {size}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200 my-3">
-                {t("gender")}: {gender}
+                {t("gender")}: {gender.slice(0,3)}
               </div>
               <div className="font-semibold text-green-600 dark:text-cyan-200">
-                {t("brand")}: {brand}
+                {t("brand")}: {brand.slice(0,3)}
               </div>
             </div>
           </div>
