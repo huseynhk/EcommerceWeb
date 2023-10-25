@@ -194,12 +194,36 @@
     {
       "order_items": [
         {
+          "id": 5,
+          "price": 50,
+          "amount": 1,
+          "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fjeans4.jpg?alt=media&token=156470ff-566b-4b7b-8a7b-74634b1894b0",
+          "totalDiscountPrice": 0,
+          "totalPrice": 50,
+          "title": "uyda",
+          "description": "huhuh",
+          "rating": "5",
+          "brand": "gucci",
+          "category": {
+            "name": "Dresses",
+            "id": 1
+          },
+          "disCountPrice": 0,
+          "subcategory": {
+            "name": "kakaka",
+            "categoryId": 1,
+            "id": 6
+          },
+          "color": "#b40182",
+          "stock": 2
+        },
+        {
           "id": 6,
           "price": 88,
-          "amount": 2,
+          "amount": 1,
           "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fshoe11.jpg?alt=media&token=a3b80cb6-5d16-4c6c-8e68-5a307c38e19c",
-          "totalDiscountPrice": 12,
-          "totalPrice": 176,
+          "totalDiscountPrice": 6,
+          "totalPrice": 88,
           "title": "krasovka",
           "description": "adidas malidi senol",
           "rating": "7.5",
@@ -215,8 +239,7 @@
             "id": 8
           },
           "color": "#4a90e2",
-          "stock": 2,
-          "totalAmount": null
+          "stock": 2
         },
         {
           "id": 7,
@@ -243,8 +266,8 @@
           "stock": 5
         }
       ],
-      "total_price": 208.26,
-      "discount_price": 15.66,
+      "total_price": 237.99,
+      "discount_price": 9.66,
       "user_email": "khuseyn693@gmail.com",
       "id": 1
     }

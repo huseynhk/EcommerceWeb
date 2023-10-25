@@ -601,19 +601,28 @@ const DashboardTab = () => {
                         >
                           <td className="px-6 py-5">{actualIndex}</td>
                           <td className="px-6 py-5">
-                            <img
-                              className="w-[80px]  h-[70px] object-cover rounded-md"
-                              src={item.order_items[0].image}
-                              alt=""
-                            />
+                            {item.order_items.map((order, i) => (
+                              <div key={i}>
+                                <img
+                                  className="w-[80px] h-[50px] object-cover rounded-md mt-2"
+                                  src={order.image}
+                                  alt="image"
+                                />
+                              </div>
+                            ))}
                           </td>
+
                           <td className="px-6 py-5">
-                            {item.order_items[0].amount}
+                            {item.order_items.map((order, i) => (
+                              <div className="my-8" key={i}>{order.amount}</div>
+                            ))}
                           </td>
 
                           <td className="px-6 py-5">{item.total_price}</td>
                           <td className="px-6 py-5">{item.discount_price}</td>
-                          <td className="px-6 py-5">{item.total_price-item.discount_price}</td>
+                          <td className="px-6 py-5">
+                            {item.total_price - item.discount_price}
+                          </td>
                           <td className="px-6 py-5">{item.user_email}</td>
                         </tr>
                       );

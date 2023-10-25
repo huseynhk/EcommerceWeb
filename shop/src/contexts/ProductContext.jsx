@@ -410,6 +410,7 @@ const ProductContextProvider = ({ children }) => {
     selectedColor,
     setSelectedColor,
     orders,
+    getAllOrders,
   };
 
   return (

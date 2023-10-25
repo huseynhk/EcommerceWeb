@@ -10,7 +10,7 @@ import { ProductContext } from "../../contexts/ProductContext";
 import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
-  const { getAllProducts, getAllCategories, getAllSubCategories } =
+  const { getAllProducts, getAllCategories, getAllSubCategories, getAllOrders } =
     useContext(ProductContext);
 
   const { t } = useTranslation();
@@ -18,6 +18,7 @@ const Dashboard = () => {
     getAllProducts();
     getAllCategories();
     getAllSubCategories();
+    getAllOrders();
   }, []);
 
   return (
