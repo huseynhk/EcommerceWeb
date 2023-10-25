@@ -79,5 +79,6 @@
     "prAmount": "Məhsulun Miqdarı",
     "userEmail": "İstifadəçi  Emaili",
     "ordernow":" Sifariş ed",
-    "orderDetails": "Sifariş Təfərrüatları"
+    "orderDetails": "Sifariş Təfərrüatları",
+    "totalPrAmount": "Ümumi Məhsul Miqdarı"
 }

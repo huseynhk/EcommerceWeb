@@ -259,7 +259,11 @@ const DashboardTab = () => {
                             <td className="px-6 py-3">{item.rating}</td>
                             <td className="px-6 py-3">{item.brand}</td>
                             <td className="px-6 py-3">{item.size}</td>
-                            <td className="px-6 py-3">{item.disCountPrice}</td>
+                            <td className="px-6 py-3">
+                              {item.disCountPrice
+                                ? item.disCountPrice
+                                : "Not Discount"}
+                            </td>
                             <td className="px-6 py-3">
                               <div
                                 className="h-7 w-7 rounded-full"
@@ -576,6 +580,9 @@ const DashboardTab = () => {
                         {t("prAmount")}
                       </th>
                       <th scope="col" className="px-6 py-3">
+                        {t("totalPrAmount")}
+                      </th>
+                      <th scope="col" className="px-6 py-3">
                         {t("totalPr")}
                       </th>
                       <th scope="col" className="px-6 py-3">
@@ -604,7 +611,7 @@ const DashboardTab = () => {
                             {item.order_items.map((order, i) => (
                               <div key={i}>
                                 <img
-                                  className="w-[80px] h-[50px] object-cover rounded-md mt-2"
+                                  className="w-[70px] h-[50px] object-cover rounded-md mt-2"
                                   src={order.image}
                                   alt="image"
                                 />
@@ -614,8 +621,17 @@ const DashboardTab = () => {
 
                           <td className="px-6 py-5">
                             {item.order_items.map((order, i) => (
-                              <div className="my-8" key={i}>{order.amount}</div>
+                              <div className="my-8" key={i}>
+                                {order.amount}
+                              </div>
                             ))}
+                          </td>
+
+                          <td className="px-6 py-5">
+                            {item.order_items.reduce(
+                              (total, order) => total + order.amount,
+                              0
+                            )}
                           </td>
 
                           <td className="px-6 py-5">{item.total_price}</td>
