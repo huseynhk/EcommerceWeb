@@ -80,5 +80,6 @@
     "userEmail": "İstifadəçi  Emaili",
     "ordernow":" Sifariş ed",
     "orderDetails": "Sifariş Təfərrüatları",
-    "totalPrAmount": "Ümumi Məhsul Miqdarı"
+    "totalPrAmount": "Ümumi Məhsul Miqdarı",
+    "not":"Endirim Yoxdur"
 }

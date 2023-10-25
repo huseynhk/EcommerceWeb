@@ -80,5 +80,6 @@
     "userEmail": "User Email",
     "ordernow":" Order Now",
     "orderDetails": "Order  Details",
-    "totalPrAmount": "Total Product Amount"
+    "totalPrAmount": "Total Product Amount",
+    "not":"Not Discount"
 }

@@ -23,6 +23,7 @@ const DashboardTab = () => {
     subcategories,
     deleteSubCategory,
     orders,
+    deleteOrder,
   } = useContext(ProductContext);
 
   const navigate = useNavigate();
@@ -260,9 +261,11 @@ const DashboardTab = () => {
                             <td className="px-6 py-3">{item.brand}</td>
                             <td className="px-6 py-3">{item.size}</td>
                             <td className="px-6 py-3">
-                              {item.disCountPrice
-                                ? item.disCountPrice
-                                : "Not Discount"}
+                              {item.disCountPrice ? (
+                                item.disCountPrice
+                              ) : (
+                                <p> {t("not")}</p>
+                              )}
                             </td>
                             <td className="px-6 py-3">
                               <div
@@ -594,6 +597,9 @@ const DashboardTab = () => {
                       <th scope="col" className="px-6 py-3">
                         {t("userEmail")}
                       </th>
+                      <th scope="col" className="px-6 py-3">
+                        {t("actions")}
+                      </th>
                     </tr>
                   </thead>
 
@@ -637,9 +643,17 @@ const DashboardTab = () => {
                           <td className="px-6 py-5">{item.total_price}</td>
                           <td className="px-6 py-5">{item.discount_price}</td>
                           <td className="px-6 py-5">
-                            {item.total_price - item.discount_price}
+                            {Number(
+                              item.total_price - item.discount_price
+                            ).toFixed(2)}
                           </td>
                           <td className="px-6 py-5">{item.user_email}</td>
+                          <div
+                            className="text-3xl text-gega-red mt-[100px]"
+                            onClick={() => deleteOrder(item.id)}
+                          >
+                            <AiFillDelete size={30} />
+                          </div>
                         </tr>
                       );
                     })}

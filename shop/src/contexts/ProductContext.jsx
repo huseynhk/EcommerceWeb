@@ -202,6 +202,28 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
+  const deleteOrder = async (orderId) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/orders/${orderId}`
+      );
+      if (response.status !== 200) {
+        throw new Error("Something went wrong!");
+      } else {
+        const deletedOrder = orders.filter(
+          (order) => order.id !== orderId
+        );
+        toast.success("Order is deleted", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        });
+        setOrders(deletedOrder);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const filterProductsByCategory = () => {
     if (selectedCategory === "all") {
       setFilteredProducts(products);
@@ -411,6 +433,7 @@ const ProductContextProvider = ({ children }) => {
     setSelectedColor,
     orders,
     getAllOrders,
+    deleteOrder,
   };
 
   return (
