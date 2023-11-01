@@ -71,6 +71,30 @@
       "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fshoe9.jpg?alt=media&token=f85e9180-f00f-4d47-8a94-0ab92c6203db",
       "date": "2023-10-23T11:42:13.000Z",
       "id": 7
+    },
+    {
+      "title": "Kostyum",
+      "description": "ela",
+      "price": "222",
+      "category": {
+        "name": "Suit",
+        "id": 2
+      },
+      "stock": "4",
+      "subcategory": {
+        "name": "mehsul",
+        "categoryId": 2,
+        "id": 7
+      },
+      "rating": "5.6",
+      "size": "xxl",
+      "gender": "man",
+      "disCountPrice": "44",
+      "color": "#79ce17",
+      "brand": "Adidas",
+      "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fsuit2.jpg?alt=media&token=7bae4687-0088-4aea-8768-51dc22d828b9",
+      "date": "2023-10-20T13:00:17.000Z",
+      "id": 8
     }
   ],
   "categories": [
@@ -270,6 +294,64 @@
       "discount_price": 9.66,
       "user_email": "khuseyn693@gmail.com",
       "id": 1
+    },
+    {
+      "order_items": [
+        {
+          "id": 5,
+          "price": 50,
+          "amount": 2,
+          "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fjeans4.jpg?alt=media&token=156470ff-566b-4b7b-8a7b-74634b1894b0",
+          "totalDiscountPrice": 0,
+          "totalPrice": 100,
+          "title": "uyda",
+          "description": "huhuh",
+          "rating": "5",
+          "brand": "gucci",
+          "category": {
+            "name": "Dresses",
+            "id": 1
+          },
+          "disCountPrice": 0,
+          "subcategory": {
+            "name": "kakaka",
+            "categoryId": 1,
+            "id": 6
+          },
+          "color": "#b40182",
+          "stock": 2,
+          "totalAmount": null
+        },
+        {
+          "id": 6,
+          "price": 88,
+          "amount": 2,
+          "image": "https://firebasestorage.googleapis.com/v0/b/final-d783c.appspot.com/o/images%2Fshoe11.jpg?alt=media&token=a3b80cb6-5d16-4c6c-8e68-5a307c38e19c",
+          "totalDiscountPrice": 12,
+          "totalPrice": 176,
+          "title": "krasovka",
+          "description": "adidas malidi senol",
+          "rating": "7.5",
+          "brand": "nike",
+          "category": {
+            "name": "shoes",
+            "id": 4
+          },
+          "disCountPrice": 6,
+          "subcategory": {
+            "name": "jenski",
+            "categoryId": 4,
+            "id": 8
+          },
+          "color": "#4a90e2",
+          "stock": 2,
+          "totalAmount": null
+        }
+      ],
+      "total_price": 211.2,
+      "discount_price": 12,
+      "user_email": "khuseyn693@gmail.com",
+      "id": 2
     }
   ]
 }

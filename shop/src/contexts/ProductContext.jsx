@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
 //Get FireBase User
 import { collection, getDocs } from "firebase/firestore";
 import { fireDB } from "../firebase/firebaseConfig";

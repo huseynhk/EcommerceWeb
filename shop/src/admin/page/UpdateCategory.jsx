@@ -14,7 +14,10 @@ const UpdateCategory = () => {
   const resultFetchProduct = async () => {
     const result = await fetchCategory(categoryId);
     if (typeof result == "string") {
-      toast.error(result);
+      toast.error(result,{
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1000,
+      });
     } else {
       console.log(result);
       setEditCategory(result.name);

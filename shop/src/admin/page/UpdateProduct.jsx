@@ -40,7 +40,10 @@ const UpdateProduct = () => {
   const resultFetchProduct = async () => {
     const result = await fetchProduct(productId);
     if (typeof result == "string") {
-      toast.error(result);
+      toast.error(result , {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1000,
+      });
     } else {
       setUpdatedProduct(result);
       setImage(result.image);

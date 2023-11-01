@@ -12,7 +12,10 @@ const AddCategory = () => {
   const addCategory = async (event) => {
     event.preventDefault();
     if (newCategory == "") {
-      toast.error("All input required");
+      toast.error("All input required",{
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1000,
+      });
     }
     try {
       const response = await axios.post("http://localhost:3000/categories", {

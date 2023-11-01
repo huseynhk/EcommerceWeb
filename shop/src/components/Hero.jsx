@@ -11,9 +11,6 @@ import sliderImg9 from "../img/t-shirt1.jpg";
 import sliderImg10 from "../img/jeans5.jpg";
 import sliderImg11 from "../img/bag1.jpg";
 import sliderImg12 from "../img/dress2.jpg";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
@@ -65,7 +62,7 @@ const Hero = () => {
 
   return (
     <section className="-mb-8 ">
-      {/* <Slide {...settings}>
+      <Slide {...settings}>
         {images.map((image, index) => (
           <div key={index} className="h-[85vh]">
             <img
@@ -75,7 +72,7 @@ const Hero = () => {
             />
           </div>
         ))}
-      </Slide> */}
+      </Slide>
     </section>
   );
 };
